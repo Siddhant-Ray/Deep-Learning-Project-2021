@@ -22,7 +22,7 @@ while [ ! -z "$1" ]; do
     case "$1" in
         gpu)
             echo "GPU mode selected"
-            args+=(-R "rusage[ngpus_excl_p=1]")
+            args+=(-R "rusage[ngpus_excl_p=4]")
             ;;
         intr)
             echo "Interactive mode selected"
@@ -32,4 +32,4 @@ while [ ! -z "$1" ]; do
     shift
 done
 
-bsub "${args[@]}" python main.py 
+bsub "${args[@]}" python classifier.py 
