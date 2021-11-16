@@ -9,20 +9,23 @@ import torch
 import torch.optim as optim
 
 def main():
+	print(f"GPU: {torch.cuda.is_available()}")
+	device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+	print(device)
 
 	transform = transforms.Compose([transforms.ToTensor(), transforms.Resize(224)])
-	feature_extractor = ViTFeatureExtractor.from_pretrained('google/vit-base-patch16-224')
 	model = ViTForImageClassification.from_pretrained('google/vit-base-patch16-224')
 
 	for param in model.parameters():
 		param.requires_grad = False
 
 	model.classifier = torch.nn.Linear(in_features=768, out_features=10, bias=True)
-	for name, param in model.named_parameters():
-		print(name, param.size(), param.requires_grad)
+#	for name, param in model.named_parameters():
+#		print(name, param.size(), param.requires_grad)
 
+	model.to(device)
 
-	train_dataset = CIFAR10("../datasets/", train=True, transform=transform)
+	train_dataset = CIFAR10("../datasets/", train=True, transform=transform, download=True)
 	train_dataloader = DataLoader(train_dataset, shuffle=False, batch_size=100, num_workers=2)
 
 	dataset = CIFAR10("../datasets/", train=False, transform=transform)
@@ -39,7 +42,10 @@ def main():
 		running_loss = 0.0
 
 		for i, (images, labels) in enumerate(train_dataloader):
-			# print(cifar_labels[labels[0]])
+			print(model.device)
+
+			images = images.to(device)
+			labels = labels.to(device)
 
 			# zero the parameter gradients
 			optimizer.zero_grad()
@@ -47,8 +53,7 @@ def main():
 			image_list = [img for img in images]
 
 			print("forward")
-			inputs = feature_extractor(images=image_list, return_tensors="pt")
-			outputs = model(**inputs)
+			outputs = model(images)
 
 			print("backward")
 			loss = loss_function(outputs.logits, labels)
@@ -58,12 +63,11 @@ def main():
 
 			# print statistics
 			running_loss += loss.item()
-			if i % 10 == 9:    # print every 2000 mini-batches
+			if i % 10 == 9:
 				print('[%d, %5d] loss: %.3f' % (epoch + 1, i + 1, running_loss / 10))
 				running_loss = 0.0
 
 			logits = outputs.logits
-			# model predicts one of the 1000 ImageNet classes
 
 			predicted_class_idx = logits.argmax(-1)
 
