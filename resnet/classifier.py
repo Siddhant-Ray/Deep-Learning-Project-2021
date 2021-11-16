@@ -7,6 +7,7 @@ import torch
 import torchvision
 from torchvision import datasets, models, transforms
 import torch.nn as nn
+import torch.backends.cudnn as cudnn
 from torch.nn import functional as F
 import torch.optim as optim
 
@@ -52,12 +53,12 @@ image_datasets = {
 dataloaders = {
     'train':
     torch.utils.data.DataLoader(image_datasets['train'],
-                                batch_size=32,
+                                batch_size=64,
                                 shuffle=True,
                                 num_workers=0),  
     'validation':
     torch.utils.data.DataLoader(image_datasets['validation'],
-                                batch_size=32,
+                                batch_size=64,
                                 shuffle=False,
                                 num_workers=0)  
 }
@@ -66,6 +67,9 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 print(device)
 
 model = models.resnet50(pretrained=True).to(device)
+if device == 'cuda':
+    model = torch.nn.DataParallel(model)
+    cudnn.benchmark = True
     
 for param in model.parameters():
     param.requires_grad = False   
@@ -76,13 +80,13 @@ model.fc = nn.Sequential(
                nn.ReLU(inplace=True),
                nn.Linear(128, 10)).to(device)
 
-#learning_rate = 1e-4
+learning_rate = 1e-4
 criterion = nn.CrossEntropyLoss()
-optimizer = optim.Adam(model.fc.parameters())
-#scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=200)
+optimizer = optim.Adam(model.fc.parameters(), lr=learning_rate, weight_decay = 1e-5)
+scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=200)
 
-def run_model(model, criterion, optimizer, num_epochs=3):
-    total_accuracy = 0 
+def run_model(model, criterion, optimizer, num_epochs=25):
+    
     for epoch in range(num_epochs):
         print('Epoch {}/{}'.format(epoch+1, num_epochs))
         print('-' * 10)
@@ -96,6 +100,7 @@ def run_model(model, criterion, optimizer, num_epochs=3):
 
             running_loss = 0.0
             running_corrects = 0
+            total_accuracy = 0 
 
             for inputs, labels in dataloaders[phase]:
                 inputs = inputs.to(device)
@@ -117,14 +122,30 @@ def run_model(model, criterion, optimizer, num_epochs=3):
                 total_accuracy += accuracy
 
             epoch_loss = running_loss / len(image_datasets[phase])
-            epoch_acc = total_accuracy / len(image_datasets[phase])
+            epoch_acc = total_accuracy / len(dataloaders[phase])
 
             print('{} loss: {:.4f}, acc: {:.4f}'.format(phase,
                                                         epoch_loss,
                                                         epoch_acc))
+
+        scheduler.step()                                                
+            
     return model
 
-model_trained = run_model(model, criterion, optimizer, num_epochs=3)
+model_trained = run_model(model, criterion, optimizer, num_epochs=25)
+
+torch.save(model_trained.state_dict(), 'saved_model/pytorch/weights.h5')
+
+# Next time 
+"""
+model = models.resnet50(pretrained=False).to(device)
+model.fc = nn.Sequential(
+               nn.Linear(2048, 128),
+               nn.ReLU(inplace=True),
+               nn.Linear(128, 2)).to(device)
+model.load_state_dict(torch.load('saved_model/pytorch/weights.h5'))
+
+"""
 
 
 
