@@ -1,5 +1,4 @@
-from transformers import ViTFeatureExtractor, ViTForImageClassification, ViTConfig
-from PIL import Image
+from transformers import ViTForImageClassification
 
 from torchvision.datasets import CIFAR10
 import torchvision.transforms as transforms
@@ -49,8 +48,6 @@ def main():
 
 			# zero the parameter gradients
 			optimizer.zero_grad()
-
-			image_list = [img for img in images]
 
 			print("forward")
 			outputs = model(images)
