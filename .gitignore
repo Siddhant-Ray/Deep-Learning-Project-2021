@@ -131,3 +131,6 @@ dmypy.json
 
 # LSF files
 lsf.*
+
+# ResNet dataset 
+resnet/dataset
