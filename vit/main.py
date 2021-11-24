@@ -6,11 +6,11 @@ from torch.utils.data import DataLoader
 import torch
 
 import torch.optim as optim
+import numpy as np
 
 def main():
 	print(f"GPU: {torch.cuda.is_available()}")
 	device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-	print(device)
 
 	transform = transforms.Compose([transforms.ToTensor(), transforms.Resize(224)])
 	model = ViTForImageClassification.from_pretrained('google/vit-base-patch16-224')
@@ -24,11 +24,17 @@ def main():
 
 	model.to(device)
 
+	batch_size = 200
 	train_dataset = CIFAR10("../datasets/", train=True, transform=transform, download=True)
-	train_dataloader = DataLoader(train_dataset, shuffle=False, batch_size=100, num_workers=2)
+	train_dataset = torch.utils.data.Subset(train_dataset, indices=range(400))
+	train_dataloader = DataLoader(train_dataset, shuffle=False, batch_size=batch_size, num_workers=2)
 
-	dataset = CIFAR10("../datasets/", train=False, transform=transform)
-	dataloader = DataLoader(dataset, shuffle=False, batch_size=100, num_workers=2)
+	validation_dataset = CIFAR10("../datasets/", train=False, transform=transform)
+	validation_dataloader = DataLoader(validation_dataset, shuffle=False, batch_size=batch_size, num_workers=2)
+
+	print(f"train data size: {len(train_dataset)}")
+	print(f"validation data size: {len(validation_dataset)}")
+	print(f"batch size: {batch_size}")
 
 	cifar_labels = ("airplane", "automobile", "bird", "cat", "deer", "dog", "frog", "horse", "ship", "truck")
 
@@ -36,37 +42,57 @@ def main():
 	optimizer = optim.SGD(model.parameters(), lr=0.001, momentum=0.9)
 
 	model.train()
-	for epoch in range(1):
+	for epoch in range(5):
 		print(f"Epoch: {epoch}")
-		running_loss = 0.0
+		print(device)
+		train_loss = 0.0
 
 		for i, (images, labels) in enumerate(train_dataloader):
-			print(model.device)
-
 			images = images.to(device)
 			labels = labels.to(device)
 
 			# zero the parameter gradients
 			optimizer.zero_grad()
 
-			print("forward")
 			outputs = model(images)
 
-			print("backward")
 			loss = loss_function(outputs.logits, labels)
 			loss.backward()
-			print("step")
 			optimizer.step()
 
 			# print statistics
-			running_loss += loss.item()
+			train_loss += loss.item()
 			if i % 10 == 9:
-				print('[%d, %5d] loss: %.3f' % (epoch + 1, i + 1, running_loss / 10))
-				running_loss = 0.0
+				print(f"batch: {i + 1}")
 
-			logits = outputs.logits
+		print(f"Epoch: {epoch} done!")
+		print('[%d, %5d] loss: %.3f' % (epoch + 1, i + 1, train_loss / len(train_dataloader)))
 
-			predicted_class_idx = logits.argmax(-1)
+	print("evaluating...")
+	model.eval()
+	model.to(device)
+
+	validation_loss = 0.0
+	correct = 0
+	for i, (images, labels) in enumerate(validation_dataloader):
+		images = images.to(device)
+		labels = labels.to(device)
+
+		outputs = model(images)
+		for oup, lbl in zip(outputs.logits, labels):
+			if oup.argmax() == lbl.argmax():
+				correct += 1
+		loss = loss_function(outputs.logits, labels)
+		validation_loss = loss.item() * images.size(0)
+
+	train_loss = 0
+	epoch = 5
+	print(f"Training Loss: {train_loss / len(train_dataloader)} \t\t Validation Loss: {validation_loss / len(validation_dataloader)}")
+	accuracy = correct / len(validation_dataset)
+	print(f"Validation Accuracy: {accuracy}")
+
+	torch.save(model.state_dict(), f"vit_epoch{epoch + 1}_acc{accuracy}_loss{validation_loss / len(validation_dataloader)}.pth")
+
 
 
 if __name__ == "__main__":
