@@ -24,6 +24,7 @@ while [ ! -z "$1" ]; do
         gpu)
             echo "GPU mode selected"
             args+=(-R "rusage[ngpus_excl_p=4]")
+	    args+=(-R "select[gpu_mtotal0>=10240]")
             ;;
         intr)
             echo "Interactive mode selected"

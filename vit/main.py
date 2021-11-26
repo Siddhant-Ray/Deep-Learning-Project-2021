@@ -18,13 +18,17 @@ def main():
 #    for param in model.parameters():
 #        param.requires_grad = False
 
+    if device == "cuda":
+        model = torch.nn.DataParallel(model)
+        cudnn.benchmark = True
+
     model.classifier = torch.nn.Linear(in_features=768, out_features=10, bias=True)
 #	for name, param in model.named_parameters():
 #		print(name, param.size(), param.requires_grad)
 
     model.to(device)
 
-    batch_size = 128
+    batch_size = 32
     train_dataset = CIFAR10("../datasets/", train=True, transform=transform, download=True)
 #    train_dataset = torch.utils.data.Subset(train_dataset, indices=range(400))
     train_dataloader = DataLoader(train_dataset, shuffle=False, batch_size=batch_size, num_workers=2)
@@ -43,10 +47,10 @@ def main():
 
     loss_function = torch.nn.CrossEntropyLoss()
     #optimizer = optim.SGD(model.parameters(), lr=0.001, momentum=0.9)
-    learning_rate = 1e-4
+    learning_rate = 0.1
     epochs = 40
     optimizer = optim.Adam(model.parameters(), lr=learning_rate, weight_decay = 1e-5)
-    scheduler = torch.optim.lr_scheduler.OneCycleLR(optimizer, max_lr=0.001, steps_per_epoch=len(dataloaders['train']), epochs=epochs)
+    scheduler = torch.optim.lr_scheduler.OneCycleLR(optimizer, max_lr=0.01, steps_per_epoch=len(train_dataloader), epochs=epochs)
 
 
     for epoch in range(epochs):
