@@ -15,8 +15,8 @@ def main():
     transform = transforms.Compose([transforms.ToTensor(), transforms.Resize(224)])
     model = ViTForImageClassification.from_pretrained('google/vit-base-patch16-224')
 
-    for param in model.parameters():
-        param.requires_grad = False
+#    for param in model.parameters():
+#        param.requires_grad = False
 
     model.classifier = torch.nn.Linear(in_features=768, out_features=10, bias=True)
 #	for name, param in model.named_parameters():
@@ -41,9 +41,12 @@ def main():
     cifar_labels = ("airplane", "automobile", "bird", "cat", "deer", "dog", "frog", "horse", "ship", "truck")
 
     loss_function = torch.nn.CrossEntropyLoss()
-    optimizer = optim.SGD(model.parameters(), lr=0.001, momentum=0.9)
+    #optimizer = optim.SGD(model.parameters(), lr=0.001, momentum=0.9)
+    optimizer = optim.Adam(model.fc.parameters(), lr=learning_rate, weight_decay = 1e-5)
+    scheduler = torch.optim.lr_scheduler.OneCycleLR(optimizer, max_lr=0.001, steps_per_epoch=len(dataloaders['train']), epochs=epochs)
 
-    for epoch in range(5):
+
+    for epoch in range(40):
         model.train()
         print(f"training epoch {epoch + 1}")
         train_loss = 0.0
@@ -63,6 +66,7 @@ def main():
             loss = loss_function(outputs.logits, labels)
             loss.backward()
             optimizer.step()
+            scheduler.step()
 
             train_loss += loss.item()
             #print(f"p: {predictions}")
@@ -77,7 +81,7 @@ def main():
         train_accuracy = train_correct / len(train_dataset)
 
         print(f"epoch training done!")
-        print(f'[{epoch + 1}, {i + 1}] train_loss: {train_loss / len(train_dataloader)}, train_accuracy: {train_accuracy}')
+        #print(f'[{epoch + 1}, {i + 1}] train_loss: {train_loss / len(train_dataloader)}, train_accuracy: {train_accuracy}')
 
         model.eval()
         model.to(device)
@@ -101,7 +105,7 @@ def main():
         eval_accuracy = eval_correct / len(validation_dataset)
 
         print(f"epoch evaluation done!")
-        print(f'[{epoch + 1}, {i + 1}] eval_loss: {eval_loss / len(validation_dataloader)}, eval_accuracy: {eval_accuracy}')
+        #print(f'[{epoch + 1}, {i + 1}] eval_loss: {eval_loss / len(validation_dataloader)}, eval_accuracy: {eval_accuracy}')
 
 
     print("done!")
@@ -109,7 +113,7 @@ def main():
     print(f'eval_loss: {eval_loss / len(validation_dataloader)}, eval_accuracy: {eval_accuracy}')
 
 
-    torch.save(model.state_dict(), f"vit_epoch{epoch}_acc{eval_correct / len(validation_dataloader)}_loss{eval_loss / len(validation_dataloader)}.pth")
+    torch.save(model.state_dict(), f"vit_epoch{epoch+1}_acc{eval_accuracy}_loss{eval_loss / len(validation_dataloader)}.pth")
 
 
 if __name__ == "__main__":
