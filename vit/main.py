@@ -24,7 +24,7 @@ def main():
 
     model.to(device)
 
-    batch_size = 64
+    batch_size = 128
     train_dataset = CIFAR10("../datasets/", train=True, transform=transform, download=True)
 #    train_dataset = torch.utils.data.Subset(train_dataset, indices=range(400))
     train_dataloader = DataLoader(train_dataset, shuffle=False, batch_size=batch_size, num_workers=2)
@@ -40,13 +40,16 @@ def main():
 
     cifar_labels = ("airplane", "automobile", "bird", "cat", "deer", "dog", "frog", "horse", "ship", "truck")
 
+
     loss_function = torch.nn.CrossEntropyLoss()
     #optimizer = optim.SGD(model.parameters(), lr=0.001, momentum=0.9)
-    optimizer = optim.Adam(model.fc.parameters(), lr=learning_rate, weight_decay = 1e-5)
+    learning_rate = 1e-4
+    epochs = 40
+    optimizer = optim.Adam(model.parameters(), lr=learning_rate, weight_decay = 1e-5)
     scheduler = torch.optim.lr_scheduler.OneCycleLR(optimizer, max_lr=0.001, steps_per_epoch=len(dataloaders['train']), epochs=epochs)
 
 
-    for epoch in range(40):
+    for epoch in range(epochs):
         model.train()
         print(f"training epoch {epoch + 1}")
         train_loss = 0.0

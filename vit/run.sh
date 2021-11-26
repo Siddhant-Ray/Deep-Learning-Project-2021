@@ -33,4 +33,4 @@ while [ ! -z "$1" ]; do
     shift
 done
 
-bsub "${args[@]}" python classifier.py 
+bsub "${args[@]}" python main.py 
