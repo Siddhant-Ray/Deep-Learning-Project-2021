@@ -54,12 +54,12 @@ image_datasets = {
 dataloaders = {
     'train':
     torch.utils.data.DataLoader(image_datasets['train'],
-                                batch_size=64,
+                                batch_size=128,
                                 shuffle=True,
                                 num_workers=0),  
     'validation':
     torch.utils.data.DataLoader(image_datasets['validation'],
-                                batch_size=64,
+                                batch_size=128,
                                 shuffle=False,
                                 num_workers=0)  
 }
@@ -81,13 +81,14 @@ model.fc = nn.Sequential(
                nn.ReLU(inplace=True),
                nn.Linear(128, 10)).to(device)
 
-learning_rate = 1e-4
-epochs = 25
+learning_rate = 0.1
+epochs = 40
 criterion = nn.CrossEntropyLoss()
 optimizer = optim.Adam(model.fc.parameters(), lr=learning_rate, weight_decay = 1e-5)
+
 # scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=200)
 
-scheduler = torch.optim.lr_scheduler.OneCycleLR(optimizer, max_lr=0.001, steps_per_epoch=len(dataloaders['train']), epochs=epochs)
+scheduler = torch.optim.lr_scheduler.OneCycleLR(optimizer, max_lr=0.01, steps_per_epoch=len(dataloaders['train']), epochs=epochs)
 
 def run_model(model, criterion, optimizer, num_epochs=epochs):
     
