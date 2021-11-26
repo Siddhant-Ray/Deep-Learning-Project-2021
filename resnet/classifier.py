@@ -28,8 +28,9 @@ transforms = {
     'train':
     transforms.Compose([
         transforms.Resize((224,224)),
-        transforms.RandomAffine(0, shear=10, scale=(0.8,1.2)),
-        transforms.RandomHorizontalFlip(),
+        #transforms.RandomAffine(0, shear=10, scale=(0.8,1.2)),
+        #transforms.RandomHorizontalFlip(),
+        transforms.AutoAugment(transforms.AutoAugmentPolicy.CIFAR10),
         transforms.ToTensor(),
         normalize
     ]),
@@ -66,7 +67,7 @@ dataloaders = {
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 print(device)
 
-model = models.resnet50(pretrained=True).to(device)
+model = models.resnet50(pretrained=False).to(device)
 if device == 'cuda':
     model = torch.nn.DataParallel(model)
     cudnn.benchmark = True
@@ -81,11 +82,14 @@ model.fc = nn.Sequential(
                nn.Linear(128, 10)).to(device)
 
 learning_rate = 1e-4
+epochs = 25
 criterion = nn.CrossEntropyLoss()
 optimizer = optim.Adam(model.fc.parameters(), lr=learning_rate, weight_decay = 1e-5)
-scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=200)
+# scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=200)
 
-def run_model(model, criterion, optimizer, num_epochs=25):
+scheduler = torch.optim.lr_scheduler.OneCycleLR(optimizer, max_lr=0.001, steps_per_epoch=len(dataloaders['train']), epochs=epochs)
+
+def run_model(model, criterion, optimizer, num_epochs=epochs):
     
     for epoch in range(num_epochs):
         print('Epoch {}/{}'.format(epoch+1, num_epochs))
@@ -113,6 +117,7 @@ def run_model(model, criterion, optimizer, num_epochs=25):
                     optimizer.zero_grad()
                     loss.backward()
                     optimizer.step()
+                    scheduler.step()
 
                 _, preds = torch.max(outputs, 1)
                 running_loss += loss.item() * inputs.size(0)
@@ -128,11 +133,11 @@ def run_model(model, criterion, optimizer, num_epochs=25):
                                                         epoch_loss,
                                                         epoch_acc))
 
-        scheduler.step()                                                
+        # scheduler.step()                                                
             
     return model
 
-model_trained = run_model(model, criterion, optimizer, num_epochs=25)
+model_trained = run_model(model, criterion, optimizer, num_epochs=epochs)
 
 torch.save(model_trained.state_dict(), 'saved_model/pytorch/weights.h5')
 
