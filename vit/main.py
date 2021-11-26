@@ -24,28 +24,30 @@ def main():
 
     model.to(device)
 
-    batch_size = 200
+    batch_size = 64
     train_dataset = CIFAR10("../datasets/", train=True, transform=transform, download=True)
-    train_dataset = torch.utils.data.Subset(train_dataset, indices=range(400))
+#    train_dataset = torch.utils.data.Subset(train_dataset, indices=range(400))
     train_dataloader = DataLoader(train_dataset, shuffle=False, batch_size=batch_size, num_workers=2)
 
     validation_dataset = CIFAR10("../datasets/", train=False, transform=transform)
     validation_dataloader = DataLoader(validation_dataset, shuffle=False, batch_size=batch_size, num_workers=2)
 
     print(f"train data size: {len(train_dataset)}")
-    print(f"validation data size: {len(validation_dataset)}")
+    print(f"eval data size: {len(validation_dataset)}")
     print(f"batch size: {batch_size}")
+    print(f"training batches: {len(train_dataloader)}")
+    print(f"eval batches: {len(validation_dataloader)}")
 
     cifar_labels = ("airplane", "automobile", "bird", "cat", "deer", "dog", "frog", "horse", "ship", "truck")
 
     loss_function = torch.nn.CrossEntropyLoss()
     optimizer = optim.SGD(model.parameters(), lr=0.001, momentum=0.9)
 
-    model.train()
     for epoch in range(5):
-        print(f"Epoch: {epoch}")
-        print(device)
+        model.train()
+        print(f"training epoch {epoch + 1}")
         train_loss = 0.0
+        train_correct = 0
 
         for i, (images, labels) in enumerate(train_dataloader):
             images = images.to(device)
@@ -55,44 +57,59 @@ def main():
             optimizer.zero_grad()
 
             outputs = model(images)
+            print(outputs.logits.shape)
+            predictions = torch.argmax(outputs.logits, 1)
 
             loss = loss_function(outputs.logits, labels)
             loss.backward()
             optimizer.step()
 
-            # print statistics
             train_loss += loss.item()
-            if i % 10 == 9:
-                print(f"batch: {i + 1}")
+            #print(f"p: {predictions}")
+            #print(f"l: {labels}")
+            correct_predictions = torch.sum(predictions == labels)
+            print(f"{correct_predictions} out of {batch_size} predictions correct in this batch")
+            train_correct += correct_predictions
+		# if i % 10 == 9:
+            #     print(f"batch: {i + 1}")
 
-        print(f"Epoch: {epoch} done!")
-        print('[%d, %5d] loss: %.3f' % (epoch + 1, i + 1, train_loss / len(train_dataloader)))
 
-    print("evaluating...")
-    model.eval()
-    model.to(device)
+        train_accuracy = train_correct / len(train_dataset)
 
-    validation_loss = 0.0
-    correct = 0
-    for i, (images, labels) in enumerate(validation_dataloader):
-        images = images.to(device)
-        labels = labels.to(device)
+        print(f"epoch training done!")
+        print(f'[{epoch + 1}, {i + 1}] train_loss: {train_loss / len(train_dataloader)}, train_accuracy: {train_accuracy}')
 
-        outputs = model(images)
-        for oup, lbl in zip(outputs.logits, labels):
-            if oup.argmax() == lbl.argmax():
-                correct += 1
-        loss = loss_function(outputs.logits, labels)
-        validation_loss = loss.item() * images.size(0)
+        model.eval()
+        model.to(device)
+        print(f"evaluating epoch {epoch + 1}")
+        eval_loss = 0.0
+        eval_correct = 0
 
-    train_loss = 0
-    epoch = 5
-    print(f"Training Loss: {train_loss / len(train_dataloader)} \t\t Validation Loss: {validation_loss / len(validation_dataloader)}")
-    accuracy = correct / len(validation_dataset)
-    print(f"Validation Accuracy: {accuracy}")
+        for i, (images, labels) in enumerate(validation_dataloader):
+            images = images.to(device)
+            labels = labels.to(device)
 
-    torch.save(model.state_dict(), f"vit_epoch{epoch + 1}_acc{accuracy}_loss{validation_loss / len(validation_dataloader)}.pth")
+            outputs = model(images)
+            predictions = torch.argmax(outputs.logits, 1)
 
+            correct_predictions = torch.sum(predictions == labels)
+            eval_correct += correct_predictions
+
+            loss = loss_function(outputs.logits, labels)
+            eval_loss += loss.item() * images.size(0)
+	
+        eval_accuracy = eval_correct / len(validation_dataset)
+
+        print(f"epoch evaluation done!")
+        print(f'[{epoch + 1}, {i + 1}] eval_loss: {eval_loss / len(validation_dataloader)}, eval_accuracy: {eval_accuracy}')
+
+
+    print("done!")
+    print(f'train_loss: {train_loss / len(train_dataloader)}, train_accuracy: {train_accuracy}')
+    print(f'eval_loss: {eval_loss / len(validation_dataloader)}, eval_accuracy: {eval_accuracy}')
+
+
+    torch.save(model.state_dict(), f"vit_epoch{epoch}_acc{eval_correct / len(validation_dataloader)}_loss{eval_loss / len(validation_dataloader)}.pth")
 
 
 if __name__ == "__main__":
