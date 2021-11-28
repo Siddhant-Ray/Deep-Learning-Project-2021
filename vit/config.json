@@ -1,0 +1,10 @@
+{
+	"mode": "scratch",
+	"learning_rate" : 0.1,
+	"num_epochs" : 40,
+	"weight_decay": 1e-5,
+	"batch_size": 16,
+	"max_lr": 0.01,
+	"momentum": 0.9,
+	"adaptivity": 0.999
+}
