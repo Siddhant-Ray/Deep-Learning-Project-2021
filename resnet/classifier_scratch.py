@@ -88,7 +88,7 @@ model.fc = nn.Sequential(
                nn.Linear(128, 10)).to(device)
 
 ## Model specifiers
-optimizer = optim.Adam(model.fc.parameters(), lr=learning_rate, weight_decay = weight_decay)
+optimizer = optim.Adam(model.parameters(), lr=learning_rate, weight_decay = weight_decay)
 scheduler = torch.optim.lr_scheduler.OneCycleLR(optimizer, max_lr=max_lr, steps_per_epoch=len(dataloaders['train']), epochs=epochs)
 # scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=200)
 criterion = nn.CrossEntropyLoss()
