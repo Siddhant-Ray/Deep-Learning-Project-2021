@@ -80,7 +80,7 @@ def main():
             correct_predictions = torch.sum(predictions == labels)
             #print(f"{correct_predictions} out of {batch_size} predictions correct in this batch")
             train_correct += correct_predictions
-            if i % 50 == 49:
+            if i % 500 == 499:
                 print(f"batch: {i + 1}")
 
 
