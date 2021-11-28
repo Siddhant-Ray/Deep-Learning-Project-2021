@@ -37,6 +37,9 @@ GPU: True
 Files already downloaded and verified
 train data size: 50000
 eval data size: 10000
+batch size: 16
+training batches: 3125
+eval batches: 625
 training epoch 1
 epoch training done!
 [1, 3125] train_loss: 0.5363272113788128, train_accuracy: 0.821179986000061

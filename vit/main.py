@@ -106,7 +106,7 @@ def main():
             eval_correct += correct_predictions
 
             loss = loss_function(outputs.logits, labels)
-            eval_loss += loss.item() * images.size(0)
+            eval_loss += loss.item()
 	
         eval_accuracy = eval_correct / len(validation_dataset)
 
