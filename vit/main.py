@@ -28,7 +28,7 @@ def main():
 
     model.to(device)
 
-    batch_size = 32
+    batch_size = 16
     train_dataset = CIFAR10("../datasets/", train=True, transform=transform, download=True)
 #    train_dataset = torch.utils.data.Subset(train_dataset, indices=range(400))
     train_dataloader = DataLoader(train_dataset, shuffle=False, batch_size=batch_size, num_workers=2)
@@ -67,7 +67,6 @@ def main():
             optimizer.zero_grad()
 
             outputs = model(images)
-            print(outputs.logits.shape)
             predictions = torch.argmax(outputs.logits, 1)
 
             loss = loss_function(outputs.logits, labels)
@@ -79,16 +78,16 @@ def main():
             #print(f"p: {predictions}")
             #print(f"l: {labels}")
             correct_predictions = torch.sum(predictions == labels)
-            print(f"{correct_predictions} out of {batch_size} predictions correct in this batch")
+            #print(f"{correct_predictions} out of {batch_size} predictions correct in this batch")
             train_correct += correct_predictions
-		# if i % 10 == 9:
-            #     print(f"batch: {i + 1}")
+            if i % 50 == 49:
+                print(f"batch: {i + 1}")
 
 
         train_accuracy = train_correct / len(train_dataset)
 
         print(f"epoch training done!")
-        #print(f'[{epoch + 1}, {i + 1}] train_loss: {train_loss / len(train_dataloader)}, train_accuracy: {train_accuracy}')
+        print(f'[{epoch + 1}, {i + 1}] train_loss: {train_loss / len(train_dataloader)}, train_accuracy: {train_accuracy}')
 
         model.eval()
         model.to(device)
@@ -112,7 +111,7 @@ def main():
         eval_accuracy = eval_correct / len(validation_dataset)
 
         print(f"epoch evaluation done!")
-        #print(f'[{epoch + 1}, {i + 1}] eval_loss: {eval_loss / len(validation_dataloader)}, eval_accuracy: {eval_accuracy}')
+        print(f'[{epoch + 1}, {i + 1}] eval_loss: {eval_loss / len(validation_dataloader)}, eval_accuracy: {eval_accuracy}')
 
 
     print("done!")

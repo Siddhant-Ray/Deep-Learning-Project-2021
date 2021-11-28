@@ -1,0 +1,2765 @@
+Sender: LSF System <lsfadmin@eu-g3-022>
+Subject: Job 193520665: <python main.py> in cluster <euler> Done
+
+Job <python main.py> was submitted from host <eu-login-34> by user <afeer> in cluster <euler> at Sat Nov 27 01:58:45 2021
+Job was executed on host(s) <4*eu-g3-022>, in queue <gpu.24h>, as user <afeer> in cluster <euler> at Sat Nov 27 01:59:12 2021
+</cluster/home/afeer> was used as the home directory.
+</cluster/home/afeer/Deep-Learning-Project-2021/vit> was used as the working directory.
+Started at Sat Nov 27 01:59:12 2021
+Terminated at Sat Nov 27 09:42:25 2021
+Results reported at Sat Nov 27 09:42:25 2021
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+python main.py
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   31914.43 sec.
+    Max Memory :                                 3267 MB
+    Average Memory :                             2904.32 MB
+    Total Requested Memory :                     18000.00 MB
+    Delta Memory :                               14733.00 MB
+    Max Swap :                                   -
+    Max Processes :                              5
+    Max Threads :                                142
+    Run time :                                   27792 sec.
+    Turnaround time :                            27820 sec.
+
+The output (if any) follows:
+
+GPU: True
+Files already downloaded and verified
+train data size: 50000
+eval data size: 10000
+batch size: 16
+training batches: 3125
+eval batches: 625
+training epoch 1
+batch: 50
+batch: 100
+batch: 150
+batch: 200
+batch: 250
+batch: 300
+batch: 350
+batch: 400
+batch: 450
+batch: 500
+batch: 550
+batch: 600
+batch: 650
+batch: 700
+batch: 750
+batch: 800
+batch: 850
+batch: 900
+batch: 950
+batch: 1000
+batch: 1050
+batch: 1100
+batch: 1150
+batch: 1200
+batch: 1250
+batch: 1300
+batch: 1350
+batch: 1400
+batch: 1450
+batch: 1500
+batch: 1550
+batch: 1600
+batch: 1650
+batch: 1700
+batch: 1750
+batch: 1800
+batch: 1850
+batch: 1900
+batch: 1950
+batch: 2000
+batch: 2050
+batch: 2100
+batch: 2150
+batch: 2200
+batch: 2250
+batch: 2300
+batch: 2350
+batch: 2400
+batch: 2450
+batch: 2500
+batch: 2550
+batch: 2600
+batch: 2650
+batch: 2700
+batch: 2750
+batch: 2800
+batch: 2850
+batch: 2900
+batch: 2950
+batch: 3000
+batch: 3050
+batch: 3100
+epoch training done!
+[1, 3125] train_loss: 0.5363272113788128, train_accuracy: 0.821179986000061
+evaluating epoch 1
+epoch evaluation done!
+[1, 625] eval_loss: 8.620092534065247, eval_accuracy: 0.8139999508857727
+training epoch 2
+batch: 50
+batch: 100
+batch: 150
+batch: 200
+batch: 250
+batch: 300
+batch: 350
+batch: 400
+batch: 450
+batch: 500
+batch: 550
+batch: 600
+batch: 650
+batch: 700
+batch: 750
+batch: 800
+batch: 850
+batch: 900
+batch: 950
+batch: 1000
+batch: 1050
+batch: 1100
+batch: 1150
+batch: 1200
+batch: 1250
+batch: 1300
+batch: 1350
+batch: 1400
+batch: 1450
+batch: 1500
+batch: 1550
+batch: 1600
+batch: 1650
+batch: 1700
+batch: 1750
+batch: 1800
+batch: 1850
+batch: 1900
+batch: 1950
+batch: 2000
+batch: 2050
+batch: 2100
+batch: 2150
+batch: 2200
+batch: 2250
+batch: 2300
+batch: 2350
+batch: 2400
+batch: 2450
+batch: 2500
+batch: 2550
+batch: 2600
+batch: 2650
+batch: 2700
+batch: 2750
+batch: 2800
+batch: 2850
+batch: 2900
+batch: 2950
+batch: 3000
+batch: 3050
+batch: 3100
+epoch training done!
+[2, 3125] train_loss: 0.7304452923035621, train_accuracy: 0.7491599917411804
+evaluating epoch 2
+epoch evaluation done!
+[2, 625] eval_loss: 17.208326583862306, eval_accuracy: 0.6214999556541443
+training epoch 3
+batch: 50
+batch: 100
+batch: 150
+batch: 200
+batch: 250
+batch: 300
+batch: 350
+batch: 400
+batch: 450
+batch: 500
+batch: 550
+batch: 600
+batch: 650
+batch: 700
+batch: 750
+batch: 800
+batch: 850
+batch: 900
+batch: 950
+batch: 1000
+batch: 1050
+batch: 1100
+batch: 1150
+batch: 1200
+batch: 1250
+batch: 1300
+batch: 1350
+batch: 1400
+batch: 1450
+batch: 1500
+batch: 1550
+batch: 1600
+batch: 1650
+batch: 1700
+batch: 1750
+batch: 1800
+batch: 1850
+batch: 1900
+batch: 1950
+batch: 2000
+batch: 2050
+batch: 2100
+batch: 2150
+batch: 2200
+batch: 2250
+batch: 2300
+batch: 2350
+batch: 2400
+batch: 2450
+batch: 2500
+batch: 2550
+batch: 2600
+batch: 2650
+batch: 2700
+batch: 2750
+batch: 2800
+batch: 2850
+batch: 2900
+batch: 2950
+batch: 3000
+batch: 3050
+batch: 3100
+epoch training done!
+[3, 3125] train_loss: 1.0326146972322463, train_accuracy: 0.6379599571228027
+evaluating epoch 3
+epoch evaluation done!
+[3, 625] eval_loss: 17.134877989196777, eval_accuracy: 0.614300012588501
+training epoch 4
+batch: 50
+batch: 100
+batch: 150
+batch: 200
+batch: 250
+batch: 300
+batch: 350
+batch: 400
+batch: 450
+batch: 500
+batch: 550
+batch: 600
+batch: 650
+batch: 700
+batch: 750
+batch: 800
+batch: 850
+batch: 900
+batch: 950
+batch: 1000
+batch: 1050
+batch: 1100
+batch: 1150
+batch: 1200
+batch: 1250
+batch: 1300
+batch: 1350
+batch: 1400
+batch: 1450
+batch: 1500
+batch: 1550
+batch: 1600
+batch: 1650
+batch: 1700
+batch: 1750
+batch: 1800
+batch: 1850
+batch: 1900
+batch: 1950
+batch: 2000
+batch: 2050
+batch: 2100
+batch: 2150
+batch: 2200
+batch: 2250
+batch: 2300
+batch: 2350
+batch: 2400
+batch: 2450
+batch: 2500
+batch: 2550
+batch: 2600
+batch: 2650
+batch: 2700
+batch: 2750
+batch: 2800
+batch: 2850
+batch: 2900
+batch: 2950
+batch: 3000
+batch: 3050
+batch: 3100
+epoch training done!
+[4, 3125] train_loss: 1.1334013428783416, train_accuracy: 0.600659966468811
+evaluating epoch 4
+epoch evaluation done!
+[4, 625] eval_loss: 18.01993878479004, eval_accuracy: 0.6043999791145325
+training epoch 5
+batch: 50
+batch: 100
+batch: 150
+batch: 200
+batch: 250
+batch: 300
+batch: 350
+batch: 400
+batch: 450
+batch: 500
+batch: 550
+batch: 600
+batch: 650
+batch: 700
+batch: 750
+batch: 800
+batch: 850
+batch: 900
+batch: 950
+batch: 1000
+batch: 1050
+batch: 1100
+batch: 1150
+batch: 1200
+batch: 1250
+batch: 1300
+batch: 1350
+batch: 1400
+batch: 1450
+batch: 1500
+batch: 1550
+batch: 1600
+batch: 1650
+batch: 1700
+batch: 1750
+batch: 1800
+batch: 1850
+batch: 1900
+batch: 1950
+batch: 2000
+batch: 2050
+batch: 2100
+batch: 2150
+batch: 2200
+batch: 2250
+batch: 2300
+batch: 2350
+batch: 2400
+batch: 2450
+batch: 2500
+batch: 2550
+batch: 2600
+batch: 2650
+batch: 2700
+batch: 2750
+batch: 2800
+batch: 2850
+batch: 2900
+batch: 2950
+batch: 3000
+batch: 3050
+batch: 3100
+epoch training done!
+[5, 3125] train_loss: 1.1740514317035675, train_accuracy: 0.5822199583053589
+evaluating epoch 5
+epoch evaluation done!
+[5, 625] eval_loss: 20.37281342468262, eval_accuracy: 0.551800012588501
+training epoch 6
+batch: 50
+batch: 100
+batch: 150
+batch: 200
+batch: 250
+batch: 300
+batch: 350
+batch: 400
+batch: 450
+batch: 500
+batch: 550
+batch: 600
+batch: 650
+batch: 700
+batch: 750
+batch: 800
+batch: 850
+batch: 900
+batch: 950
+batch: 1000
+batch: 1050
+batch: 1100
+batch: 1150
+batch: 1200
+batch: 1250
+batch: 1300
+batch: 1350
+batch: 1400
+batch: 1450
+batch: 1500
+batch: 1550
+batch: 1600
+batch: 1650
+batch: 1700
+batch: 1750
+batch: 1800
+batch: 1850
+batch: 1900
+batch: 1950
+batch: 2000
+batch: 2050
+batch: 2100
+batch: 2150
+batch: 2200
+batch: 2250
+batch: 2300
+batch: 2350
+batch: 2400
+batch: 2450
+batch: 2500
+batch: 2550
+batch: 2600
+batch: 2650
+batch: 2700
+batch: 2750
+batch: 2800
+batch: 2850
+batch: 2900
+batch: 2950
+batch: 3000
+batch: 3050
+batch: 3100
+epoch training done!
+[6, 3125] train_loss: 1.207696268224716, train_accuracy: 0.5709599852561951
+evaluating epoch 6
+epoch evaluation done!
+[6, 625] eval_loss: 21.05661581878662, eval_accuracy: 0.526199996471405
+training epoch 7
+batch: 50
+batch: 100
+batch: 150
+batch: 200
+batch: 250
+batch: 300
+batch: 350
+batch: 400
+batch: 450
+batch: 500
+batch: 550
+batch: 600
+batch: 650
+batch: 700
+batch: 750
+batch: 800
+batch: 850
+batch: 900
+batch: 950
+batch: 1000
+batch: 1050
+batch: 1100
+batch: 1150
+batch: 1200
+batch: 1250
+batch: 1300
+batch: 1350
+batch: 1400
+batch: 1450
+batch: 1500
+batch: 1550
+batch: 1600
+batch: 1650
+batch: 1700
+batch: 1750
+batch: 1800
+batch: 1850
+batch: 1900
+batch: 1950
+batch: 2000
+batch: 2050
+batch: 2100
+batch: 2150
+batch: 2200
+batch: 2250
+batch: 2300
+batch: 2350
+batch: 2400
+batch: 2450
+batch: 2500
+batch: 2550
+batch: 2600
+batch: 2650
+batch: 2700
+batch: 2750
+batch: 2800
+batch: 2850
+batch: 2900
+batch: 2950
+batch: 3000
+batch: 3050
+batch: 3100
+epoch training done!
+[7, 3125] train_loss: 1.661553036813736, train_accuracy: 0.3914799988269806
+evaluating epoch 7
+epoch evaluation done!
+[7, 625] eval_loss: 32.521071743774414, eval_accuracy: 0.2206999957561493
+training epoch 8
+batch: 50
+batch: 100
+batch: 150
+batch: 200
+batch: 250
+batch: 300
+batch: 350
+batch: 400
+batch: 450
+batch: 500
+batch: 550
+batch: 600
+batch: 650
+batch: 700
+batch: 750
+batch: 800
+batch: 850
+batch: 900
+batch: 950
+batch: 1000
+batch: 1050
+batch: 1100
+batch: 1150
+batch: 1200
+batch: 1250
+batch: 1300
+batch: 1350
+batch: 1400
+batch: 1450
+batch: 1500
+batch: 1550
+batch: 1600
+batch: 1650
+batch: 1700
+batch: 1750
+batch: 1800
+batch: 1850
+batch: 1900
+batch: 1950
+batch: 2000
+batch: 2050
+batch: 2100
+batch: 2150
+batch: 2200
+batch: 2250
+batch: 2300
+batch: 2350
+batch: 2400
+batch: 2450
+batch: 2500
+batch: 2550
+batch: 2600
+batch: 2650
+batch: 2700
+batch: 2750
+batch: 2800
+batch: 2850
+batch: 2900
+batch: 2950
+batch: 3000
+batch: 3050
+batch: 3100
+epoch training done!
+[8, 3125] train_loss: 2.119225207595825, train_accuracy: 0.19153998792171478
+evaluating epoch 8
+epoch evaluation done!
+[8, 625] eval_loss: 32.904599066162106, eval_accuracy: 0.20919999480247498
+training epoch 9
+batch: 50
+batch: 100
+batch: 150
+batch: 200
+batch: 250
+batch: 300
+batch: 350
+batch: 400
+batch: 450
+batch: 500
+batch: 550
+batch: 600
+batch: 650
+batch: 700
+batch: 750
+batch: 800
+batch: 850
+batch: 900
+batch: 950
+batch: 1000
+batch: 1050
+batch: 1100
+batch: 1150
+batch: 1200
+batch: 1250
+batch: 1300
+batch: 1350
+batch: 1400
+batch: 1450
+batch: 1500
+batch: 1550
+batch: 1600
+batch: 1650
+batch: 1700
+batch: 1750
+batch: 1800
+batch: 1850
+batch: 1900
+batch: 1950
+batch: 2000
+batch: 2050
+batch: 2100
+batch: 2150
+batch: 2200
+batch: 2250
+batch: 2300
+batch: 2350
+batch: 2400
+batch: 2450
+batch: 2500
+batch: 2550
+batch: 2600
+batch: 2650
+batch: 2700
+batch: 2750
+batch: 2800
+batch: 2850
+batch: 2900
+batch: 2950
+batch: 3000
+batch: 3050
+batch: 3100
+epoch training done!
+[9, 3125] train_loss: 2.135052085647583, train_accuracy: 0.1878799945116043
+evaluating epoch 9
+epoch evaluation done!
+[9, 625] eval_loss: 37.60742581176758, eval_accuracy: 0.11349999904632568
+training epoch 10
+batch: 50
+batch: 100
+batch: 150
+batch: 200
+batch: 250
+batch: 300
+batch: 350
+batch: 400
+batch: 450
+batch: 500
+batch: 550
+batch: 600
+batch: 650
+batch: 700
+batch: 750
+batch: 800
+batch: 850
+batch: 900
+batch: 950
+batch: 1000
+batch: 1050
+batch: 1100
+batch: 1150
+batch: 1200
+batch: 1250
+batch: 1300
+batch: 1350
+batch: 1400
+batch: 1450
+batch: 1500
+batch: 1550
+batch: 1600
+batch: 1650
+batch: 1700
+batch: 1750
+batch: 1800
+batch: 1850
+batch: 1900
+batch: 1950
+batch: 2000
+batch: 2050
+batch: 2100
+batch: 2150
+batch: 2200
+batch: 2250
+batch: 2300
+batch: 2350
+batch: 2400
+batch: 2450
+batch: 2500
+batch: 2550
+batch: 2600
+batch: 2650
+batch: 2700
+batch: 2750
+batch: 2800
+batch: 2850
+batch: 2900
+batch: 2950
+batch: 3000
+batch: 3050
+batch: 3100
+epoch training done!
+[10, 3125] train_loss: 2.0942490380477907, train_accuracy: 0.2085999995470047
+evaluating epoch 10
+epoch evaluation done!
+[10, 625] eval_loss: 36.64123380737305, eval_accuracy: 0.13519999384880066
+training epoch 11
+batch: 50
+batch: 100
+batch: 150
+batch: 200
+batch: 250
+batch: 300
+batch: 350
+batch: 400
+batch: 450
+batch: 500
+batch: 550
+batch: 600
+batch: 650
+batch: 700
+batch: 750
+batch: 800
+batch: 850
+batch: 900
+batch: 950
+batch: 1000
+batch: 1050
+batch: 1100
+batch: 1150
+batch: 1200
+batch: 1250
+batch: 1300
+batch: 1350
+batch: 1400
+batch: 1450
+batch: 1500
+batch: 1550
+batch: 1600
+batch: 1650
+batch: 1700
+batch: 1750
+batch: 1800
+batch: 1850
+batch: 1900
+batch: 1950
+batch: 2000
+batch: 2050
+batch: 2100
+batch: 2150
+batch: 2200
+batch: 2250
+batch: 2300
+batch: 2350
+batch: 2400
+batch: 2450
+batch: 2500
+batch: 2550
+batch: 2600
+batch: 2650
+batch: 2700
+batch: 2750
+batch: 2800
+batch: 2850
+batch: 2900
+batch: 2950
+batch: 3000
+batch: 3050
+batch: 3100
+epoch training done!
+[11, 3125] train_loss: 2.1662298012924195, train_accuracy: 0.1808599978685379
+evaluating epoch 11
+epoch evaluation done!
+[11, 625] eval_loss: 34.45146861877441, eval_accuracy: 0.1768999993801117
+training epoch 12
+batch: 50
+batch: 100
+batch: 150
+batch: 200
+batch: 250
+batch: 300
+batch: 350
+batch: 400
+batch: 450
+batch: 500
+batch: 550
+batch: 600
+batch: 650
+batch: 700
+batch: 750
+batch: 800
+batch: 850
+batch: 900
+batch: 950
+batch: 1000
+batch: 1050
+batch: 1100
+batch: 1150
+batch: 1200
+batch: 1250
+batch: 1300
+batch: 1350
+batch: 1400
+batch: 1450
+batch: 1500
+batch: 1550
+batch: 1600
+batch: 1650
+batch: 1700
+batch: 1750
+batch: 1800
+batch: 1850
+batch: 1900
+batch: 1950
+batch: 2000
+batch: 2050
+batch: 2100
+batch: 2150
+batch: 2200
+batch: 2250
+batch: 2300
+batch: 2350
+batch: 2400
+batch: 2450
+batch: 2500
+batch: 2550
+batch: 2600
+batch: 2650
+batch: 2700
+batch: 2750
+batch: 2800
+batch: 2850
+batch: 2900
+batch: 2950
+batch: 3000
+batch: 3050
+batch: 3100
+epoch training done!
+[12, 3125] train_loss: 2.1667556565856936, train_accuracy: 0.17909999191761017
+evaluating epoch 12
+epoch evaluation done!
+[12, 625] eval_loss: 33.471555111694336, eval_accuracy: 0.20170000195503235
+training epoch 13
+batch: 50
+batch: 100
+batch: 150
+batch: 200
+batch: 250
+batch: 300
+batch: 350
+batch: 400
+batch: 450
+batch: 500
+batch: 550
+batch: 600
+batch: 650
+batch: 700
+batch: 750
+batch: 800
+batch: 850
+batch: 900
+batch: 950
+batch: 1000
+batch: 1050
+batch: 1100
+batch: 1150
+batch: 1200
+batch: 1250
+batch: 1300
+batch: 1350
+batch: 1400
+batch: 1450
+batch: 1500
+batch: 1550
+batch: 1600
+batch: 1650
+batch: 1700
+batch: 1750
+batch: 1800
+batch: 1850
+batch: 1900
+batch: 1950
+batch: 2000
+batch: 2050
+batch: 2100
+batch: 2150
+batch: 2200
+batch: 2250
+batch: 2300
+batch: 2350
+batch: 2400
+batch: 2450
+batch: 2500
+batch: 2550
+batch: 2600
+batch: 2650
+batch: 2700
+batch: 2750
+batch: 2800
+batch: 2850
+batch: 2900
+batch: 2950
+batch: 3000
+batch: 3050
+batch: 3100
+epoch training done!
+[13, 3125] train_loss: 2.1134393701934813, train_accuracy: 0.19538000226020813
+evaluating epoch 13
+epoch evaluation done!
+[13, 625] eval_loss: 33.88124553527832, eval_accuracy: 0.19779999554157257
+training epoch 14
+batch: 50
+batch: 100
+batch: 150
+batch: 200
+batch: 250
+batch: 300
+batch: 350
+batch: 400
+batch: 450
+batch: 500
+batch: 550
+batch: 600
+batch: 650
+batch: 700
+batch: 750
+batch: 800
+batch: 850
+batch: 900
+batch: 950
+batch: 1000
+batch: 1050
+batch: 1100
+batch: 1150
+batch: 1200
+batch: 1250
+batch: 1300
+batch: 1350
+batch: 1400
+batch: 1450
+batch: 1500
+batch: 1550
+batch: 1600
+batch: 1650
+batch: 1700
+batch: 1750
+batch: 1800
+batch: 1850
+batch: 1900
+batch: 1950
+batch: 2000
+batch: 2050
+batch: 2100
+batch: 2150
+batch: 2200
+batch: 2250
+batch: 2300
+batch: 2350
+batch: 2400
+batch: 2450
+batch: 2500
+batch: 2550
+batch: 2600
+batch: 2650
+batch: 2700
+batch: 2750
+batch: 2800
+batch: 2850
+batch: 2900
+batch: 2950
+batch: 3000
+batch: 3050
+batch: 3100
+epoch training done!
+[14, 3125] train_loss: 2.172225910606384, train_accuracy: 0.18011999130249023
+evaluating epoch 14
+epoch evaluation done!
+[14, 625] eval_loss: 33.98754208679199, eval_accuracy: 0.19900000095367432
+training epoch 15
+batch: 50
+batch: 100
+batch: 150
+batch: 200
+batch: 250
+batch: 300
+batch: 350
+batch: 400
+batch: 450
+batch: 500
+batch: 550
+batch: 600
+batch: 650
+batch: 700
+batch: 750
+batch: 800
+batch: 850
+batch: 900
+batch: 950
+batch: 1000
+batch: 1050
+batch: 1100
+batch: 1150
+batch: 1200
+batch: 1250
+batch: 1300
+batch: 1350
+batch: 1400
+batch: 1450
+batch: 1500
+batch: 1550
+batch: 1600
+batch: 1650
+batch: 1700
+batch: 1750
+batch: 1800
+batch: 1850
+batch: 1900
+batch: 1950
+batch: 2000
+batch: 2050
+batch: 2100
+batch: 2150
+batch: 2200
+batch: 2250
+batch: 2300
+batch: 2350
+batch: 2400
+batch: 2450
+batch: 2500
+batch: 2550
+batch: 2600
+batch: 2650
+batch: 2700
+batch: 2750
+batch: 2800
+batch: 2850
+batch: 2900
+batch: 2950
+batch: 3000
+batch: 3050
+batch: 3100
+epoch training done!
+[15, 3125] train_loss: 2.1054143838882444, train_accuracy: 0.200219988822937
+evaluating epoch 15
+epoch evaluation done!
+[15, 625] eval_loss: 32.95144485778808, eval_accuracy: 0.21089999377727509
+training epoch 16
+batch: 50
+batch: 100
+batch: 150
+batch: 200
+batch: 250
+batch: 300
+batch: 350
+batch: 400
+batch: 450
+batch: 500
+batch: 550
+batch: 600
+batch: 650
+batch: 700
+batch: 750
+batch: 800
+batch: 850
+batch: 900
+batch: 950
+batch: 1000
+batch: 1050
+batch: 1100
+batch: 1150
+batch: 1200
+batch: 1250
+batch: 1300
+batch: 1350
+batch: 1400
+batch: 1450
+batch: 1500
+batch: 1550
+batch: 1600
+batch: 1650
+batch: 1700
+batch: 1750
+batch: 1800
+batch: 1850
+batch: 1900
+batch: 1950
+batch: 2000
+batch: 2050
+batch: 2100
+batch: 2150
+batch: 2200
+batch: 2250
+batch: 2300
+batch: 2350
+batch: 2400
+batch: 2450
+batch: 2500
+batch: 2550
+batch: 2600
+batch: 2650
+batch: 2700
+batch: 2750
+batch: 2800
+batch: 2850
+batch: 2900
+batch: 2950
+batch: 3000
+batch: 3050
+batch: 3100
+epoch training done!
+[16, 3125] train_loss: 2.1461358737945555, train_accuracy: 0.18689998984336853
+evaluating epoch 16
+epoch evaluation done!
+[16, 625] eval_loss: 33.782573184204104, eval_accuracy: 0.20179998874664307
+training epoch 17
+batch: 50
+batch: 100
+batch: 150
+batch: 200
+batch: 250
+batch: 300
+batch: 350
+batch: 400
+batch: 450
+batch: 500
+batch: 550
+batch: 600
+batch: 650
+batch: 700
+batch: 750
+batch: 800
+batch: 850
+batch: 900
+batch: 950
+batch: 1000
+batch: 1050
+batch: 1100
+batch: 1150
+batch: 1200
+batch: 1250
+batch: 1300
+batch: 1350
+batch: 1400
+batch: 1450
+batch: 1500
+batch: 1550
+batch: 1600
+batch: 1650
+batch: 1700
+batch: 1750
+batch: 1800
+batch: 1850
+batch: 1900
+batch: 1950
+batch: 2000
+batch: 2050
+batch: 2100
+batch: 2150
+batch: 2200
+batch: 2250
+batch: 2300
+batch: 2350
+batch: 2400
+batch: 2450
+batch: 2500
+batch: 2550
+batch: 2600
+batch: 2650
+batch: 2700
+batch: 2750
+batch: 2800
+batch: 2850
+batch: 2900
+batch: 2950
+batch: 3000
+batch: 3050
+batch: 3100
+epoch training done!
+[17, 3125] train_loss: 2.1116029329681396, train_accuracy: 0.19543999433517456
+evaluating epoch 17
+epoch evaluation done!
+[17, 625] eval_loss: 33.803764855957034, eval_accuracy: 0.18850000202655792
+training epoch 18
+batch: 50
+batch: 100
+batch: 150
+batch: 200
+batch: 250
+batch: 300
+batch: 350
+batch: 400
+batch: 450
+batch: 500
+batch: 550
+batch: 600
+batch: 650
+batch: 700
+batch: 750
+batch: 800
+batch: 850
+batch: 900
+batch: 950
+batch: 1000
+batch: 1050
+batch: 1100
+batch: 1150
+batch: 1200
+batch: 1250
+batch: 1300
+batch: 1350
+batch: 1400
+batch: 1450
+batch: 1500
+batch: 1550
+batch: 1600
+batch: 1650
+batch: 1700
+batch: 1750
+batch: 1800
+batch: 1850
+batch: 1900
+batch: 1950
+batch: 2000
+batch: 2050
+batch: 2100
+batch: 2150
+batch: 2200
+batch: 2250
+batch: 2300
+batch: 2350
+batch: 2400
+batch: 2450
+batch: 2500
+batch: 2550
+batch: 2600
+batch: 2650
+batch: 2700
+batch: 2750
+batch: 2800
+batch: 2850
+batch: 2900
+batch: 2950
+batch: 3000
+batch: 3050
+batch: 3100
+epoch training done!
+[18, 3125] train_loss: 2.1853732726287842, train_accuracy: 0.17613999545574188
+evaluating epoch 18
+epoch evaluation done!
+[18, 625] eval_loss: 34.978214733886716, eval_accuracy: 0.1859000027179718
+training epoch 19
+batch: 50
+batch: 100
+batch: 150
+batch: 200
+batch: 250
+batch: 300
+batch: 350
+batch: 400
+batch: 450
+batch: 500
+batch: 550
+batch: 600
+batch: 650
+batch: 700
+batch: 750
+batch: 800
+batch: 850
+batch: 900
+batch: 950
+batch: 1000
+batch: 1050
+batch: 1100
+batch: 1150
+batch: 1200
+batch: 1250
+batch: 1300
+batch: 1350
+batch: 1400
+batch: 1450
+batch: 1500
+batch: 1550
+batch: 1600
+batch: 1650
+batch: 1700
+batch: 1750
+batch: 1800
+batch: 1850
+batch: 1900
+batch: 1950
+batch: 2000
+batch: 2050
+batch: 2100
+batch: 2150
+batch: 2200
+batch: 2250
+batch: 2300
+batch: 2350
+batch: 2400
+batch: 2450
+batch: 2500
+batch: 2550
+batch: 2600
+batch: 2650
+batch: 2700
+batch: 2750
+batch: 2800
+batch: 2850
+batch: 2900
+batch: 2950
+batch: 3000
+batch: 3050
+batch: 3100
+epoch training done!
+[19, 3125] train_loss: 2.124707434196472, train_accuracy: 0.19567999243736267
+evaluating epoch 19
+epoch evaluation done!
+[19, 625] eval_loss: 33.33649606933594, eval_accuracy: 0.21359999477863312
+training epoch 20
+batch: 50
+batch: 100
+batch: 150
+batch: 200
+batch: 250
+batch: 300
+batch: 350
+batch: 400
+batch: 450
+batch: 500
+batch: 550
+batch: 600
+batch: 650
+batch: 700
+batch: 750
+batch: 800
+batch: 850
+batch: 900
+batch: 950
+batch: 1000
+batch: 1050
+batch: 1100
+batch: 1150
+batch: 1200
+batch: 1250
+batch: 1300
+batch: 1350
+batch: 1400
+batch: 1450
+batch: 1500
+batch: 1550
+batch: 1600
+batch: 1650
+batch: 1700
+batch: 1750
+batch: 1800
+batch: 1850
+batch: 1900
+batch: 1950
+batch: 2000
+batch: 2050
+batch: 2100
+batch: 2150
+batch: 2200
+batch: 2250
+batch: 2300
+batch: 2350
+batch: 2400
+batch: 2450
+batch: 2500
+batch: 2550
+batch: 2600
+batch: 2650
+batch: 2700
+batch: 2750
+batch: 2800
+batch: 2850
+batch: 2900
+batch: 2950
+batch: 3000
+batch: 3050
+batch: 3100
+epoch training done!
+[20, 3125] train_loss: 2.1240956238937376, train_accuracy: 0.19871999323368073
+evaluating epoch 20
+epoch evaluation done!
+[20, 625] eval_loss: 33.94998953857422, eval_accuracy: 0.18959999084472656
+training epoch 21
+batch: 50
+batch: 100
+batch: 150
+batch: 200
+batch: 250
+batch: 300
+batch: 350
+batch: 400
+batch: 450
+batch: 500
+batch: 550
+batch: 600
+batch: 650
+batch: 700
+batch: 750
+batch: 800
+batch: 850
+batch: 900
+batch: 950
+batch: 1000
+batch: 1050
+batch: 1100
+batch: 1150
+batch: 1200
+batch: 1250
+batch: 1300
+batch: 1350
+batch: 1400
+batch: 1450
+batch: 1500
+batch: 1550
+batch: 1600
+batch: 1650
+batch: 1700
+batch: 1750
+batch: 1800
+batch: 1850
+batch: 1900
+batch: 1950
+batch: 2000
+batch: 2050
+batch: 2100
+batch: 2150
+batch: 2200
+batch: 2250
+batch: 2300
+batch: 2350
+batch: 2400
+batch: 2450
+batch: 2500
+batch: 2550
+batch: 2600
+batch: 2650
+batch: 2700
+batch: 2750
+batch: 2800
+batch: 2850
+batch: 2900
+batch: 2950
+batch: 3000
+batch: 3050
+batch: 3100
+epoch training done!
+[21, 3125] train_loss: 2.1342739320373534, train_accuracy: 0.1959799975156784
+evaluating epoch 21
+epoch evaluation done!
+[21, 625] eval_loss: 33.94464860534668, eval_accuracy: 0.2085999995470047
+training epoch 22
+batch: 50
+batch: 100
+batch: 150
+batch: 200
+batch: 250
+batch: 300
+batch: 350
+batch: 400
+batch: 450
+batch: 500
+batch: 550
+batch: 600
+batch: 650
+batch: 700
+batch: 750
+batch: 800
+batch: 850
+batch: 900
+batch: 950
+batch: 1000
+batch: 1050
+batch: 1100
+batch: 1150
+batch: 1200
+batch: 1250
+batch: 1300
+batch: 1350
+batch: 1400
+batch: 1450
+batch: 1500
+batch: 1550
+batch: 1600
+batch: 1650
+batch: 1700
+batch: 1750
+batch: 1800
+batch: 1850
+batch: 1900
+batch: 1950
+batch: 2000
+batch: 2050
+batch: 2100
+batch: 2150
+batch: 2200
+batch: 2250
+batch: 2300
+batch: 2350
+batch: 2400
+batch: 2450
+batch: 2500
+batch: 2550
+batch: 2600
+batch: 2650
+batch: 2700
+batch: 2750
+batch: 2800
+batch: 2850
+batch: 2900
+batch: 2950
+batch: 3000
+batch: 3050
+batch: 3100
+epoch training done!
+[22, 3125] train_loss: 2.064776537590027, train_accuracy: 0.2169400006532669
+evaluating epoch 22
+epoch evaluation done!
+[22, 625] eval_loss: 33.554895516967775, eval_accuracy: 0.20589999854564667
+training epoch 23
+batch: 50
+batch: 100
+batch: 150
+batch: 200
+batch: 250
+batch: 300
+batch: 350
+batch: 400
+batch: 450
+batch: 500
+batch: 550
+batch: 600
+batch: 650
+batch: 700
+batch: 750
+batch: 800
+batch: 850
+batch: 900
+batch: 950
+batch: 1000
+batch: 1050
+batch: 1100
+batch: 1150
+batch: 1200
+batch: 1250
+batch: 1300
+batch: 1350
+batch: 1400
+batch: 1450
+batch: 1500
+batch: 1550
+batch: 1600
+batch: 1650
+batch: 1700
+batch: 1750
+batch: 1800
+batch: 1850
+batch: 1900
+batch: 1950
+batch: 2000
+batch: 2050
+batch: 2100
+batch: 2150
+batch: 2200
+batch: 2250
+batch: 2300
+batch: 2350
+batch: 2400
+batch: 2450
+batch: 2500
+batch: 2550
+batch: 2600
+batch: 2650
+batch: 2700
+batch: 2750
+batch: 2800
+batch: 2850
+batch: 2900
+batch: 2950
+batch: 3000
+batch: 3050
+batch: 3100
+epoch training done!
+[23, 3125] train_loss: 2.06273132976532, train_accuracy: 0.21765999495983124
+evaluating epoch 23
+epoch evaluation done!
+[23, 625] eval_loss: 32.935929962158205, eval_accuracy: 0.21519999206066132
+training epoch 24
+batch: 50
+batch: 100
+batch: 150
+batch: 200
+batch: 250
+batch: 300
+batch: 350
+batch: 400
+batch: 450
+batch: 500
+batch: 550
+batch: 600
+batch: 650
+batch: 700
+batch: 750
+batch: 800
+batch: 850
+batch: 900
+batch: 950
+batch: 1000
+batch: 1050
+batch: 1100
+batch: 1150
+batch: 1200
+batch: 1250
+batch: 1300
+batch: 1350
+batch: 1400
+batch: 1450
+batch: 1500
+batch: 1550
+batch: 1600
+batch: 1650
+batch: 1700
+batch: 1750
+batch: 1800
+batch: 1850
+batch: 1900
+batch: 1950
+batch: 2000
+batch: 2050
+batch: 2100
+batch: 2150
+batch: 2200
+batch: 2250
+batch: 2300
+batch: 2350
+batch: 2400
+batch: 2450
+batch: 2500
+batch: 2550
+batch: 2600
+batch: 2650
+batch: 2700
+batch: 2750
+batch: 2800
+batch: 2850
+batch: 2900
+batch: 2950
+batch: 3000
+batch: 3050
+batch: 3100
+epoch training done!
+[24, 3125] train_loss: 2.059460052947998, train_accuracy: 0.22101999819278717
+evaluating epoch 24
+epoch evaluation done!
+[24, 625] eval_loss: 33.28627528076172, eval_accuracy: 0.21199999749660492
+training epoch 25
+batch: 50
+batch: 100
+batch: 150
+batch: 200
+batch: 250
+batch: 300
+batch: 350
+batch: 400
+batch: 450
+batch: 500
+batch: 550
+batch: 600
+batch: 650
+batch: 700
+batch: 750
+batch: 800
+batch: 850
+batch: 900
+batch: 950
+batch: 1000
+batch: 1050
+batch: 1100
+batch: 1150
+batch: 1200
+batch: 1250
+batch: 1300
+batch: 1350
+batch: 1400
+batch: 1450
+batch: 1500
+batch: 1550
+batch: 1600
+batch: 1650
+batch: 1700
+batch: 1750
+batch: 1800
+batch: 1850
+batch: 1900
+batch: 1950
+batch: 2000
+batch: 2050
+batch: 2100
+batch: 2150
+batch: 2200
+batch: 2250
+batch: 2300
+batch: 2350
+batch: 2400
+batch: 2450
+batch: 2500
+batch: 2550
+batch: 2600
+batch: 2650
+batch: 2700
+batch: 2750
+batch: 2800
+batch: 2850
+batch: 2900
+batch: 2950
+batch: 3000
+batch: 3050
+batch: 3100
+epoch training done!
+[25, 3125] train_loss: 2.06313734664917, train_accuracy: 0.21657998859882355
+evaluating epoch 25
+epoch evaluation done!
+[25, 625] eval_loss: 34.75244980163574, eval_accuracy: 0.17599999904632568
+training epoch 26
+batch: 50
+batch: 100
+batch: 150
+batch: 200
+batch: 250
+batch: 300
+batch: 350
+batch: 400
+batch: 450
+batch: 500
+batch: 550
+batch: 600
+batch: 650
+batch: 700
+batch: 750
+batch: 800
+batch: 850
+batch: 900
+batch: 950
+batch: 1000
+batch: 1050
+batch: 1100
+batch: 1150
+batch: 1200
+batch: 1250
+batch: 1300
+batch: 1350
+batch: 1400
+batch: 1450
+batch: 1500
+batch: 1550
+batch: 1600
+batch: 1650
+batch: 1700
+batch: 1750
+batch: 1800
+batch: 1850
+batch: 1900
+batch: 1950
+batch: 2000
+batch: 2050
+batch: 2100
+batch: 2150
+batch: 2200
+batch: 2250
+batch: 2300
+batch: 2350
+batch: 2400
+batch: 2450
+batch: 2500
+batch: 2550
+batch: 2600
+batch: 2650
+batch: 2700
+batch: 2750
+batch: 2800
+batch: 2850
+batch: 2900
+batch: 2950
+batch: 3000
+batch: 3050
+batch: 3100
+epoch training done!
+[26, 3125] train_loss: 2.0546252456665037, train_accuracy: 0.21789999306201935
+evaluating epoch 26
+epoch evaluation done!
+[26, 625] eval_loss: 32.73183126831055, eval_accuracy: 0.21979999542236328
+training epoch 27
+batch: 50
+batch: 100
+batch: 150
+batch: 200
+batch: 250
+batch: 300
+batch: 350
+batch: 400
+batch: 450
+batch: 500
+batch: 550
+batch: 600
+batch: 650
+batch: 700
+batch: 750
+batch: 800
+batch: 850
+batch: 900
+batch: 950
+batch: 1000
+batch: 1050
+batch: 1100
+batch: 1150
+batch: 1200
+batch: 1250
+batch: 1300
+batch: 1350
+batch: 1400
+batch: 1450
+batch: 1500
+batch: 1550
+batch: 1600
+batch: 1650
+batch: 1700
+batch: 1750
+batch: 1800
+batch: 1850
+batch: 1900
+batch: 1950
+batch: 2000
+batch: 2050
+batch: 2100
+batch: 2150
+batch: 2200
+batch: 2250
+batch: 2300
+batch: 2350
+batch: 2400
+batch: 2450
+batch: 2500
+batch: 2550
+batch: 2600
+batch: 2650
+batch: 2700
+batch: 2750
+batch: 2800
+batch: 2850
+batch: 2900
+batch: 2950
+batch: 3000
+batch: 3050
+batch: 3100
+epoch training done!
+[27, 3125] train_loss: 2.0433732764434813, train_accuracy: 0.22015999257564545
+evaluating epoch 27
+epoch evaluation done!
+[27, 625] eval_loss: 33.137472241210936, eval_accuracy: 0.2092999964952469
+training epoch 28
+batch: 50
+batch: 100
+batch: 150
+batch: 200
+batch: 250
+batch: 300
+batch: 350
+batch: 400
+batch: 450
+batch: 500
+batch: 550
+batch: 600
+batch: 650
+batch: 700
+batch: 750
+batch: 800
+batch: 850
+batch: 900
+batch: 950
+batch: 1000
+batch: 1050
+batch: 1100
+batch: 1150
+batch: 1200
+batch: 1250
+batch: 1300
+batch: 1350
+batch: 1400
+batch: 1450
+batch: 1500
+batch: 1550
+batch: 1600
+batch: 1650
+batch: 1700
+batch: 1750
+batch: 1800
+batch: 1850
+batch: 1900
+batch: 1950
+batch: 2000
+batch: 2050
+batch: 2100
+batch: 2150
+batch: 2200
+batch: 2250
+batch: 2300
+batch: 2350
+batch: 2400
+batch: 2450
+batch: 2500
+batch: 2550
+batch: 2600
+batch: 2650
+batch: 2700
+batch: 2750
+batch: 2800
+batch: 2850
+batch: 2900
+batch: 2950
+batch: 3000
+batch: 3050
+batch: 3100
+epoch training done!
+[28, 3125] train_loss: 2.025222452354431, train_accuracy: 0.22857999801635742
+evaluating epoch 28
+epoch evaluation done!
+[28, 625] eval_loss: 31.804768371582032, eval_accuracy: 0.24390000104904175
+training epoch 29
+batch: 50
+batch: 100
+batch: 150
+batch: 200
+batch: 250
+batch: 300
+batch: 350
+batch: 400
+batch: 450
+batch: 500
+batch: 550
+batch: 600
+batch: 650
+batch: 700
+batch: 750
+batch: 800
+batch: 850
+batch: 900
+batch: 950
+batch: 1000
+batch: 1050
+batch: 1100
+batch: 1150
+batch: 1200
+batch: 1250
+batch: 1300
+batch: 1350
+batch: 1400
+batch: 1450
+batch: 1500
+batch: 1550
+batch: 1600
+batch: 1650
+batch: 1700
+batch: 1750
+batch: 1800
+batch: 1850
+batch: 1900
+batch: 1950
+batch: 2000
+batch: 2050
+batch: 2100
+batch: 2150
+batch: 2200
+batch: 2250
+batch: 2300
+batch: 2350
+batch: 2400
+batch: 2450
+batch: 2500
+batch: 2550
+batch: 2600
+batch: 2650
+batch: 2700
+batch: 2750
+batch: 2800
+batch: 2850
+batch: 2900
+batch: 2950
+batch: 3000
+batch: 3050
+batch: 3100
+epoch training done!
+[29, 3125] train_loss: 1.9701888857650758, train_accuracy: 0.25029999017715454
+evaluating epoch 29
+epoch evaluation done!
+[29, 625] eval_loss: 31.771925204467774, eval_accuracy: 0.25209999084472656
+training epoch 30
+batch: 50
+batch: 100
+batch: 150
+batch: 200
+batch: 250
+batch: 300
+batch: 350
+batch: 400
+batch: 450
+batch: 500
+batch: 550
+batch: 600
+batch: 650
+batch: 700
+batch: 750
+batch: 800
+batch: 850
+batch: 900
+batch: 950
+batch: 1000
+batch: 1050
+batch: 1100
+batch: 1150
+batch: 1200
+batch: 1250
+batch: 1300
+batch: 1350
+batch: 1400
+batch: 1450
+batch: 1500
+batch: 1550
+batch: 1600
+batch: 1650
+batch: 1700
+batch: 1750
+batch: 1800
+batch: 1850
+batch: 1900
+batch: 1950
+batch: 2000
+batch: 2050
+batch: 2100
+batch: 2150
+batch: 2200
+batch: 2250
+batch: 2300
+batch: 2350
+batch: 2400
+batch: 2450
+batch: 2500
+batch: 2550
+batch: 2600
+batch: 2650
+batch: 2700
+batch: 2750
+batch: 2800
+batch: 2850
+batch: 2900
+batch: 2950
+batch: 3000
+batch: 3050
+batch: 3100
+epoch training done!
+[30, 3125] train_loss: 1.9990434525680543, train_accuracy: 0.23739999532699585
+evaluating epoch 30
+epoch evaluation done!
+[30, 625] eval_loss: 32.168979302978514, eval_accuracy: 0.23489999771118164
+training epoch 31
+batch: 50
+batch: 100
+batch: 150
+batch: 200
+batch: 250
+batch: 300
+batch: 350
+batch: 400
+batch: 450
+batch: 500
+batch: 550
+batch: 600
+batch: 650
+batch: 700
+batch: 750
+batch: 800
+batch: 850
+batch: 900
+batch: 950
+batch: 1000
+batch: 1050
+batch: 1100
+batch: 1150
+batch: 1200
+batch: 1250
+batch: 1300
+batch: 1350
+batch: 1400
+batch: 1450
+batch: 1500
+batch: 1550
+batch: 1600
+batch: 1650
+batch: 1700
+batch: 1750
+batch: 1800
+batch: 1850
+batch: 1900
+batch: 1950
+batch: 2000
+batch: 2050
+batch: 2100
+batch: 2150
+batch: 2200
+batch: 2250
+batch: 2300
+batch: 2350
+batch: 2400
+batch: 2450
+batch: 2500
+batch: 2550
+batch: 2600
+batch: 2650
+batch: 2700
+batch: 2750
+batch: 2800
+batch: 2850
+batch: 2900
+batch: 2950
+batch: 3000
+batch: 3050
+batch: 3100
+epoch training done!
+[31, 3125] train_loss: 1.9822804167175292, train_accuracy: 0.24616000056266785
+evaluating epoch 31
+epoch evaluation done!
+[31, 625] eval_loss: 31.939520971679688, eval_accuracy: 0.24560000002384186
+training epoch 32
+batch: 50
+batch: 100
+batch: 150
+batch: 200
+batch: 250
+batch: 300
+batch: 350
+batch: 400
+batch: 450
+batch: 500
+batch: 550
+batch: 600
+batch: 650
+batch: 700
+batch: 750
+batch: 800
+batch: 850
+batch: 900
+batch: 950
+batch: 1000
+batch: 1050
+batch: 1100
+batch: 1150
+batch: 1200
+batch: 1250
+batch: 1300
+batch: 1350
+batch: 1400
+batch: 1450
+batch: 1500
+batch: 1550
+batch: 1600
+batch: 1650
+batch: 1700
+batch: 1750
+batch: 1800
+batch: 1850
+batch: 1900
+batch: 1950
+batch: 2000
+batch: 2050
+batch: 2100
+batch: 2150
+batch: 2200
+batch: 2250
+batch: 2300
+batch: 2350
+batch: 2400
+batch: 2450
+batch: 2500
+batch: 2550
+batch: 2600
+batch: 2650
+batch: 2700
+batch: 2750
+batch: 2800
+batch: 2850
+batch: 2900
+batch: 2950
+batch: 3000
+batch: 3050
+batch: 3100
+epoch training done!
+[32, 3125] train_loss: 1.9337285806274414, train_accuracy: 0.2675800025463104
+evaluating epoch 32
+epoch evaluation done!
+[32, 625] eval_loss: 30.506779025268553, eval_accuracy: 0.2777000069618225
+training epoch 33
+batch: 50
+batch: 100
+batch: 150
+batch: 200
+batch: 250
+batch: 300
+batch: 350
+batch: 400
+batch: 450
+batch: 500
+batch: 550
+batch: 600
+batch: 650
+batch: 700
+batch: 750
+batch: 800
+batch: 850
+batch: 900
+batch: 950
+batch: 1000
+batch: 1050
+batch: 1100
+batch: 1150
+batch: 1200
+batch: 1250
+batch: 1300
+batch: 1350
+batch: 1400
+batch: 1450
+batch: 1500
+batch: 1550
+batch: 1600
+batch: 1650
+batch: 1700
+batch: 1750
+batch: 1800
+batch: 1850
+batch: 1900
+batch: 1950
+batch: 2000
+batch: 2050
+batch: 2100
+batch: 2150
+batch: 2200
+batch: 2250
+batch: 2300
+batch: 2350
+batch: 2400
+batch: 2450
+batch: 2500
+batch: 2550
+batch: 2600
+batch: 2650
+batch: 2700
+batch: 2750
+batch: 2800
+batch: 2850
+batch: 2900
+batch: 2950
+batch: 3000
+batch: 3050
+batch: 3100
+epoch training done!
+[33, 3125] train_loss: 1.8845537610626222, train_accuracy: 0.2897599935531616
+evaluating epoch 33
+epoch evaluation done!
+[33, 625] eval_loss: 30.085241754150392, eval_accuracy: 0.29189997911453247
+training epoch 34
+batch: 50
+batch: 100
+batch: 150
+batch: 200
+batch: 250
+batch: 300
+batch: 350
+batch: 400
+batch: 450
+batch: 500
+batch: 550
+batch: 600
+batch: 650
+batch: 700
+batch: 750
+batch: 800
+batch: 850
+batch: 900
+batch: 950
+batch: 1000
+batch: 1050
+batch: 1100
+batch: 1150
+batch: 1200
+batch: 1250
+batch: 1300
+batch: 1350
+batch: 1400
+batch: 1450
+batch: 1500
+batch: 1550
+batch: 1600
+batch: 1650
+batch: 1700
+batch: 1750
+batch: 1800
+batch: 1850
+batch: 1900
+batch: 1950
+batch: 2000
+batch: 2050
+batch: 2100
+batch: 2150
+batch: 2200
+batch: 2250
+batch: 2300
+batch: 2350
+batch: 2400
+batch: 2450
+batch: 2500
+batch: 2550
+batch: 2600
+batch: 2650
+batch: 2700
+batch: 2750
+batch: 2800
+batch: 2850
+batch: 2900
+batch: 2950
+batch: 3000
+batch: 3050
+batch: 3100
+epoch training done!
+[34, 3125] train_loss: 1.8485061725234986, train_accuracy: 0.30320000648498535
+evaluating epoch 34
+epoch evaluation done!
+[34, 625] eval_loss: 29.450909014892577, eval_accuracy: 0.3116999864578247
+training epoch 35
+batch: 50
+batch: 100
+batch: 150
+batch: 200
+batch: 250
+batch: 300
+batch: 350
+batch: 400
+batch: 450
+batch: 500
+batch: 550
+batch: 600
+batch: 650
+batch: 700
+batch: 750
+batch: 800
+batch: 850
+batch: 900
+batch: 950
+batch: 1000
+batch: 1050
+batch: 1100
+batch: 1150
+batch: 1200
+batch: 1250
+batch: 1300
+batch: 1350
+batch: 1400
+batch: 1450
+batch: 1500
+batch: 1550
+batch: 1600
+batch: 1650
+batch: 1700
+batch: 1750
+batch: 1800
+batch: 1850
+batch: 1900
+batch: 1950
+batch: 2000
+batch: 2050
+batch: 2100
+batch: 2150
+batch: 2200
+batch: 2250
+batch: 2300
+batch: 2350
+batch: 2400
+batch: 2450
+batch: 2500
+batch: 2550
+batch: 2600
+batch: 2650
+batch: 2700
+batch: 2750
+batch: 2800
+batch: 2850
+batch: 2900
+batch: 2950
+batch: 3000
+batch: 3050
+batch: 3100
+epoch training done!
+[35, 3125] train_loss: 1.8315446648406983, train_accuracy: 0.31022000312805176
+evaluating epoch 35
+epoch evaluation done!
+[35, 625] eval_loss: 29.32530415344238, eval_accuracy: 0.31219998002052307
+training epoch 36
+batch: 50
+batch: 100
+batch: 150
+batch: 200
+batch: 250
+batch: 300
+batch: 350
+batch: 400
+batch: 450
+batch: 500
+batch: 550
+batch: 600
+batch: 650
+batch: 700
+batch: 750
+batch: 800
+batch: 850
+batch: 900
+batch: 950
+batch: 1000
+batch: 1050
+batch: 1100
+batch: 1150
+batch: 1200
+batch: 1250
+batch: 1300
+batch: 1350
+batch: 1400
+batch: 1450
+batch: 1500
+batch: 1550
+batch: 1600
+batch: 1650
+batch: 1700
+batch: 1750
+batch: 1800
+batch: 1850
+batch: 1900
+batch: 1950
+batch: 2000
+batch: 2050
+batch: 2100
+batch: 2150
+batch: 2200
+batch: 2250
+batch: 2300
+batch: 2350
+batch: 2400
+batch: 2450
+batch: 2500
+batch: 2550
+batch: 2600
+batch: 2650
+batch: 2700
+batch: 2750
+batch: 2800
+batch: 2850
+batch: 2900
+batch: 2950
+batch: 3000
+batch: 3050
+batch: 3100
+epoch training done!
+[36, 3125] train_loss: 1.8071483435821534, train_accuracy: 0.32203999161720276
+evaluating epoch 36
+epoch evaluation done!
+[36, 625] eval_loss: 28.972540399169922, eval_accuracy: 0.3237999975681305
+training epoch 37
+batch: 50
+batch: 100
+batch: 150
+batch: 200
+batch: 250
+batch: 300
+batch: 350
+batch: 400
+batch: 450
+batch: 500
+batch: 550
+batch: 600
+batch: 650
+batch: 700
+batch: 750
+batch: 800
+batch: 850
+batch: 900
+batch: 950
+batch: 1000
+batch: 1050
+batch: 1100
+batch: 1150
+batch: 1200
+batch: 1250
+batch: 1300
+batch: 1350
+batch: 1400
+batch: 1450
+batch: 1500
+batch: 1550
+batch: 1600
+batch: 1650
+batch: 1700
+batch: 1750
+batch: 1800
+batch: 1850
+batch: 1900
+batch: 1950
+batch: 2000
+batch: 2050
+batch: 2100
+batch: 2150
+batch: 2200
+batch: 2250
+batch: 2300
+batch: 2350
+batch: 2400
+batch: 2450
+batch: 2500
+batch: 2550
+batch: 2600
+batch: 2650
+batch: 2700
+batch: 2750
+batch: 2800
+batch: 2850
+batch: 2900
+batch: 2950
+batch: 3000
+batch: 3050
+batch: 3100
+epoch training done!
+[37, 3125] train_loss: 1.7886289055633544, train_accuracy: 0.3323799967765808
+evaluating epoch 37
+epoch evaluation done!
+[37, 625] eval_loss: 28.637929006958007, eval_accuracy: 0.3312000036239624
+training epoch 38
+batch: 50
+batch: 100
+batch: 150
+batch: 200
+batch: 250
+batch: 300
+batch: 350
+batch: 400
+batch: 450
+batch: 500
+batch: 550
+batch: 600
+batch: 650
+batch: 700
+batch: 750
+batch: 800
+batch: 850
+batch: 900
+batch: 950
+batch: 1000
+batch: 1050
+batch: 1100
+batch: 1150
+batch: 1200
+batch: 1250
+batch: 1300
+batch: 1350
+batch: 1400
+batch: 1450
+batch: 1500
+batch: 1550
+batch: 1600
+batch: 1650
+batch: 1700
+batch: 1750
+batch: 1800
+batch: 1850
+batch: 1900
+batch: 1950
+batch: 2000
+batch: 2050
+batch: 2100
+batch: 2150
+batch: 2200
+batch: 2250
+batch: 2300
+batch: 2350
+batch: 2400
+batch: 2450
+batch: 2500
+batch: 2550
+batch: 2600
+batch: 2650
+batch: 2700
+batch: 2750
+batch: 2800
+batch: 2850
+batch: 2900
+batch: 2950
+batch: 3000
+batch: 3050
+batch: 3100
+epoch training done!
+[38, 3125] train_loss: 1.7704485926055908, train_accuracy: 0.33820000290870667
+evaluating epoch 38
+epoch evaluation done!
+[38, 625] eval_loss: 28.480441293334962, eval_accuracy: 0.3369999825954437
+training epoch 39
+batch: 50
+batch: 100
+batch: 150
+batch: 200
+batch: 250
+batch: 300
+batch: 350
+batch: 400
+batch: 450
+batch: 500
+batch: 550
+batch: 600
+batch: 650
+batch: 700
+batch: 750
+batch: 800
+batch: 850
+batch: 900
+batch: 950
+batch: 1000
+batch: 1050
+batch: 1100
+batch: 1150
+batch: 1200
+batch: 1250
+batch: 1300
+batch: 1350
+batch: 1400
+batch: 1450
+batch: 1500
+batch: 1550
+batch: 1600
+batch: 1650
+batch: 1700
+batch: 1750
+batch: 1800
+batch: 1850
+batch: 1900
+batch: 1950
+batch: 2000
+batch: 2050
+batch: 2100
+batch: 2150
+batch: 2200
+batch: 2250
+batch: 2300
+batch: 2350
+batch: 2400
+batch: 2450
+batch: 2500
+batch: 2550
+batch: 2600
+batch: 2650
+batch: 2700
+batch: 2750
+batch: 2800
+batch: 2850
+batch: 2900
+batch: 2950
+batch: 3000
+batch: 3050
+batch: 3100
+epoch training done!
+[39, 3125] train_loss: 1.7590478089141846, train_accuracy: 0.34275999665260315
+evaluating epoch 39
+epoch evaluation done!
+[39, 625] eval_loss: 28.29999296875, eval_accuracy: 0.3434999883174896
+training epoch 40
+batch: 50
+batch: 100
+batch: 150
+batch: 200
+batch: 250
+batch: 300
+batch: 350
+batch: 400
+batch: 450
+batch: 500
+batch: 550
+batch: 600
+batch: 650
+batch: 700
+batch: 750
+batch: 800
+batch: 850
+batch: 900
+batch: 950
+batch: 1000
+batch: 1050
+batch: 1100
+batch: 1150
+batch: 1200
+batch: 1250
+batch: 1300
+batch: 1350
+batch: 1400
+batch: 1450
+batch: 1500
+batch: 1550
+batch: 1600
+batch: 1650
+batch: 1700
+batch: 1750
+batch: 1800
+batch: 1850
+batch: 1900
+batch: 1950
+batch: 2000
+batch: 2050
+batch: 2100
+batch: 2150
+batch: 2200
+batch: 2250
+batch: 2300
+batch: 2350
+batch: 2400
+batch: 2450
+batch: 2500
+batch: 2550
+batch: 2600
+batch: 2650
+batch: 2700
+batch: 2750
+batch: 2800
+batch: 2850
+batch: 2900
+batch: 2950
+batch: 3000
+batch: 3050
+batch: 3100
+epoch training done!
+[40, 3125] train_loss: 1.7541725350952149, train_accuracy: 0.3454200029373169
+evaluating epoch 40
+epoch evaluation done!
+[40, 625] eval_loss: 28.27727223815918, eval_accuracy: 0.3425000011920929
+done!
+train_loss: 1.7541725350952149, train_accuracy: 0.3454200029373169
+eval_loss: 28.27727223815918, eval_accuracy: 0.3425000011920929
