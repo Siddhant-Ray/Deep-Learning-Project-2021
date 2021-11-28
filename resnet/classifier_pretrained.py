@@ -145,8 +145,8 @@ model_trained = run_model(model, criterion, optimizer, num_epochs=epochs)
 
 print("======> This is the classifier with pretrained weights")
 
+print("Parameters used for this model")
 for key, value in config.items():
-    print("Parameters used for this model")
     print(key, value)
 
 torch.save(model_trained.state_dict(), 'saved_model/pytorch/weights_pretrained.h5')
