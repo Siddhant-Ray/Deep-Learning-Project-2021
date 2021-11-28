@@ -131,6 +131,10 @@ dmypy.json
 
 # model files
 **.pth
-
+#vit datasets
 datasets
+# LSF files
 lsf.*
+
+# ResNet dataset 
+resnet/dataset

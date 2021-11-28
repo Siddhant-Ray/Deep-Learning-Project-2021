@@ -1,0 +1,188 @@
+Sender: LSF System <lsfadmin@eu-g3-034>
+Subject: Job 192344126: <python classifier.py> in cluster <euler> Done
+
+Job <python classifier.py> was submitted from host <eu-login-40> by user <sidray> in cluster <euler> at Tue Nov 16 21:20:22 2021
+Job was executed on host(s) <4*eu-g3-034>, in queue <gpu.4h>, as user <sidray> in cluster <euler> at Tue Nov 16 21:20:31 2021
+</cluster/home/sidray> was used as the home directory.
+</cluster/home/sidray/Deep-Learning-Project-2021/resnet> was used as the working directory.
+Started at Tue Nov 16 21:20:31 2021
+Terminated at Tue Nov 16 22:22:26 2021
+Results reported at Tue Nov 16 22:22:26 2021
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+python classifier.py
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   3702.90 sec.
+    Max Memory :                                 4168 MB
+    Average Memory :                             4038.19 MB
+    Total Requested Memory :                     18000.00 MB
+    Delta Memory :                               13832.00 MB
+    Max Swap :                                   -
+    Max Processes :                              3
+    Max Threads :                                11
+    Run time :                                   3714 sec.
+    Turnaround time :                            3724 sec.
+
+The output (if any) follows:
+
+Files already downloaded and verified
+Files already downloaded and verified
+cuda
+Epoch 1/25
+----------
+train
+train loss: 1.2280, acc: 0.6473
+validation
+validation loss: 0.6393, acc: 0.7992
+Epoch 2/25
+----------
+train
+train loss: 0.8209, acc: 0.7284
+validation
+validation loss: 0.5570, acc: 0.8178
+Epoch 3/25
+----------
+train
+train loss: 0.7473, acc: 0.7478
+validation
+validation loss: 0.5314, acc: 0.8179
+Epoch 4/25
+----------
+train
+train loss: 0.7218, acc: 0.7524
+validation
+validation loss: 0.5118, acc: 0.8297
+Epoch 5/25
+----------
+train
+train loss: 0.7034, acc: 0.7598
+validation
+validation loss: 0.4958, acc: 0.8312
+Epoch 6/25
+----------
+train
+train loss: 0.6916, acc: 0.7632
+validation
+validation loss: 0.4842, acc: 0.8358
+Epoch 7/25
+----------
+train
+train loss: 0.6855, acc: 0.7664
+validation
+validation loss: 0.4823, acc: 0.8336
+Epoch 8/25
+----------
+train
+train loss: 0.6726, acc: 0.7693
+validation
+validation loss: 0.4821, acc: 0.8357
+Epoch 9/25
+----------
+train
+train loss: 0.6629, acc: 0.7727
+validation
+validation loss: 0.4724, acc: 0.8368
+Epoch 10/25
+----------
+train
+train loss: 0.6608, acc: 0.7717
+validation
+validation loss: 0.4802, acc: 0.8336
+Epoch 11/25
+----------
+train
+train loss: 0.6539, acc: 0.7753
+validation
+validation loss: 0.4603, acc: 0.8422
+Epoch 12/25
+----------
+train
+train loss: 0.6442, acc: 0.7786
+validation
+validation loss: 0.4626, acc: 0.8401
+Epoch 13/25
+----------
+train
+train loss: 0.6449, acc: 0.7789
+validation
+validation loss: 0.4618, acc: 0.8402
+Epoch 14/25
+----------
+train
+train loss: 0.6399, acc: 0.7763
+validation
+validation loss: 0.4519, acc: 0.8437
+Epoch 15/25
+----------
+train
+train loss: 0.6322, acc: 0.7839
+validation
+validation loss: 0.4566, acc: 0.8441
+Epoch 16/25
+----------
+train
+train loss: 0.6331, acc: 0.7823
+validation
+validation loss: 0.4536, acc: 0.8463
+Epoch 17/25
+----------
+train
+train loss: 0.6294, acc: 0.7844
+validation
+validation loss: 0.4510, acc: 0.8469
+Epoch 18/25
+----------
+train
+train loss: 0.6215, acc: 0.7853
+validation
+validation loss: 0.4534, acc: 0.8489
+Epoch 19/25
+----------
+train
+train loss: 0.6264, acc: 0.7844
+validation
+validation loss: 0.4338, acc: 0.8532
+Epoch 20/25
+----------
+train
+train loss: 0.6166, acc: 0.7859
+validation
+validation loss: 0.4453, acc: 0.8448
+Epoch 21/25
+----------
+train
+train loss: 0.6159, acc: 0.7884
+validation
+validation loss: 0.4418, acc: 0.8482
+Epoch 22/25
+----------
+train
+train loss: 0.6102, acc: 0.7889
+validation
+validation loss: 0.4465, acc: 0.8456
+Epoch 23/25
+----------
+train
+train loss: 0.6077, acc: 0.7898
+validation
+validation loss: 0.4272, acc: 0.8530
+Epoch 24/25
+----------
+train
+train loss: 0.6079, acc: 0.7915
+validation
+validation loss: 0.4334, acc: 0.8529
+Epoch 25/25
+----------
+train
+train loss: 0.6047, acc: 0.7915
+validation
+validation loss: 0.4283, acc: 0.8540
