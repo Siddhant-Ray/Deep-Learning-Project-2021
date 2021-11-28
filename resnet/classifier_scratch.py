@@ -78,8 +78,8 @@ if device == 'cuda':
     model = torch.nn.DataParallel(model)
     cudnn.benchmark = True
     
-for param in model.parameters():
-    param.requires_grad = False   
+'''for param in model.parameters():
+    param.requires_grad = False'''   
 
 # Classifier head    
 model.fc = nn.Sequential(
@@ -144,8 +144,8 @@ def run_model(model, criterion, optimizer, num_epochs=epochs):
 model_trained = run_model(model, criterion, optimizer, num_epochs=epochs)
 print("======> This is the classifier with non pretrained weights")
 
-for key, value in config.items():
-    print("Parameters used for this model")
+print("Parameters used for this model")
+for key, value in config.items():  
     print(key, value)
 
 torch.save(model_trained.state_dict(), 'saved_model/pytorch/weights_scratch.h5')
