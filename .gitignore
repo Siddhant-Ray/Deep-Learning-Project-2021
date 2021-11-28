@@ -129,6 +129,10 @@ dmypy.json
 .pyre/
 .DS_Store
 
+# model files
+**.pth
+#vit datasets
+datasets
 # LSF files
 lsf.*
 
