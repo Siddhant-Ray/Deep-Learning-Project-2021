@@ -1,4 +1,4 @@
-import numpy as np, argparse
+import numpy as np, argparse, json
 
 import matplotlib.pyplot as plt
 from PIL import Image
@@ -11,19 +11,25 @@ import torch.backends.cudnn as cudnn
 from torch.nn import functional as F
 import torch.optim as optim
 
-parser = argparse.ArgumentParser(description='PyTorch CIFAR10 Training')
-parser.add_argument('--lr', default = 0.1, type=float, help='learning rate')
-parser.add_argument('--resume', '-r', action='store_true',
-                    help='resume from checkpoint')
-args = parser.parse_args()
-
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 best_acc = 0  # best test accuracy
 start_epoch = 0  # start from epoch 0 or last checkpoint epoch
 
+with open('configs/config_scratch.json', 'r') as f:
+    config = json.load(f)
+
+### Hyperparamters
+learning_rate = config['learning_rate']
+epochs = config['num_epochs']
+batch_size = config['batch_size']
+weight_decay = config['weight_decay']
+momentum = config['momentum']
+adaptivity = config['adaptivity']
+max_lr = config['max_lr']
+
+## Transform function
 normalize = transforms.Normalize(mean=[0.485, 0.456, 0.406],
                                  std=[0.229, 0.224, 0.225])
-
 transforms = {
     'train':
     transforms.Compose([
@@ -54,12 +60,12 @@ image_datasets = {
 dataloaders = {
     'train':
     torch.utils.data.DataLoader(image_datasets['train'],
-                                batch_size=128,
+                                batch_size=batch_size,
                                 shuffle=True,
                                 num_workers=0),  
     'validation':
     torch.utils.data.DataLoader(image_datasets['validation'],
-                                batch_size=128,
+                                batch_size=batch_size,
                                 shuffle=False,
                                 num_workers=0)  
 }
@@ -81,14 +87,11 @@ model.fc = nn.Sequential(
                nn.ReLU(inplace=True),
                nn.Linear(128, 10)).to(device)
 
-learning_rate = 0.1
-epochs = 40
-criterion = nn.CrossEntropyLoss()
-optimizer = optim.Adam(model.fc.parameters(), lr=learning_rate, weight_decay = 1e-5)
-
+## Model specifiers
+optimizer = optim.Adam(model.fc.parameters(), lr=learning_rate, weight_decay = weight_decay)
+scheduler = torch.optim.lr_scheduler.OneCycleLR(optimizer, max_lr=max_lr, steps_per_epoch=len(dataloaders['train']), epochs=epochs)
 # scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=200)
-
-scheduler = torch.optim.lr_scheduler.OneCycleLR(optimizer, max_lr=0.01, steps_per_epoch=len(dataloaders['train']), epochs=epochs)
+criterion = nn.CrossEntropyLoss()
 
 def run_model(model, criterion, optimizer, num_epochs=epochs):
     
@@ -134,13 +137,18 @@ def run_model(model, criterion, optimizer, num_epochs=epochs):
                                                         epoch_loss,
                                                         epoch_acc))
 
-        # scheduler.step()                                                
+        #scheduler.step()                                                
             
     return model
 
 model_trained = run_model(model, criterion, optimizer, num_epochs=epochs)
+print("======> This is the classifier with non pretrained weights")
 
-torch.save(model_trained.state_dict(), 'saved_model/pytorch/weights.h5')
+for key, value in config.items():
+    print("Parameters used for this model")
+    print(key, value)
+
+torch.save(model_trained.state_dict(), 'saved_model/pytorch/weights_scratch.h5')
 
 # Next time 
 """

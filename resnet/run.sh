@@ -13,7 +13,7 @@ source ../venv/bin/activate
 
 args=(
     -G s_stud_infk
-    -n 4
+    -n 2
     -W 4:00
     -R "rusage[mem=4500]"
 )
@@ -33,4 +33,5 @@ while [ ! -z "$1" ]; do
     shift
 done
 
-bsub "${args[@]}" python classifier.py 
+bsub "${args[@]}" python classifier_pretrained.py 
+bsub "${args[@]}" python classifier_scratch.py 
