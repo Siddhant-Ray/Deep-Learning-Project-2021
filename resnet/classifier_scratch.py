@@ -14,8 +14,9 @@ import torch.optim as optim
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 best_acc = 0  # best test accuracy
 start_epoch = 0  # start from epoch 0 or last checkpoint epoch
+amp = True  # mixed precision
 
-with open('configs/config_scratch.json', 'r') as f:
+with open('configs/config_scratch_big.json', 'r') as f:
     config = json.load(f)
 
 ### Hyperparamters
@@ -73,7 +74,21 @@ dataloaders = {
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 print(device)
 
-model = models.resnet50(pretrained=False).to(device)
+# model = models.resnet50(pretrained=False).to(device)
+class ResNet(nn.Module):
+    def __init__(self, *args, **kwargs):
+        super().__init__()
+        self.model = models.resnet50(*args, **kwargs)
+
+    def forward(self, *args, **kwargs):
+        with torch.cuda.amp.autocast(enabled=amp):
+            return self.model(*args, **kwargs)
+
+# FC layer is only with 10 hidden units, unlike earlier
+# where I had a full two layer classifier
+# this is because the model is becoming too complex
+# to train        
+model = ResNet(pretrained=False, num_classes=10).to(device)
 if device == 'cuda':
     model = torch.nn.DataParallel(model)
     cudnn.benchmark = True
@@ -82,10 +97,10 @@ if device == 'cuda':
     param.requires_grad = False'''   
 
 # Classifier head    
-model.fc = nn.Sequential(
-               nn.Linear(2048, 128),
-               nn.ReLU(inplace=True),
-               nn.Linear(128, 10)).to(device)
+# model.fc = nn.Sequential(
+#                nn.Linear(2048, 128),
+#                nn.ReLU(inplace=True),
+#                nn.Linear(128, 10)).to(device)
 
 ## Model specifiers
 optimizer = optim.Adam(model.parameters(), lr=learning_rate, weight_decay = weight_decay)
@@ -94,6 +109,7 @@ scheduler = torch.optim.lr_scheduler.OneCycleLR(optimizer, max_lr=max_lr, steps_
 criterion = nn.CrossEntropyLoss()
 
 def run_model(model, criterion, optimizer, num_epochs=epochs):
+    scaler = torch.cuda.amp.GradScaler(enabled=amp)
     
     for epoch in range(num_epochs):
         print('Epoch {}/{}'.format(epoch+1, num_epochs))
@@ -114,13 +130,16 @@ def run_model(model, criterion, optimizer, num_epochs=epochs):
                 inputs = inputs.to(device)
                 labels = labels.to(device)
 
-                outputs = model(inputs)
-                loss = criterion(outputs, labels)
+                with torch.cuda.amp.autocast(enabled=amp):
+                    outputs = model(inputs)
+                    loss = criterion(outputs, labels)
 
+                # Added mixed precision support 
                 if phase == 'train':
                     optimizer.zero_grad()
-                    loss.backward()
-                    optimizer.step()
+                    scaler.scale(loss).backward()
+                    scaler.step(optimizer)
+                    scaler.update()
                     scheduler.step()
 
                 _, preds = torch.max(outputs, 1)
