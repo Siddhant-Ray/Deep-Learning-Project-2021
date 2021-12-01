@@ -9,6 +9,7 @@ import torch
 
 import json
 import argparse
+import os
 
 def main():
     config = get_config()
@@ -25,10 +26,12 @@ def main():
         model = ViTForImageClassification.from_pretrained('google/vit-base-patch16-224')
     elif mode == "scratch":
         vit_conf = ViTConfig()
+        vit_conf.num_labels = 10
         model = ViTForImageClassification(config = vit_conf)
 
     if device_id == "cuda":
         print("parallel")
+        os.system("nvidia-smi")
         model = torch.nn.DataParallel(model)
         cudnn.benchmark = True
 
@@ -82,6 +85,8 @@ def main():
 
             outputs = model(images)
             predictions = torch.argmax(outputs.logits, 1)
+            #print(labels)
+            #print(outputs.logits)
 
             loss = loss_function(outputs.logits, labels)
             loss.backward()
@@ -135,6 +140,7 @@ def main():
     save_model(model, epoch + 1, eval_accuracy, eval_loss / len(validation_dataloader))
 
 def save_model(model, num_epochs, eval_acc, eval_loss):
+    torch.save(model.state_dict(), "model.pth")
     torch.save(model.state_dict(), f"model_vit_e{num_epochs}_acc{eval_acc:.2}_loss{eval_loss:.2}.pth")
 
 def print_model(model):

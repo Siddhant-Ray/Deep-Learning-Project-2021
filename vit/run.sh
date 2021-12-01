@@ -34,4 +34,4 @@ while [ ! -z "$1" ]; do
     shift
 done
 
-bsub "${args[@]}" python main.py 
+bsub "${args[@]}" "python main.py config2.json" 
