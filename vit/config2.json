@@ -1,7 +1,7 @@
 {
 	"mode": "scratch",
 	"learning_rate" : 1e-4,
-	"num_epochs" : 40,
+	"num_epochs" : 80,
 	"weight_decay": 5e-4,
 	"batch_size": 16,
 	"max_lr": 1e-4,

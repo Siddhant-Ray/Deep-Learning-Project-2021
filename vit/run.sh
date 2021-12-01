@@ -14,7 +14,7 @@ source ../venv/bin/activate
 args=(
     -G s_stud_infk
     -n 4
-    -W 10:00
+    -W 20:00
     -R "rusage[mem=4500]"
 )
 
