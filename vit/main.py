@@ -141,7 +141,7 @@ def main():
 
 def save_model(model, num_epochs, eval_acc, eval_loss):
     torch.save(model.state_dict(), "model.pth")
-    torch.save(model.state_dict(), f"model_vit_e{num_epochs}_acc{eval_acc:.2}_loss{eval_loss:.2}.pth")
+    torch.save(model.state_dict(), f"model_vit_{mode}_e{num_epochs}_acc{eval_acc:.2}_loss{eval_loss:.2}.pth")
 
 def print_model(model):
     for name, param in model.named_parameters():
