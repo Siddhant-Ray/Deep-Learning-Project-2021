@@ -163,6 +163,9 @@ def run_model(model, criterion, optimizer, num_epochs=epochs):
 model_trained = run_model(model, criterion, optimizer, num_epochs=epochs)
 print("======> This is the classifier with non pretrained weights")
 
+print("======> This is the model")
+print(model)
+
 print("Parameters used for this model")
 for key, value in config.items():  
     print(key, value)

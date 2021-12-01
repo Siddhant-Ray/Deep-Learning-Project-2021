@@ -1,0 +1,529 @@
+Sender: LSF System <lsfadmin@eu-lo-s4-001>
+Subject: Job 194241959: <python classifier_scratch.py> in cluster <euler> Done
+
+Job <python classifier_scratch.py> was submitted from host <eu-login-29> by user <sidray> in cluster <euler> at Tue Nov 30 13:27:12 2021
+Job was executed on host(s) <2*eu-lo-s4-001>, in queue <gpu.24h>, as user <sidray> in cluster <euler> at Tue Nov 30 13:27:39 2021
+</cluster/home/sidray> was used as the home directory.
+</cluster/home/sidray/Deep-Learning-Project-2021/resnet> was used as the working directory.
+Started at Tue Nov 30 13:27:39 2021
+Terminated at Tue Nov 30 23:00:48 2021
+Results reported at Tue Nov 30 23:00:48 2021
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+python classifier_scratch.py
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   34410.98 sec.
+    Max Memory :                                 3381 MB
+    Average Memory :                             3289.33 MB
+    Total Requested Memory :                     9000.00 MB
+    Delta Memory :                               5619.00 MB
+    Max Swap :                                   -
+    Max Processes :                              3
+    Max Threads :                                8
+    Run time :                                   34388 sec.
+    Turnaround time :                            34416 sec.
+
+The output (if any) follows:
+
+/cluster/home/sidray/Deep-Learning-Project-2021/venv/lib64/python3.8/site-packages/torch/optim/lr_scheduler.py:129: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+  warnings.warn("Detected call of `lr_scheduler.step()` before `optimizer.step()`. "
+Files already downloaded and verified
+Files already downloaded and verified
+cuda
+Epoch 1/80
+----------
+train
+train loss: 2.2603, acc: 0.1563
+validation
+validation loss: 2.1057, acc: 0.2428
+Epoch 2/80
+----------
+train
+train loss: 2.0980, acc: 0.2261
+validation
+validation loss: 1.8945, acc: 0.3103
+Epoch 3/80
+----------
+train
+train loss: 1.9841, acc: 0.2673
+validation
+validation loss: 1.7514, acc: 0.3438
+Epoch 4/80
+----------
+train
+train loss: 1.8779, acc: 0.3066
+validation
+validation loss: 1.6132, acc: 0.4022
+Epoch 5/80
+----------
+train
+train loss: 1.7938, acc: 0.3410
+validation
+validation loss: 1.5257, acc: 0.4380
+Epoch 6/80
+----------
+train
+train loss: 1.7118, acc: 0.3716
+validation
+validation loss: 1.4209, acc: 0.4743
+Epoch 7/80
+----------
+train
+train loss: 1.6364, acc: 0.4052
+validation
+validation loss: 1.3410, acc: 0.5128
+Epoch 8/80
+----------
+train
+train loss: 1.5494, acc: 0.4385
+validation
+validation loss: 1.2829, acc: 0.5348
+Epoch 9/80
+----------
+train
+train loss: 1.4629, acc: 0.4699
+validation
+validation loss: 1.1975, acc: 0.5700
+Epoch 10/80
+----------
+train
+train loss: 1.3677, acc: 0.5087
+validation
+validation loss: 1.0691, acc: 0.6191
+Epoch 11/80
+----------
+train
+train loss: 1.2630, acc: 0.5490
+validation
+validation loss: 1.0305, acc: 0.6358
+Epoch 12/80
+----------
+train
+train loss: 1.1601, acc: 0.5895
+validation
+validation loss: 0.9247, acc: 0.6709
+Epoch 13/80
+----------
+train
+train loss: 1.0695, acc: 0.6237
+validation
+validation loss: 0.8669, acc: 0.6956
+Epoch 14/80
+----------
+train
+train loss: 0.9847, acc: 0.6525
+validation
+validation loss: 0.8212, acc: 0.7126
+Epoch 15/80
+----------
+train
+train loss: 0.8984, acc: 0.6837
+validation
+validation loss: 0.7470, acc: 0.7404
+Epoch 16/80
+----------
+train
+train loss: 0.8182, acc: 0.7126
+validation
+validation loss: 0.6810, acc: 0.7615
+Epoch 17/80
+----------
+train
+train loss: 0.7446, acc: 0.7413
+validation
+validation loss: 0.6529, acc: 0.7799
+Epoch 18/80
+----------
+train
+train loss: 0.6811, acc: 0.7642
+validation
+validation loss: 0.7492, acc: 0.7516
+Epoch 19/80
+----------
+train
+train loss: 0.6232, acc: 0.7817
+validation
+validation loss: 0.6820, acc: 0.7715
+Epoch 20/80
+----------
+train
+train loss: 0.5740, acc: 0.8018
+validation
+validation loss: 0.5925, acc: 0.7997
+Epoch 21/80
+----------
+train
+train loss: 0.5358, acc: 0.8133
+validation
+validation loss: 0.6458, acc: 0.7864
+Epoch 22/80
+----------
+train
+train loss: 0.4995, acc: 0.8275
+validation
+validation loss: 0.6032, acc: 0.7984
+Epoch 23/80
+----------
+train
+train loss: 0.4533, acc: 0.8442
+validation
+validation loss: 0.5530, acc: 0.8191
+Epoch 24/80
+----------
+train
+train loss: 0.4314, acc: 0.8512
+validation
+validation loss: 0.5235, acc: 0.8265
+Epoch 25/80
+----------
+train
+train loss: 0.3931, acc: 0.8645
+validation
+validation loss: 0.5737, acc: 0.8138
+Epoch 26/80
+----------
+train
+train loss: 0.3769, acc: 0.8700
+validation
+validation loss: 0.6286, acc: 0.8004
+Epoch 27/80
+----------
+train
+train loss: 0.3563, acc: 0.8795
+validation
+validation loss: 0.6176, acc: 0.8103
+Epoch 28/80
+----------
+train
+train loss: 0.3364, acc: 0.8869
+validation
+validation loss: 0.5229, acc: 0.8287
+Epoch 29/80
+----------
+train
+train loss: 0.3150, acc: 0.8923
+validation
+validation loss: 0.5017, acc: 0.8337
+Epoch 30/80
+----------
+train
+train loss: 0.3048, acc: 0.8962
+validation
+validation loss: 0.4845, acc: 0.8445
+Epoch 31/80
+----------
+train
+train loss: 0.2946, acc: 0.9004
+validation
+validation loss: 0.5931, acc: 0.8195
+Epoch 32/80
+----------
+train
+train loss: 0.2765, acc: 0.9078
+validation
+validation loss: 0.7404, acc: 0.7812
+Epoch 33/80
+----------
+train
+train loss: 0.2701, acc: 0.9090
+validation
+validation loss: 0.5845, acc: 0.8212
+Epoch 34/80
+----------
+train
+train loss: 0.2592, acc: 0.9129
+validation
+validation loss: 0.5509, acc: 0.8314
+Epoch 35/80
+----------
+train
+train loss: 0.2461, acc: 0.9169
+validation
+validation loss: 0.5080, acc: 0.8423
+Epoch 36/80
+----------
+train
+train loss: 0.2486, acc: 0.9173
+validation
+validation loss: 0.5264, acc: 0.8369
+Epoch 37/80
+----------
+train
+train loss: 0.2316, acc: 0.9233
+validation
+validation loss: 0.4659, acc: 0.8533
+Epoch 38/80
+----------
+train
+train loss: 0.2248, acc: 0.9256
+validation
+validation loss: 0.5201, acc: 0.8365
+Epoch 39/80
+----------
+train
+train loss: 0.2180, acc: 0.9277
+validation
+validation loss: 0.4140, acc: 0.8646
+Epoch 40/80
+----------
+train
+train loss: 0.2057, acc: 0.9306
+validation
+validation loss: 0.5452, acc: 0.8380
+Epoch 41/80
+----------
+train
+train loss: 0.2021, acc: 0.9331
+validation
+validation loss: 0.4158, acc: 0.8674
+Epoch 42/80
+----------
+train
+train loss: 0.1968, acc: 0.9357
+validation
+validation loss: 0.4957, acc: 0.8448
+Epoch 43/80
+----------
+train
+train loss: 0.1890, acc: 0.9374
+validation
+validation loss: 0.4707, acc: 0.8569
+Epoch 44/80
+----------
+train
+train loss: 0.1776, acc: 0.9426
+validation
+validation loss: 0.4241, acc: 0.8728
+Epoch 45/80
+----------
+train
+train loss: 0.1790, acc: 0.9403
+validation
+validation loss: 0.4449, acc: 0.8632
+Epoch 46/80
+----------
+train
+train loss: 0.1683, acc: 0.9447
+validation
+validation loss: 0.4096, acc: 0.8714
+Epoch 47/80
+----------
+train
+train loss: 0.1703, acc: 0.9448
+validation
+validation loss: 0.4358, acc: 0.8675
+Epoch 48/80
+----------
+train
+train loss: 0.1554, acc: 0.9491
+validation
+validation loss: 0.3889, acc: 0.8781
+Epoch 49/80
+----------
+train
+train loss: 0.1522, acc: 0.9499
+validation
+validation loss: 0.4630, acc: 0.8628
+Epoch 50/80
+----------
+train
+train loss: 0.1428, acc: 0.9536
+validation
+validation loss: 0.3956, acc: 0.8776
+Epoch 51/80
+----------
+train
+train loss: 0.1463, acc: 0.9520
+validation
+validation loss: 0.3924, acc: 0.8785
+Epoch 52/80
+----------
+train
+train loss: 0.1374, acc: 0.9562
+validation
+validation loss: 0.3849, acc: 0.8835
+Epoch 53/80
+----------
+train
+train loss: 0.1289, acc: 0.9591
+validation
+validation loss: 0.3964, acc: 0.8816
+Epoch 54/80
+----------
+train
+train loss: 0.1226, acc: 0.9605
+validation
+validation loss: 0.3585, acc: 0.8898
+Epoch 55/80
+----------
+train
+train loss: 0.1235, acc: 0.9597
+validation
+validation loss: 0.3979, acc: 0.8803
+Epoch 56/80
+----------
+train
+train loss: 0.1125, acc: 0.9638
+validation
+validation loss: 0.3678, acc: 0.8883
+Epoch 57/80
+----------
+train
+train loss: 0.1123, acc: 0.9643
+validation
+validation loss: 0.3508, acc: 0.8909
+Epoch 58/80
+----------
+train
+train loss: 0.1099, acc: 0.9644
+validation
+validation loss: 0.3383, acc: 0.8955
+Epoch 59/80
+----------
+train
+train loss: 0.1015, acc: 0.9671
+validation
+validation loss: 0.3346, acc: 0.8963
+Epoch 60/80
+----------
+train
+train loss: 0.0989, acc: 0.9687
+validation
+validation loss: 0.3207, acc: 0.8977
+Epoch 61/80
+----------
+train
+train loss: 0.0964, acc: 0.9687
+validation
+validation loss: 0.3404, acc: 0.8966
+Epoch 62/80
+----------
+train
+train loss: 0.0912, acc: 0.9710
+validation
+validation loss: 0.3234, acc: 0.9014
+Epoch 63/80
+----------
+train
+train loss: 0.0858, acc: 0.9720
+validation
+validation loss: 0.3220, acc: 0.8987
+Epoch 64/80
+----------
+train
+train loss: 0.0821, acc: 0.9739
+validation
+validation loss: 0.3182, acc: 0.9062
+Epoch 65/80
+----------
+train
+train loss: 0.0825, acc: 0.9729
+validation
+validation loss: 0.3081, acc: 0.9036
+Epoch 66/80
+----------
+train
+train loss: 0.0764, acc: 0.9760
+validation
+validation loss: 0.3134, acc: 0.9034
+Epoch 67/80
+----------
+train
+train loss: 0.0745, acc: 0.9762
+validation
+validation loss: 0.2945, acc: 0.9084
+Epoch 68/80
+----------
+train
+train loss: 0.0712, acc: 0.9772
+validation
+validation loss: 0.2818, acc: 0.9111
+Epoch 69/80
+----------
+train
+train loss: 0.0665, acc: 0.9788
+validation
+validation loss: 0.2923, acc: 0.9097
+Epoch 70/80
+----------
+train
+train loss: 0.0636, acc: 0.9794
+validation
+validation loss: 0.2998, acc: 0.9077
+Epoch 71/80
+----------
+train
+train loss: 0.0637, acc: 0.9796
+validation
+validation loss: 0.2807, acc: 0.9117
+Epoch 72/80
+----------
+train
+train loss: 0.0615, acc: 0.9801
+validation
+validation loss: 0.2677, acc: 0.9152
+Epoch 73/80
+----------
+train
+train loss: 0.0628, acc: 0.9801
+validation
+validation loss: 0.2697, acc: 0.9155
+Epoch 74/80
+----------
+train
+train loss: 0.0587, acc: 0.9811
+validation
+validation loss: 0.2664, acc: 0.9170
+Epoch 75/80
+----------
+train
+train loss: 0.0580, acc: 0.9810
+validation
+validation loss: 0.2617, acc: 0.9169
+Epoch 76/80
+----------
+train
+train loss: 0.0554, acc: 0.9820
+validation
+validation loss: 0.2660, acc: 0.9175
+Epoch 77/80
+----------
+train
+train loss: 0.0578, acc: 0.9812
+validation
+validation loss: 0.2590, acc: 0.9178
+Epoch 78/80
+----------
+train
+train loss: 0.0539, acc: 0.9827
+validation
+validation loss: 0.2603, acc: 0.9182
+Epoch 79/80
+----------
+train
+train loss: 0.0544, acc: 0.9826
+validation
+validation loss: 0.2586, acc: 0.9180
+Epoch 80/80
+----------
+train
+train loss: 0.0551, acc: 0.9822
+validation
+validation loss: 0.2577, acc: 0.9184
+======> This is the classifier with non pretrained weights
+Parameters used for this model
+learning_rate 0.0001
+num_epochs 80
+weight_decay 0.0005
+batch_size 64
+momentum 0.9
+adaptivity 0.999
+max_lr 0.0001
