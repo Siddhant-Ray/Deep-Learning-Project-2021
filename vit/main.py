@@ -32,8 +32,8 @@ def main():
     if device_id == "cuda":
         print("parallel")
         os.system("nvidia-smi")
-        model = torch.nn.DataParallel(model)
-        cudnn.benchmark = True
+        #model = torch.nn.DataParallel(model)
+        #cudnn.benchmark = True
 
     if mode == "pretrained":
         for param in model.parameters():
@@ -42,6 +42,8 @@ def main():
     model.classifier = torch.nn.Linear(in_features=768, out_features=10, bias=True)
 
     model.to(device)
+
+#    print_model(model)
 
     batch_size = config["batch_size"]
     train_dataset = CIFAR10("../datasets/", train=True, transform=transform, download=True)
@@ -66,7 +68,13 @@ def main():
     epochs = config["num_epochs"]
     weight_decay = config["weight_decay"]
     max_lr = config["max_lr"]
-    optimizer = optim.Adam(model.parameters(), lr=learning_rate, weight_decay = weight_decay)
+
+    
+    parameter_set = model.parameters()
+    if mode == "pretrained":
+        parameter_set = model.classifier.parameters()
+    
+    optimizer = optim.Adam(parameter_set, lr=learning_rate, weight_decay = weight_decay)
     scheduler = torch.optim.lr_scheduler.OneCycleLR(optimizer, max_lr=max_lr, steps_per_epoch=len(train_dataloader), epochs=epochs)
 
 
@@ -137,9 +145,9 @@ def main():
     print(f'train_loss: {train_loss / len(train_dataloader)}, train_accuracy: {train_accuracy}')
     print(f'eval_loss: {eval_loss / len(validation_dataloader)}, eval_accuracy: {eval_accuracy}')
 
-    save_model(model, epoch + 1, eval_accuracy, eval_loss / len(validation_dataloader))
+    save_model(model, mode, epoch + 1, eval_accuracy, eval_loss / len(validation_dataloader))
 
-def save_model(model, num_epochs, eval_acc, eval_loss):
+def save_model(model, mode, num_epochs, eval_acc, eval_loss):
     torch.save(model.state_dict(), "model.pth")
     torch.save(model.state_dict(), f"model_vit_{mode}_e{num_epochs}_acc{eval_acc:.2}_loss{eval_loss:.2}.pth")
 

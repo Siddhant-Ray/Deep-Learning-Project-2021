@@ -1,0 +1,1037 @@
+Sender: LSF System <lsfadmin@eu-g3-011>
+Subject: Job 194405368: <python main.py config_pretrained.json> in cluster <euler> Exited
+
+Job <python main.py config_pretrained.json> was submitted from host <eu-login-44> by user <afeer> in cluster <euler> at Wed Dec  1 14:22:51 2021
+Job was executed on host(s) <4*eu-g3-011>, in queue <gpu.24h>, as user <afeer> in cluster <euler> at Wed Dec  1 14:23:18 2021
+</cluster/home/afeer> was used as the home directory.
+</cluster/home/afeer/Deep-Learning-Project-2021/vit> was used as the working directory.
+Started at Wed Dec  1 14:23:18 2021
+Terminated at Wed Dec  1 20:39:26 2021
+Results reported at Wed Dec  1 20:39:26 2021
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+python main.py config_pretrained.json
+------------------------------------------------------------
+
+Exited with exit code 1.
+
+Resource usage summary:
+
+    CPU time :                                   30479.09 sec.
+    Max Memory :                                 4746 MB
+    Average Memory :                             3826.66 MB
+    Total Requested Memory :                     18000.00 MB
+    Delta Memory :                               13254.00 MB
+    Max Swap :                                   1 MB
+    Max Processes :                              5
+    Max Threads :                                151
+    Run time :                                   22567 sec.
+    Turnaround time :                            22595 sec.
+
+The output (if any) follows:
+
+Wed Dec  1 14:23:29 2021       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 450.80.02    Driver Version: 450.80.02    CUDA Version: 11.0     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  GeForce RTX 208...  Off  | 00000000:21:00.0 Off |                  N/A |
+| 27%   30C    P8    21W / 250W |      3MiB / 11019MiB |      0%   E. Process |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|  No running processes found                                                 |
++-----------------------------------------------------------------------------+
+reading config file config_pretrained.json
+configuration: 
+{'mode': 'pretrained', 'learning_rate': 0.0001, 'num_epochs': 80, 'weight_decay': 0.0005, 'batch_size': 16, 'max_lr': 0.0001, 'momentum': 0.9, 'adaptivity': 0.999}
+GPU: True
+parallel
+Files already downloaded and verified
+train data size: 50000
+eval data size: 10000
+batch size: 16
+training batches: 3125
+eval batches: 625
+training epoch 1
+batch: 500
+batch: 1000
+batch: 1500
+batch: 2000
+batch: 2500
+batch: 3000
+epoch training done!
+[1, 3125] train_loss: 1.8015976346206666, train_accuracy: 0.47336000204086304
+evaluating epoch 1
+epoch evaluation done!
+[1, 625] eval_loss: 1.2638429415702819, eval_accuracy: 0.7727999687194824
+training epoch 2
+batch: 500
+batch: 1000
+batch: 1500
+batch: 2000
+batch: 2500
+batch: 3000
+epoch training done!
+[2, 3125] train_loss: 0.938818906917572, train_accuracy: 0.8378199934959412
+evaluating epoch 2
+epoch evaluation done!
+[2, 625] eval_loss: 0.6954112033843994, eval_accuracy: 0.8709999918937683
+training epoch 3
+batch: 500
+batch: 1000
+batch: 1500
+batch: 2000
+batch: 2500
+batch: 3000
+epoch training done!
+[3, 3125] train_loss: 0.5588544119358063, train_accuracy: 0.8844599723815918
+evaluating epoch 3
+epoch evaluation done!
+[3, 625] eval_loss: 0.4599484338283539, eval_accuracy: 0.8908999562263489
+training epoch 4
+batch: 500
+batch: 1000
+batch: 1500
+batch: 2000
+batch: 2500
+batch: 3000
+epoch training done!
+[4, 3125] train_loss: 0.39894243350982667, train_accuracy: 0.900879979133606
+evaluating epoch 4
+epoch evaluation done!
+[4, 625] eval_loss: 0.3566313317358494, eval_accuracy: 0.9023999571800232
+training epoch 5
+batch: 500
+batch: 1000
+batch: 1500
+batch: 2000
+batch: 2500
+batch: 3000
+epoch training done!
+[5, 3125] train_loss: 0.32346460533499716, train_accuracy: 0.9105199575424194
+evaluating epoch 5
+epoch evaluation done!
+[5, 625] eval_loss: 0.30356140623092653, eval_accuracy: 0.9099999666213989
+training epoch 6
+batch: 500
+batch: 1000
+batch: 1500
+batch: 2000
+batch: 2500
+batch: 3000
+epoch training done!
+[6, 3125] train_loss: 0.2813629672831297, train_accuracy: 0.917639970779419
+evaluating epoch 6
+epoch evaluation done!
+[6, 625] eval_loss: 0.27179696005284787, eval_accuracy: 0.9160999655723572
+training epoch 7
+batch: 500
+batch: 1000
+batch: 1500
+batch: 2000
+batch: 2500
+batch: 3000
+epoch training done!
+[7, 3125] train_loss: 0.25424843550533055, train_accuracy: 0.9228999614715576
+evaluating epoch 7
+epoch evaluation done!
+[7, 625] eval_loss: 0.2505449329584837, eval_accuracy: 0.9205999970436096
+training epoch 8
+batch: 500
+batch: 1000
+batch: 1500
+batch: 2000
+batch: 2500
+batch: 3000
+epoch training done!
+[8, 3125] train_loss: 0.2348775204975903, train_accuracy: 0.926859974861145
+evaluating epoch 8
+epoch evaluation done!
+[8, 625] eval_loss: 0.23521929011568427, eval_accuracy: 0.9238999485969543
+training epoch 9
+batch: 500
+batch: 1000
+batch: 1500
+batch: 2000
+batch: 2500
+batch: 3000
+epoch training done!
+[9, 3125] train_loss: 0.22000882040217518, train_accuracy: 0.9302399754524231
+evaluating epoch 9
+epoch evaluation done!
+[9, 625] eval_loss: 0.22359895788803696, eval_accuracy: 0.9268999695777893
+training epoch 10
+batch: 500
+batch: 1000
+batch: 1500
+batch: 2000
+batch: 2500
+batch: 3000
+epoch training done!
+[10, 3125] train_loss: 0.20801498557053508, train_accuracy: 0.9333399534225464
+evaluating epoch 10
+epoch evaluation done!
+[10, 625] eval_loss: 0.2144884645808488, eval_accuracy: 0.9289999604225159
+training epoch 11
+batch: 500
+batch: 1000
+batch: 1500
+batch: 2000
+batch: 2500
+batch: 3000
+epoch training done!
+[11, 3125] train_loss: 0.19800204342260957, train_accuracy: 0.936199963092804
+evaluating epoch 11
+epoch evaluation done!
+[11, 625] eval_loss: 0.20718921768199652, eval_accuracy: 0.9310999512672424
+training epoch 12
+batch: 500
+batch: 1000
+batch: 1500
+batch: 2000
+batch: 2500
+batch: 3000
+epoch training done!
+[12, 3125] train_loss: 0.18944342616342008, train_accuracy: 0.9387399554252625
+evaluating epoch 12
+epoch evaluation done!
+[12, 625] eval_loss: 0.2012629181312397, eval_accuracy: 0.9337999820709229
+training epoch 13
+batch: 500
+batch: 1000
+batch: 1500
+batch: 2000
+batch: 2500
+batch: 3000
+epoch training done!
+[13, 3125] train_loss: 0.18200918369289487, train_accuracy: 0.9412399530410767
+evaluating epoch 13
+epoch evaluation done!
+[13, 625] eval_loss: 0.19641513129677624, eval_accuracy: 0.9350999593734741
+training epoch 14
+batch: 500
+batch: 1000
+batch: 1500
+batch: 2000
+batch: 2500
+batch: 3000
+epoch training done!
+[14, 3125] train_loss: 0.1754790259611979, train_accuracy: 0.942799985408783
+evaluating epoch 14
+epoch evaluation done!
+[14, 625] eval_loss: 0.19243523319764064, eval_accuracy: 0.9357999563217163
+training epoch 15
+batch: 500
+batch: 1000
+batch: 1500
+batch: 2000
+batch: 2500
+batch: 3000
+epoch training done!
+[15, 3125] train_loss: 0.16969622722268105, train_accuracy: 0.9444399476051331
+evaluating epoch 15
+epoch evaluation done!
+[15, 625] eval_loss: 0.18916478710733353, eval_accuracy: 0.9364999532699585
+training epoch 16
+batch: 500
+batch: 1000
+batch: 1500
+batch: 2000
+batch: 2500
+batch: 3000
+epoch training done!
+[16, 3125] train_loss: 0.16454300912378356, train_accuracy: 0.9460199475288391
+evaluating epoch 16
+epoch evaluation done!
+[16, 625] eval_loss: 0.18648020333433524, eval_accuracy: 0.9375
+training epoch 17
+batch: 500
+batch: 1000
+batch: 1500
+batch: 2000
+batch: 2500
+batch: 3000
+epoch training done!
+[17, 3125] train_loss: 0.15992729065364228, train_accuracy: 0.9479399919509888
+evaluating epoch 17
+epoch evaluation done!
+[17, 625] eval_loss: 0.18428252750365062, eval_accuracy: 0.9380999803543091
+training epoch 18
+batch: 500
+batch: 1000
+batch: 1500
+batch: 2000
+batch: 2500
+batch: 3000
+epoch training done!
+[18, 3125] train_loss: 0.15577515937790273, train_accuracy: 0.9490999579429626
+evaluating epoch 18
+epoch evaluation done!
+[18, 625] eval_loss: 0.1824909008808434, eval_accuracy: 0.9377999901771545
+training epoch 19
+batch: 500
+batch: 1000
+batch: 1500
+batch: 2000
+batch: 2500
+batch: 3000
+epoch training done!
+[19, 3125] train_loss: 0.1520261360321194, train_accuracy: 0.9502599835395813
+evaluating epoch 19
+epoch evaluation done!
+[19, 625] eval_loss: 0.18103813516451045, eval_accuracy: 0.9378999471664429
+training epoch 20
+batch: 500
+batch: 1000
+batch: 1500
+batch: 2000
+batch: 2500
+batch: 3000
+epoch training done!
+[20, 3125] train_loss: 0.14862994943220167, train_accuracy: 0.9514199495315552
+evaluating epoch 20
+epoch evaluation done!
+[20, 625] eval_loss: 0.17986761009451002, eval_accuracy: 0.9386000037193298
+training epoch 21
+batch: 500
+batch: 1000
+batch: 1500
+batch: 2000
+batch: 2500
+batch: 3000
+epoch training done!
+[21, 3125] train_loss: 0.1455442249798402, train_accuracy: 0.9524199962615967
+evaluating epoch 21
+epoch evaluation done!
+[21, 625] eval_loss: 0.17893119963631035, eval_accuracy: 0.9389999508857727
+training epoch 22
+batch: 500
+batch: 1000
+batch: 1500
+batch: 2000
+batch: 2500
+batch: 3000
+epoch training done!
+[22, 3125] train_loss: 0.14273280825831927, train_accuracy: 0.9533799886703491
+evaluating epoch 22
+epoch evaluation done!
+[22, 625] eval_loss: 0.17818787260656246, eval_accuracy: 0.9390999674797058
+training epoch 23
+batch: 500
+batch: 1000
+batch: 1500
+batch: 2000
+batch: 2500
+batch: 3000
+epoch training done!
+[23, 3125] train_loss: 0.14016461138931102, train_accuracy: 0.9541999697685242
+evaluating epoch 23
+epoch evaluation done!
+[23, 625] eval_loss: 0.17760262248693034, eval_accuracy: 0.939799964427948
+training epoch 24
+batch: 500
+batch: 1000
+batch: 1500
+batch: 2000
+batch: 2500
+batch: 3000
+epoch training done!
+[24, 3125] train_loss: 0.13781275831717998, train_accuracy: 0.9547999501228333
+evaluating epoch 24
+epoch evaluation done!
+[24, 625] eval_loss: 0.17714576240205207, eval_accuracy: 0.9400999546051025
+training epoch 25
+batch: 500
+batch: 1000
+batch: 1500
+batch: 2000
+batch: 2500
+batch: 3000
+epoch training done!
+[25, 3125] train_loss: 0.13565685187170282, train_accuracy: 0.9556399583816528
+evaluating epoch 25
+epoch evaluation done!
+[25, 625] eval_loss: 0.1767958402588032, eval_accuracy: 0.9404999613761902
+training epoch 26
+batch: 500
+batch: 1000
+batch: 1500
+batch: 2000
+batch: 2500
+batch: 3000
+epoch training done!
+[26, 3125] train_loss: 0.13369257084433922, train_accuracy: 0.9562000036239624
+evaluating epoch 26
+epoch evaluation done!
+[26, 625] eval_loss: 0.1765351623270195, eval_accuracy: 0.9405999779701233
+training epoch 27
+batch: 500
+batch: 1000
+batch: 1500
+batch: 2000
+batch: 2500
+batch: 3000
+epoch training done!
+[27, 3125] train_loss: 0.13190028100945056, train_accuracy: 0.9568799734115601
+evaluating epoch 27
+epoch evaluation done!
+[27, 625] eval_loss: 0.17634595443415454, eval_accuracy: 0.9406999945640564
+training epoch 28
+batch: 500
+batch: 1000
+batch: 1500
+batch: 2000
+batch: 2500
+batch: 3000
+epoch training done!
+[28, 3125] train_loss: 0.13025703922482207, train_accuracy: 0.9571799635887146
+evaluating epoch 28
+epoch evaluation done!
+[28, 625] eval_loss: 0.17621421338007787, eval_accuracy: 0.9404000043869019
+training epoch 29
+batch: 500
+batch: 1000
+batch: 1500
+batch: 2000
+batch: 2500
+batch: 3000
+epoch training done!
+[29, 3125] train_loss: 0.12874410233162342, train_accuracy: 0.9577199816703796
+evaluating epoch 29
+epoch evaluation done!
+[29, 625] eval_loss: 0.1761287614233326, eval_accuracy: 0.9404999613761902
+training epoch 30
+batch: 500
+batch: 1000
+batch: 1500
+batch: 2000
+batch: 2500
+batch: 3000
+epoch training done!
+[30, 3125] train_loss: 0.1273459192985017, train_accuracy: 0.9582799673080444
+evaluating epoch 30
+epoch evaluation done!
+[30, 625] eval_loss: 0.17608056291914545, eval_accuracy: 0.9409999847412109
+training epoch 31
+batch: 500
+batch: 1000
+batch: 1500
+batch: 2000
+batch: 2500
+batch: 3000
+epoch training done!
+[31, 3125] train_loss: 0.12604944928490558, train_accuracy: 0.9586799740791321
+evaluating epoch 31
+epoch evaluation done!
+[31, 625] eval_loss: 0.176062304403726, eval_accuracy: 0.9411999583244324
+training epoch 32
+batch: 500
+batch: 1000
+batch: 1500
+batch: 2000
+batch: 2500
+batch: 3000
+epoch training done!
+[32, 3125] train_loss: 0.12484366516048089, train_accuracy: 0.9590399861335754
+evaluating epoch 32
+epoch evaluation done!
+[32, 625] eval_loss: 0.1760679797155317, eval_accuracy: 0.9409999847412109
+training epoch 33
+batch: 500
+batch: 1000
+batch: 1500
+batch: 2000
+batch: 2500
+batch: 3000
+epoch training done!
+[33, 3125] train_loss: 0.12371914968104102, train_accuracy: 0.9595800042152405
+evaluating epoch 33
+epoch evaluation done!
+[33, 625] eval_loss: 0.17609263397441247, eval_accuracy: 0.941100001335144
+training epoch 34
+batch: 500
+batch: 1000
+batch: 1500
+batch: 2000
+batch: 2500
+batch: 3000
+epoch training done!
+[34, 3125] train_loss: 0.12266781849699095, train_accuracy: 0.9601399898529053
+evaluating epoch 34
+epoch evaluation done!
+[34, 625] eval_loss: 0.17613222396201453, eval_accuracy: 0.9408999681472778
+training epoch 35
+batch: 500
+batch: 1000
+batch: 1500
+batch: 2000
+batch: 2500
+batch: 3000
+epoch training done!
+[35, 3125] train_loss: 0.12168268085678108, train_accuracy: 0.9605000019073486
+evaluating epoch 35
+epoch evaluation done!
+[35, 625] eval_loss: 0.17618335130433552, eval_accuracy: 0.9405999779701233
+training epoch 36
+batch: 500
+batch: 1000
+batch: 1500
+batch: 2000
+batch: 2500
+batch: 3000
+epoch training done!
+[36, 3125] train_loss: 0.12075765860612504, train_accuracy: 0.9607999920845032
+evaluating epoch 36
+epoch evaluation done!
+[36, 625] eval_loss: 0.1762432196812704, eval_accuracy: 0.9401999711990356
+training epoch 37
+batch: 500
+batch: 1000
+batch: 1500
+batch: 2000
+batch: 2500
+batch: 3000
+epoch training done!
+[37, 3125] train_loss: 0.11988744324509054, train_accuracy: 0.9609799981117249
+evaluating epoch 37
+epoch evaluation done!
+[37, 625] eval_loss: 0.17630951204136946, eval_accuracy: 0.9400999546051025
+training epoch 38
+batch: 500
+batch: 1000
+batch: 1500
+batch: 2000
+batch: 2500
+batch: 3000
+epoch training done!
+[38, 3125] train_loss: 0.1190673748351261, train_accuracy: 0.9612799882888794
+evaluating epoch 38
+epoch evaluation done!
+[38, 625] eval_loss: 0.1763802847791463, eval_accuracy: 0.9399999976158142
+training epoch 39
+batch: 500
+batch: 1000
+batch: 1500
+batch: 2000
+batch: 2500
+batch: 3000
+epoch training done!
+[39, 3125] train_loss: 0.11829334949457553, train_accuracy: 0.9614599943161011
+evaluating epoch 39
+epoch evaluation done!
+[39, 625] eval_loss: 0.17645395512026735, eval_accuracy: 0.9398999810218811
+training epoch 40
+batch: 500
+batch: 1000
+batch: 1500
+batch: 2000
+batch: 2500
+batch: 3000
+epoch training done!
+[40, 3125] train_loss: 0.1175617478035763, train_accuracy: 0.9616599678993225
+evaluating epoch 40
+epoch evaluation done!
+[40, 625] eval_loss: 0.17652920133727604, eval_accuracy: 0.9399999976158142
+training epoch 41
+batch: 500
+batch: 1000
+batch: 1500
+batch: 2000
+batch: 2500
+batch: 3000
+epoch training done!
+[41, 3125] train_loss: 0.11686936285522301, train_accuracy: 0.962179958820343
+evaluating epoch 41
+epoch evaluation done!
+[41, 625] eval_loss: 0.17660493946629577, eval_accuracy: 0.9400999546051025
+training epoch 42
+batch: 500
+batch: 1000
+batch: 1500
+batch: 2000
+batch: 2500
+batch: 3000
+epoch training done!
+[42, 3125] train_loss: 0.11621334720058832, train_accuracy: 0.962399959564209
+evaluating epoch 42
+epoch evaluation done!
+[42, 625] eval_loss: 0.17668027958897875, eval_accuracy: 0.9402999877929688
+training epoch 43
+batch: 500
+batch: 1000
+batch: 1500
+batch: 2000
+batch: 2500
+batch: 3000
+epoch training done!
+[43, 3125] train_loss: 0.11559117422755343, train_accuracy: 0.9626999497413635
+evaluating epoch 43
+epoch evaluation done!
+[43, 625] eval_loss: 0.1767544842998963, eval_accuracy: 0.9399999976158142
+training epoch 44
+batch: 500
+batch: 1000
+batch: 1500
+batch: 2000
+batch: 2500
+batch: 3000
+epoch training done!
+[44, 3125] train_loss: 0.11500058378782123, train_accuracy: 0.9628199934959412
+evaluating epoch 44
+epoch evaluation done!
+[44, 625] eval_loss: 0.1768269886904396, eval_accuracy: 0.9399999976158142
+training epoch 45
+batch: 500
+batch: 1000
+batch: 1500
+batch: 2000
+batch: 2500
+batch: 3000
+epoch training done!
+[45, 3125] train_loss: 0.11443957544333301, train_accuracy: 0.962939977645874
+evaluating epoch 45
+epoch evaluation done!
+[45, 625] eval_loss: 0.17689727190681734, eval_accuracy: 0.9399999976158142
+training epoch 46
+batch: 500
+batch: 1000
+batch: 1500
+batch: 2000
+batch: 2500
+batch: 3000
+epoch training done!
+[46, 3125] train_loss: 0.11390634666118771, train_accuracy: 0.9630999565124512
+evaluating epoch 46
+epoch evaluation done!
+[46, 625] eval_loss: 0.17696494790124706, eval_accuracy: 0.9396999478340149
+training epoch 47
+batch: 500
+batch: 1000
+batch: 1500
+batch: 2000
+batch: 2500
+batch: 3000
+epoch training done!
+[47, 3125] train_loss: 0.11339930767165031, train_accuracy: 0.9633399844169617
+evaluating epoch 47
+epoch evaluation done!
+[47, 625] eval_loss: 0.17702968026520685, eval_accuracy: 0.9394999742507935
+training epoch 48
+batch: 500
+batch: 1000
+batch: 1500
+batch: 2000
+batch: 2500
+batch: 3000
+epoch training done!
+[48, 3125] train_loss: 0.11291701691437979, train_accuracy: 0.9634400010108948
+evaluating epoch 48
+epoch evaluation done!
+[48, 625] eval_loss: 0.17709116736501454, eval_accuracy: 0.9395999908447266
+training epoch 49
+batch: 500
+batch: 1000
+batch: 1500
+batch: 2000
+batch: 2500
+batch: 3000
+epoch training done!
+[49, 3125] train_loss: 0.11245820010516792, train_accuracy: 0.9635599851608276
+evaluating epoch 49
+epoch evaluation done!
+[49, 625] eval_loss: 0.1771491552834399, eval_accuracy: 0.9393999576568604
+training epoch 50
+batch: 500
+batch: 1000
+batch: 1500
+batch: 2000
+batch: 2500
+batch: 3000
+epoch training done!
+[50, 3125] train_loss: 0.11202172516044229, train_accuracy: 0.9635799527168274
+evaluating epoch 50
+epoch evaluation done!
+[50, 625] eval_loss: 0.17720339044849387, eval_accuracy: 0.9394999742507935
+training epoch 51
+batch: 500
+batch: 1000
+batch: 1500
+batch: 2000
+batch: 2500
+batch: 3000
+epoch training done!
+[51, 3125] train_loss: 0.11160656094001606, train_accuracy: 0.9639999866485596
+evaluating epoch 51
+epoch evaluation done!
+[51, 625] eval_loss: 0.17725359903904608, eval_accuracy: 0.9393999576568604
+training epoch 52
+batch: 500
+batch: 1000
+batch: 1500
+batch: 2000
+batch: 2500
+batch: 3000
+epoch training done!
+[52, 3125] train_loss: 0.11121180991758592, train_accuracy: 0.9641000032424927
+evaluating epoch 52
+epoch evaluation done!
+[52, 625] eval_loss: 0.1772994918420911, eval_accuracy: 0.9393999576568604
+training epoch 53
+batch: 500
+batch: 1000
+batch: 1500
+batch: 2000
+batch: 2500
+batch: 3000
+epoch training done!
+[53, 3125] train_loss: 0.11083665393908508, train_accuracy: 0.9642599821090698
+evaluating epoch 53
+epoch evaluation done!
+[53, 625] eval_loss: 0.17734070880720393, eval_accuracy: 0.9393999576568604
+training epoch 54
+batch: 500
+batch: 1000
+batch: 1500
+batch: 2000
+batch: 2500
+batch: 3000
+epoch training done!
+[54, 3125] train_loss: 0.1104803827805724, train_accuracy: 0.9644799828529358
+evaluating epoch 54
+epoch evaluation done!
+[54, 625] eval_loss: 0.1773768714101985, eval_accuracy: 0.939300000667572
+training epoch 55
+batch: 500
+batch: 1000
+batch: 1500
+batch: 2000
+batch: 2500
+batch: 3000
+epoch training done!
+[55, 3125] train_loss: 0.1101423476975644, train_accuracy: 0.9645799994468689
+evaluating epoch 55
+epoch evaluation done!
+[55, 625] eval_loss: 0.1774075230064802, eval_accuracy: 0.9390999674797058
+training epoch 56
+batch: 500
+batch: 1000
+batch: 1500
+batch: 2000
+batch: 2500
+batch: 3000
+epoch training done!
+[56, 3125] train_loss: 0.10982197848605457, train_accuracy: 0.9645999670028687
+evaluating epoch 56
+epoch evaluation done!
+[56, 625] eval_loss: 0.17743216244792565, eval_accuracy: 0.9390999674797058
+training epoch 57
+batch: 500
+batch: 1000
+batch: 1500
+batch: 2000
+batch: 2500
+batch: 3000
+epoch training done!
+[57, 3125] train_loss: 0.10951877400368452, train_accuracy: 0.9646999835968018
+evaluating epoch 57
+epoch evaluation done!
+[57, 625] eval_loss: 0.1774501695068553, eval_accuracy: 0.939300000667572
+training epoch 58
+batch: 500
+batch: 1000
+batch: 1500
+batch: 2000
+batch: 2500
+batch: 3000
+epoch training done!
+[58, 3125] train_loss: 0.10923228279463015, train_accuracy: 0.9648399949073792
+evaluating epoch 58
+epoch evaluation done!
+[58, 625] eval_loss: 0.17746093311216682, eval_accuracy: 0.9391999840736389
+training epoch 59
+batch: 500
+batch: 1000
+batch: 1500
+batch: 2000
+batch: 2500
+batch: 3000
+epoch training done!
+[59, 3125] train_loss: 0.10896210105801933, train_accuracy: 0.964959979057312
+evaluating epoch 59
+epoch evaluation done!
+[59, 625] eval_loss: 0.17746383608123287, eval_accuracy: 0.9390999674797058
+training epoch 60
+batch: 500
+batch: 1000
+batch: 1500
+batch: 2000
+batch: 2500
+batch: 3000
+epoch training done!
+[60, 3125] train_loss: 0.10870786278647371, train_accuracy: 0.9650799632072449
+evaluating epoch 60
+epoch evaluation done!
+[60, 625] eval_loss: 0.17745829337174074, eval_accuracy: 0.9391999840736389
+training epoch 61
+batch: 500
+batch: 1000
+batch: 1500
+batch: 2000
+batch: 2500
+batch: 3000
+epoch training done!
+[61, 3125] train_loss: 0.10846923360588029, train_accuracy: 0.9651599526405334
+evaluating epoch 61
+epoch evaluation done!
+[61, 625] eval_loss: 0.177443876455212, eval_accuracy: 0.9391999840736389
+training epoch 62
+batch: 500
+batch: 1000
+batch: 1500
+batch: 2000
+batch: 2500
+batch: 3000
+epoch training done!
+[62, 3125] train_loss: 0.1082458903710451, train_accuracy: 0.9653199911117554
+evaluating epoch 62
+epoch evaluation done!
+[62, 625] eval_loss: 0.17742037843225988, eval_accuracy: 0.9391999840736389
+training epoch 63
+batch: 500
+batch: 1000
+batch: 1500
+batch: 2000
+batch: 2500
+batch: 3000
+epoch training done!
+[63, 3125] train_loss: 0.10803750867540948, train_accuracy: 0.9654199481010437
+evaluating epoch 63
+epoch evaluation done!
+[63, 625] eval_loss: 0.17738791372487323, eval_accuracy: 0.9389999508857727
+training epoch 64
+batch: 500
+batch: 1000
+batch: 1500
+batch: 2000
+batch: 2500
+batch: 3000
+epoch training done!
+[64, 3125] train_loss: 0.10784375181312207, train_accuracy: 0.9655399918556213
+evaluating epoch 64
+epoch evaluation done!
+[64, 625] eval_loss: 0.17734709789247718, eval_accuracy: 0.9391999840736389
+training epoch 65
+batch: 500
+batch: 1000
+batch: 1500
+batch: 2000
+batch: 2500
+batch: 3000
+epoch training done!
+[65, 3125] train_loss: 0.10766424825278577, train_accuracy: 0.9655999541282654
+evaluating epoch 65
+epoch evaluation done!
+[65, 625] eval_loss: 0.17729910035799257, eval_accuracy: 0.9388999938964844
+training epoch 66
+batch: 500
+batch: 1000
+batch: 1500
+batch: 2000
+batch: 2500
+batch: 3000
+epoch training done!
+[66, 3125] train_loss: 0.10749858028282411, train_accuracy: 0.9657599925994873
+evaluating epoch 66
+epoch evaluation done!
+[66, 625] eval_loss: 0.17724573220268358, eval_accuracy: 0.9389999508857727
+training epoch 67
+batch: 500
+batch: 1000
+batch: 1500
+batch: 2000
+batch: 2500
+batch: 3000
+epoch training done!
+[67, 3125] train_loss: 0.10734623825860676, train_accuracy: 0.9657999873161316
+evaluating epoch 67
+epoch evaluation done!
+[67, 625] eval_loss: 0.17718949627757538, eval_accuracy: 0.9389999508857727
+training epoch 68
+batch: 500
+batch: 1000
+batch: 1500
+batch: 2000
+batch: 2500
+batch: 3000
+epoch training done!
+[68, 3125] train_loss: 0.10720667123739608, train_accuracy: 0.9658199548721313
+evaluating epoch 68
+epoch evaluation done!
+[68, 625] eval_loss: 0.17713327940099408, eval_accuracy: 0.9391999840736389
+training epoch 69
+batch: 500
+batch: 1000
+batch: 1500
+batch: 2000
+batch: 2500
+batch: 3000
+epoch training done!
+[69, 3125] train_loss: 0.10707925449934322, train_accuracy: 0.9658399820327759
+evaluating epoch 69
+epoch evaluation done!
+[69, 625] eval_loss: 0.17708019450085705, eval_accuracy: 0.9391999840736389
+training epoch 70
+batch: 500
+batch: 1000
+batch: 1500
+batch: 2000
+batch: 2500
+batch: 3000
+epoch training done!
+[70, 3125] train_loss: 0.1069633671625983, train_accuracy: 0.9658199548721313
+evaluating epoch 70
+epoch evaluation done!
+[70, 625] eval_loss: 0.17703295044677797, eval_accuracy: 0.9393999576568604
+training epoch 71
+batch: 500
+batch: 1000
+batch: 1500
+batch: 2000
+batch: 2500
+batch: 3000
+epoch training done!
+[71, 3125] train_loss: 0.106858441295987, train_accuracy: 0.9658399820327759
+evaluating epoch 71
+epoch evaluation done!
+[71, 625] eval_loss: 0.17699343025044073, eval_accuracy: 0.9394999742507935
+training epoch 72
+batch: 500
+batch: 1000
+batch: 1500
+batch: 2000
+batch: 2500
+batch: 3000
+epoch training done!
+[72, 3125] train_loss: 0.10676403608513531, train_accuracy: 0.9658799767494202
+evaluating epoch 72
+epoch evaluation done!
+[72, 625] eval_loss: 0.17696245519882067, eval_accuracy: 0.9391999840736389
+training epoch 73
+batch: 500
+batch: 1000
+batch: 1500
+batch: 2000
+batch: 2500
+batch: 3000
+epoch training done!
+[73, 3125] train_loss: 0.1066798735653516, train_accuracy: 0.9659000039100647
+evaluating epoch 73
+epoch evaluation done!
+[73, 625] eval_loss: 0.1769397289585555, eval_accuracy: 0.939300000667572
+training epoch 74
+batch: 500
+batch: 1000
+batch: 1500
+batch: 2000
+batch: 2500
+batch: 3000
+epoch training done!
+[74, 3125] train_loss: 0.10660587741633412, train_accuracy: 0.9658799767494202
+evaluating epoch 74
+epoch evaluation done!
+[74, 625] eval_loss: 0.17692410303310024, eval_accuracy: 0.939300000667572
+training epoch 75
+batch: 500
+batch: 1000
+batch: 1500
+batch: 2000
+batch: 2500
+batch: 3000
+epoch training done!
+[75, 3125] train_loss: 0.10654212260042317, train_accuracy: 0.9658799767494202
+evaluating epoch 75
+epoch evaluation done!
+[75, 625] eval_loss: 0.17691405263775958, eval_accuracy: 0.939300000667572
+training epoch 76
+batch: 500
+batch: 1000
+batch: 1500
+batch: 2000
+batch: 2500
+batch: 3000
+epoch training done!
+[76, 3125] train_loss: 0.10648877031643875, train_accuracy: 0.9658199548721313
+evaluating epoch 76
+epoch evaluation done!
+[76, 625] eval_loss: 0.1769079351146007, eval_accuracy: 0.939300000667572
+training epoch 77
+batch: 500
+batch: 1000
+batch: 1500
+batch: 2000
+batch: 2500
+batch: 3000
+epoch training done!
+[77, 3125] train_loss: 0.1064459673562739, train_accuracy: 0.9658599495887756
+evaluating epoch 77
+epoch evaluation done!
+[77, 625] eval_loss: 0.1769044599945657, eval_accuracy: 0.939300000667572
+training epoch 78
+batch: 500
+batch: 1000
+batch: 1500
+batch: 2000
+batch: 2500
+batch: 3000
+epoch training done!
+[78, 3125] train_loss: 0.10641375182685908, train_accuracy: 0.9659000039100647
+evaluating epoch 78
+epoch evaluation done!
+[78, 625] eval_loss: 0.17690263387886807, eval_accuracy: 0.9391999840736389
+training epoch 79
+batch: 500
+batch: 1000
+batch: 1500
+batch: 2000
+batch: 2500
+batch: 3000
+epoch training done!
+[79, 3125] train_loss: 0.10639201295616105, train_accuracy: 0.9659199714660645
+evaluating epoch 79
+epoch evaluation done!
+[79, 625] eval_loss: 0.1769018551352434, eval_accuracy: 0.939300000667572
+training epoch 80
+batch: 500
+batch: 1000
+batch: 1500
+batch: 2000
+batch: 2500
+batch: 3000
+epoch training done!
+[80, 3125] train_loss: 0.10638040319116786, train_accuracy: 0.9659599661827087
+evaluating epoch 80
+epoch evaluation done!
+[80, 625] eval_loss: 0.17690186381135137, eval_accuracy: 0.939300000667572
+done!
+train_loss: 0.10638040319116786, train_accuracy: 0.9659599661827087
+eval_loss: 0.17690186381135137, eval_accuracy: 0.939300000667572
+Traceback (most recent call last):
+  File "main.py", line 178, in <module>
+    main()
+  File "main.py", line 148, in main
+    save_model(model, epoch + 1, eval_accuracy, eval_loss / len(validation_dataloader))
+  File "main.py", line 152, in save_model
+    torch.save(model.state_dict(), f"model_vit_{mode}_e{num_epochs}_acc{eval_acc:.2}_loss{eval_loss:.2}.pth")
+NameError: name 'mode' is not defined

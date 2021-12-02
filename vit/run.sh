@@ -23,7 +23,7 @@ while [ ! -z "$1" ]; do
     case "$1" in
         gpu)
             echo "GPU mode selected"
-            args+=(-R "rusage[ngpus_excl_p=4]")
+            args+=(-R "rusage[ngpus_excl_p=1]")
 	    args+=(-R "select[gpu_mtotal0>=10240]")
             ;;
         intr)
@@ -34,4 +34,4 @@ while [ ! -z "$1" ]; do
     shift
 done
 
-bsub "${args[@]}" "python main.py config2.json" 
+bsub "${args[@]}" "python main.py config_pretrained.json" 
