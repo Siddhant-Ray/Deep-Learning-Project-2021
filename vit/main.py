@@ -28,6 +28,8 @@ def main():
         transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
         ])
 
+    print("transform:", transform)
+
     if mode == "pretrained":
         model = ViTForImageClassification.from_pretrained('google/vit-base-patch16-224')
     elif mode == "scratch":
@@ -51,8 +53,6 @@ def main():
     model.classifier = torch.nn.Linear(in_features=768, out_features=10, bias=True)
 
     model.to(device)
-
-#    print_model(model)
 
     batch_size = config["batch_size"]
     train_dataset = CIFAR10("../datasets/", train=True, transform=transform, download=True)
@@ -161,7 +161,6 @@ def main():
     save_model(model, mode, epoch + 1, eval_accuracy, eval_loss / len(validation_dataloader))
 
 def save_model(model, mode, num_epochs, eval_acc, eval_loss):
-    torch.save(model.state_dict(), "model.pth")
     torch.save(model.state_dict(), f"model_vit_{mode}_e{num_epochs}_acc{eval_acc:.2}_loss{eval_loss:.2}.pth")
 
 def print_model(model):
