@@ -14,7 +14,7 @@ source ../venv/bin/activate
 args=(
     -G s_stud_infk
     -n 4
-    -W 20:00
+    -W 24:00
     -R "rusage[mem=4500]"
 )
 
@@ -23,7 +23,7 @@ while [ ! -z "$1" ]; do
     case "$1" in
         gpu)
             echo "GPU mode selected"
-            args+=(-R "rusage[ngpus_excl_p=1]")
+            args+=(-R "rusage[ngpus_excl_p=8]")
 	    args+=(-R "select[gpu_mtotal0>=10240]")
             ;;
         intr)

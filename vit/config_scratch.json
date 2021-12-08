@@ -6,5 +6,7 @@
 	"batch_size": 16,
 	"max_lr": 1e-4,
 	"momentum": 0.9,
-	"adaptivity": 0.999
+	"adaptivity": 0.999,
+	"mixed_precision": true,
+	"data_parallel": true
 }

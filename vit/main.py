@@ -21,7 +21,13 @@ def main():
     device_id = "cuda" if torch.cuda.is_available() else "cpu"
     device = torch.device(device_id)
 
-    transform = transforms.Compose([transforms.ToTensor(), transforms.Resize(224)])
+    transform = transforms.Compose([
+        transforms.Resize(224),
+        transforms.AutoAugment(transforms.AutoAugmentPolicy.CIFAR10),
+        transforms.ToTensor(), 
+        transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
+        ])
+
     if mode == "pretrained":
         model = ViTForImageClassification.from_pretrained('google/vit-base-patch16-224')
     elif mode == "scratch":
@@ -30,10 +36,13 @@ def main():
         model = ViTForImageClassification(config = vit_conf)
 
     if device_id == "cuda":
-        print("parallel")
+        print("CUDA is enabled:")
         os.system("nvidia-smi")
-        #model = torch.nn.DataParallel(model)
-        #cudnn.benchmark = True
+
+    if config["data_parallel"]:
+        print("enabling DataParallel")
+        model = torch.nn.DataParallel(model)
+        cudnn.benchmark = True
 
     if mode == "pretrained":
         for param in model.parameters():
@@ -47,7 +56,6 @@ def main():
 
     batch_size = config["batch_size"]
     train_dataset = CIFAR10("../datasets/", train=True, transform=transform, download=True)
-#    train_dataset = torch.utils.data.Subset(train_dataset, indices=range(400))
     train_dataloader = DataLoader(train_dataset, shuffle=False, batch_size=batch_size, num_workers=2)
 
     validation_dataset = CIFAR10("../datasets/", train=False, transform=transform)
@@ -76,7 +84,7 @@ def main():
     
     optimizer = optim.Adam(parameter_set, lr=learning_rate, weight_decay = weight_decay)
     scheduler = torch.optim.lr_scheduler.OneCycleLR(optimizer, max_lr=max_lr, steps_per_epoch=len(train_dataloader), epochs=epochs)
-
+    scaler = torch.cuda.amp.GradScaler(enabled=config["mixed_precision"])
 
     for epoch in range(epochs):
         model.train()
@@ -91,19 +99,22 @@ def main():
             # zero the parameter gradients
             optimizer.zero_grad()
 
-            outputs = model(images)
-            predictions = torch.argmax(outputs.logits, 1)
-            #print(labels)
-            #print(outputs.logits)
+            with torch.cuda.amp.autocast(enabled=config["mixed_precision"]):
+                outputs = model(images)
+                loss = loss_function(outputs.logits, labels)
 
-            loss = loss_function(outputs.logits, labels)
-            loss.backward()
-            optimizer.step()
+
+            # loss.backward()
+            # optimizer.step()
+            scaler.scale(loss).backward()
+            scaler.step(optimizer)
+            scaler.update()
             scheduler.step()
 
             train_loss += loss.item()
             #print(f"p: {predictions}")
             #print(f"l: {labels}")
+            predictions = torch.argmax(outputs.logits, 1)
             correct_predictions = torch.sum(predictions == labels)
             #print(f"{correct_predictions} out of {batch_size} predictions correct in this batch")
             train_correct += correct_predictions
@@ -126,13 +137,15 @@ def main():
             images = images.to(device)
             labels = labels.to(device)
 
-            outputs = model(images)
+            with torch.cuda.amp.autocast(enabled=config["mixed_precision"]):
+                outputs = model(images)
+                loss = loss_function(outputs.logits, labels)
+
             predictions = torch.argmax(outputs.logits, 1)
 
             correct_predictions = torch.sum(predictions == labels)
             eval_correct += correct_predictions
 
-            loss = loss_function(outputs.logits, labels)
             eval_loss += loss.item()
 
         eval_accuracy = eval_correct / len(validation_dataset)
