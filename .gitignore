@@ -138,3 +138,5 @@ lsf.*
 
 # ResNet dataset 
 resnet/dataset
+DemystifyLocalViT/CIFAR10_data
+

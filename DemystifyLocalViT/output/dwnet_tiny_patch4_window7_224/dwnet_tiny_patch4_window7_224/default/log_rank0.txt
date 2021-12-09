@@ -1,0 +1,1581 @@
+[2021-12-09 19:46:14 dwnet_tiny_patch4_window7_224] (main.py 370): INFO Full config saved to output/dwnet_tiny_patch4_window7_224/dwnet_tiny_patch4_window7_224/default/config.json
+[2021-12-09 19:46:14 dwnet_tiny_patch4_window7_224] (main.py 373): INFO AMP_OPT_LEVEL: O1
+AUG:
+  AUTO_AUGMENT: rand-m9-mstd0.5-inc1
+  COLOR_JITTER: 0.4
+  CUTMIX: 1.0
+  CUTMIX_MINMAX: null
+  MIXUP: 0.8
+  MIXUP_MODE: batch
+  MIXUP_PROB: 1.0
+  MIXUP_SWITCH_PROB: 0.5
+  RECOUNT: 1
+  REMODE: pixel
+  REPROB: 0.25
+BASE:
+- ''
+DATA:
+  BATCH_SIZE: 128
+  CACHE_MODE: part
+  DATASET: imagenet
+  DATA_PATH: /path/to/imagenet
+  IMG_SIZE: 224
+  INTERPOLATION: bicubic
+  NUM_WORKERS: 8
+  PIN_MEMORY: true
+  ZIP_MODE: false
+EVAL_MODE: false
+LOCAL_RANK: 0
+MODEL:
+  DROP_PATH_RATE: 0.2
+  DROP_RATE: 0.0
+  DWNET:
+    APE: false
+    CONV_TYPE: v1
+    DEPTHS:
+    - 2
+    - 2
+    - 6
+    - 2
+    DYNAMIC: false
+    EMBED_DIM: 96
+    IN_CHANS: 3
+    MLP_RATIO: 4.0
+    PATCH_NORM: true
+    PATCH_SIZE: 4
+    WINDOW_SIZE: 7
+  HALO:
+    APE: false
+    DEPTHS:
+    - 2
+    - 2
+    - 6
+    - 2
+    EMBED_DIM: 96
+    HALO_SIZE:
+    - 3
+    - 3
+    - 3
+    - 3
+    IN_CHANS: 3
+    MLP_RATIO: 4.0
+    NUM_HEADS:
+    - 3
+    - 6
+    - 12
+    - 24
+    PATCH_NORM: true
+    PATCH_SIZE: 4
+    QKV_BIAS: true
+    QK_SCALE: null
+    WINDOW_SIZE:
+    - 7
+    - 7
+    - 7
+    - 7
+  LABEL_SMOOTHING: 0.1
+  NAME: dwnet_tiny_patch4_window7_224
+  NUM_CLASSES: 1000
+  RESUME: ''
+  TYPE: dwnet
+OUTPUT: output/dwnet_tiny_patch4_window7_224/dwnet_tiny_patch4_window7_224/default
+PRINT_FREQ: 10
+SAVE_FREQ: 1
+SEED: 0
+TAG: default
+TEST:
+  CROP: true
+THROUGHPUT_MODE: false
+TRAIN:
+  ACCUMULATION_STEPS: 0
+  AUTO_RESUME: false
+  BASE_LR: 0.000125
+  CLIP_GRAD: 5.0
+  EPOCHS: 1
+  LR_SCHEDULER:
+    DECAY_EPOCHS: 30
+    DECAY_RATE: 0.1
+    NAME: cosine
+  MIN_LR: 1.25e-06
+  OPTIMIZER:
+    BETAS:
+    - 0.9
+    - 0.999
+    EPS: 1.0e-08
+    MOMENTUM: 0.9
+    NAME: adamw
+  START_EPOCH: 0
+  USE_CHECKPOINT: false
+  WARMUP_EPOCHS: 20
+  WARMUP_LR: 1.25e-07
+  WEIGHT_DECAY: 0.05
+
+[2021-12-09 19:52:05 dwnet_tiny_patch4_window7_224] (main.py 370): INFO Full config saved to output/dwnet_tiny_patch4_window7_224/dwnet_tiny_patch4_window7_224/default/config.json
+[2021-12-09 19:52:05 dwnet_tiny_patch4_window7_224] (main.py 373): INFO AMP_OPT_LEVEL: O1
+AUG:
+  AUTO_AUGMENT: rand-m9-mstd0.5-inc1
+  COLOR_JITTER: 0.4
+  CUTMIX: 1.0
+  CUTMIX_MINMAX: null
+  MIXUP: 0.8
+  MIXUP_MODE: batch
+  MIXUP_PROB: 1.0
+  MIXUP_SWITCH_PROB: 0.5
+  RECOUNT: 1
+  REMODE: pixel
+  REPROB: 0.25
+BASE:
+- ''
+DATA:
+  BATCH_SIZE: 128
+  CACHE_MODE: part
+  DATASET: cifar
+  DATA_PATH: ''
+  IMG_SIZE: 224
+  INTERPOLATION: bicubic
+  NUM_WORKERS: 8
+  PIN_MEMORY: true
+  ZIP_MODE: false
+EVAL_MODE: false
+LOCAL_RANK: 0
+MODEL:
+  DROP_PATH_RATE: 0.2
+  DROP_RATE: 0.0
+  DWNET:
+    APE: false
+    CONV_TYPE: v1
+    DEPTHS:
+    - 2
+    - 2
+    - 6
+    - 2
+    DYNAMIC: false
+    EMBED_DIM: 96
+    IN_CHANS: 3
+    MLP_RATIO: 4.0
+    PATCH_NORM: true
+    PATCH_SIZE: 4
+    WINDOW_SIZE: 7
+  HALO:
+    APE: false
+    DEPTHS:
+    - 2
+    - 2
+    - 6
+    - 2
+    EMBED_DIM: 96
+    HALO_SIZE:
+    - 3
+    - 3
+    - 3
+    - 3
+    IN_CHANS: 3
+    MLP_RATIO: 4.0
+    NUM_HEADS:
+    - 3
+    - 6
+    - 12
+    - 24
+    PATCH_NORM: true
+    PATCH_SIZE: 4
+    QKV_BIAS: true
+    QK_SCALE: null
+    WINDOW_SIZE:
+    - 7
+    - 7
+    - 7
+    - 7
+  LABEL_SMOOTHING: 0.1
+  NAME: dwnet_tiny_patch4_window7_224
+  NUM_CLASSES: 1000
+  RESUME: ''
+  TYPE: dwnet
+OUTPUT: output/dwnet_tiny_patch4_window7_224/dwnet_tiny_patch4_window7_224/default
+PRINT_FREQ: 10
+SAVE_FREQ: 1
+SEED: 0
+TAG: default
+TEST:
+  CROP: true
+THROUGHPUT_MODE: false
+TRAIN:
+  ACCUMULATION_STEPS: 0
+  AUTO_RESUME: false
+  BASE_LR: 0.000125
+  CLIP_GRAD: 5.0
+  EPOCHS: 1
+  LR_SCHEDULER:
+    DECAY_EPOCHS: 30
+    DECAY_RATE: 0.1
+    NAME: cosine
+  MIN_LR: 1.25e-06
+  OPTIMIZER:
+    BETAS:
+    - 0.9
+    - 0.999
+    EPS: 1.0e-08
+    MOMENTUM: 0.9
+    NAME: adamw
+  START_EPOCH: 0
+  USE_CHECKPOINT: false
+  WARMUP_EPOCHS: 20
+  WARMUP_LR: 1.25e-07
+  WEIGHT_DECAY: 0.05
+
+[2021-12-09 19:52:34 dwnet_tiny_patch4_window7_224] (main.py 370): INFO Full config saved to output/dwnet_tiny_patch4_window7_224/dwnet_tiny_patch4_window7_224/default/config.json
+[2021-12-09 19:52:34 dwnet_tiny_patch4_window7_224] (main.py 373): INFO AMP_OPT_LEVEL: O1
+AUG:
+  AUTO_AUGMENT: rand-m9-mstd0.5-inc1
+  COLOR_JITTER: 0.4
+  CUTMIX: 1.0
+  CUTMIX_MINMAX: null
+  MIXUP: 0.8
+  MIXUP_MODE: batch
+  MIXUP_PROB: 1.0
+  MIXUP_SWITCH_PROB: 0.5
+  RECOUNT: 1
+  REMODE: pixel
+  REPROB: 0.25
+BASE:
+- ''
+DATA:
+  BATCH_SIZE: 128
+  CACHE_MODE: part
+  DATASET: cifar
+  DATA_PATH: ''
+  IMG_SIZE: 224
+  INTERPOLATION: bicubic
+  NUM_WORKERS: 8
+  PIN_MEMORY: true
+  ZIP_MODE: false
+EVAL_MODE: false
+LOCAL_RANK: 0
+MODEL:
+  DROP_PATH_RATE: 0.2
+  DROP_RATE: 0.0
+  DWNET:
+    APE: false
+    CONV_TYPE: v1
+    DEPTHS:
+    - 2
+    - 2
+    - 6
+    - 2
+    DYNAMIC: false
+    EMBED_DIM: 96
+    IN_CHANS: 3
+    MLP_RATIO: 4.0
+    PATCH_NORM: true
+    PATCH_SIZE: 4
+    WINDOW_SIZE: 7
+  HALO:
+    APE: false
+    DEPTHS:
+    - 2
+    - 2
+    - 6
+    - 2
+    EMBED_DIM: 96
+    HALO_SIZE:
+    - 3
+    - 3
+    - 3
+    - 3
+    IN_CHANS: 3
+    MLP_RATIO: 4.0
+    NUM_HEADS:
+    - 3
+    - 6
+    - 12
+    - 24
+    PATCH_NORM: true
+    PATCH_SIZE: 4
+    QKV_BIAS: true
+    QK_SCALE: null
+    WINDOW_SIZE:
+    - 7
+    - 7
+    - 7
+    - 7
+  LABEL_SMOOTHING: 0.1
+  NAME: dwnet_tiny_patch4_window7_224
+  NUM_CLASSES: 1000
+  RESUME: ''
+  TYPE: dwnet
+OUTPUT: output/dwnet_tiny_patch4_window7_224/dwnet_tiny_patch4_window7_224/default
+PRINT_FREQ: 10
+SAVE_FREQ: 1
+SEED: 0
+TAG: default
+TEST:
+  CROP: true
+THROUGHPUT_MODE: false
+TRAIN:
+  ACCUMULATION_STEPS: 0
+  AUTO_RESUME: false
+  BASE_LR: 0.000125
+  CLIP_GRAD: 5.0
+  EPOCHS: 1
+  LR_SCHEDULER:
+    DECAY_EPOCHS: 30
+    DECAY_RATE: 0.1
+    NAME: cosine
+  MIN_LR: 1.25e-06
+  OPTIMIZER:
+    BETAS:
+    - 0.9
+    - 0.999
+    EPS: 1.0e-08
+    MOMENTUM: 0.9
+    NAME: adamw
+  START_EPOCH: 0
+  USE_CHECKPOINT: false
+  WARMUP_EPOCHS: 20
+  WARMUP_LR: 1.25e-07
+  WEIGHT_DECAY: 0.05
+
+[2021-12-09 19:54:43 dwnet_tiny_patch4_window7_224] (main.py 370): INFO Full config saved to output/dwnet_tiny_patch4_window7_224/dwnet_tiny_patch4_window7_224/default/config.json
+[2021-12-09 19:54:44 dwnet_tiny_patch4_window7_224] (main.py 373): INFO AMP_OPT_LEVEL: O1
+AUG:
+  AUTO_AUGMENT: rand-m9-mstd0.5-inc1
+  COLOR_JITTER: 0.4
+  CUTMIX: 1.0
+  CUTMIX_MINMAX: null
+  MIXUP: 0.8
+  MIXUP_MODE: batch
+  MIXUP_PROB: 1.0
+  MIXUP_SWITCH_PROB: 0.5
+  RECOUNT: 1
+  REMODE: pixel
+  REPROB: 0.25
+BASE:
+- ''
+DATA:
+  BATCH_SIZE: 128
+  CACHE_MODE: part
+  DATASET: cifar
+  DATA_PATH: CIFAR10_data
+  IMG_SIZE: 224
+  INTERPOLATION: bicubic
+  NUM_WORKERS: 8
+  PIN_MEMORY: true
+  ZIP_MODE: false
+EVAL_MODE: false
+LOCAL_RANK: 0
+MODEL:
+  DROP_PATH_RATE: 0.2
+  DROP_RATE: 0.0
+  DWNET:
+    APE: false
+    CONV_TYPE: v1
+    DEPTHS:
+    - 2
+    - 2
+    - 6
+    - 2
+    DYNAMIC: false
+    EMBED_DIM: 96
+    IN_CHANS: 3
+    MLP_RATIO: 4.0
+    PATCH_NORM: true
+    PATCH_SIZE: 4
+    WINDOW_SIZE: 7
+  HALO:
+    APE: false
+    DEPTHS:
+    - 2
+    - 2
+    - 6
+    - 2
+    EMBED_DIM: 96
+    HALO_SIZE:
+    - 3
+    - 3
+    - 3
+    - 3
+    IN_CHANS: 3
+    MLP_RATIO: 4.0
+    NUM_HEADS:
+    - 3
+    - 6
+    - 12
+    - 24
+    PATCH_NORM: true
+    PATCH_SIZE: 4
+    QKV_BIAS: true
+    QK_SCALE: null
+    WINDOW_SIZE:
+    - 7
+    - 7
+    - 7
+    - 7
+  LABEL_SMOOTHING: 0.1
+  NAME: dwnet_tiny_patch4_window7_224
+  NUM_CLASSES: 1000
+  RESUME: ''
+  TYPE: dwnet
+OUTPUT: output/dwnet_tiny_patch4_window7_224/dwnet_tiny_patch4_window7_224/default
+PRINT_FREQ: 10
+SAVE_FREQ: 1
+SEED: 0
+TAG: default
+TEST:
+  CROP: true
+THROUGHPUT_MODE: false
+TRAIN:
+  ACCUMULATION_STEPS: 0
+  AUTO_RESUME: false
+  BASE_LR: 0.000125
+  CLIP_GRAD: 5.0
+  EPOCHS: 1
+  LR_SCHEDULER:
+    DECAY_EPOCHS: 30
+    DECAY_RATE: 0.1
+    NAME: cosine
+  MIN_LR: 1.25e-06
+  OPTIMIZER:
+    BETAS:
+    - 0.9
+    - 0.999
+    EPS: 1.0e-08
+    MOMENTUM: 0.9
+    NAME: adamw
+  START_EPOCH: 0
+  USE_CHECKPOINT: false
+  WARMUP_EPOCHS: 20
+  WARMUP_LR: 1.25e-07
+  WEIGHT_DECAY: 0.05
+
+[2021-12-09 19:55:11 dwnet_tiny_patch4_window7_224] (main.py 75): INFO Creating model:dwnet/dwnet_tiny_patch4_window7_224
+[2021-12-09 19:55:12 dwnet_tiny_patch4_window7_224] (main.py 78): INFO DWNet(
+  (patch_embed): PatchEmbed(
+    (proj): Conv2d(3, 96, kernel_size=(4, 4), stride=(4, 4))
+    (norm): LayerNorm((96,), eps=1e-05, elementwise_affine=True)
+  )
+  (pos_drop): Dropout(p=0.0, inplace=False)
+  (layers): ModuleList(
+    (0): BasicLayer(
+      dim=96, input_resolution=(56, 56), depth=2
+      (blocks): ModuleList(
+        (0): SpatialBlock(
+          dim=96, input_resolution=(56, 56) window_size=7, mlp_ratio=4.0
+          (attn2conv): DWBlock(
+            dim=96, window_size=7
+            (conv0): Conv2d(96, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn0): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv): Conv2d(96, 96, kernel_size=(7, 7), stride=(1, 1), padding=(3, 3), groups=96)
+            (bn): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (relu): ReLU(inplace=True)
+            (conv2): Conv2d(96, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn2): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (drop_path): Identity()
+          (mlp): Mlp(
+            (fc1): Linear(in_features=96, out_features=384, bias=True)
+            (act): GELU()
+            (fc2): Linear(in_features=384, out_features=96, bias=True)
+            (drop): Dropout(p=0.0, inplace=False)
+          )
+          (bn): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (1): SpatialBlock(
+          dim=96, input_resolution=(56, 56) window_size=7, mlp_ratio=4.0
+          (attn2conv): DWBlock(
+            dim=96, window_size=7
+            (conv0): Conv2d(96, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn0): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv): Conv2d(96, 96, kernel_size=(7, 7), stride=(1, 1), padding=(3, 3), groups=96)
+            (bn): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (relu): ReLU(inplace=True)
+            (conv2): Conv2d(96, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn2): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (drop_path): DropPath()
+          (mlp): Mlp(
+            (fc1): Linear(in_features=96, out_features=384, bias=True)
+            (act): GELU()
+            (fc2): Linear(in_features=384, out_features=96, bias=True)
+            (drop): Dropout(p=0.0, inplace=False)
+          )
+          (bn): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (downsample): PatchMerging(
+        input_resolution=(56, 56), dim=96
+        (reduction): Linear(in_features=384, out_features=192, bias=False)
+        (norm): LayerNorm((384,), eps=1e-05, elementwise_affine=True)
+      )
+    )
+    (1): BasicLayer(
+      dim=192, input_resolution=(28, 28), depth=2
+      (blocks): ModuleList(
+        (0): SpatialBlock(
+          dim=192, input_resolution=(28, 28) window_size=7, mlp_ratio=4.0
+          (attn2conv): DWBlock(
+            dim=192, window_size=7
+            (conv0): Conv2d(192, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn0): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv): Conv2d(192, 192, kernel_size=(7, 7), stride=(1, 1), padding=(3, 3), groups=192)
+            (bn): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (relu): ReLU(inplace=True)
+            (conv2): Conv2d(192, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn2): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (drop_path): DropPath()
+          (mlp): Mlp(
+            (fc1): Linear(in_features=192, out_features=768, bias=True)
+            (act): GELU()
+            (fc2): Linear(in_features=768, out_features=192, bias=True)
+            (drop): Dropout(p=0.0, inplace=False)
+          )
+          (bn): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (1): SpatialBlock(
+          dim=192, input_resolution=(28, 28) window_size=7, mlp_ratio=4.0
+          (attn2conv): DWBlock(
+            dim=192, window_size=7
+            (conv0): Conv2d(192, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn0): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv): Conv2d(192, 192, kernel_size=(7, 7), stride=(1, 1), padding=(3, 3), groups=192)
+            (bn): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (relu): ReLU(inplace=True)
+            (conv2): Conv2d(192, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn2): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (drop_path): DropPath()
+          (mlp): Mlp(
+            (fc1): Linear(in_features=192, out_features=768, bias=True)
+            (act): GELU()
+            (fc2): Linear(in_features=768, out_features=192, bias=True)
+            (drop): Dropout(p=0.0, inplace=False)
+          )
+          (bn): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (downsample): PatchMerging(
+        input_resolution=(28, 28), dim=192
+        (reduction): Linear(in_features=768, out_features=384, bias=False)
+        (norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+      )
+    )
+    (2): BasicLayer(
+      dim=384, input_resolution=(14, 14), depth=6
+      (blocks): ModuleList(
+        (0): SpatialBlock(
+          dim=384, input_resolution=(14, 14) window_size=7, mlp_ratio=4.0
+          (attn2conv): DWBlock(
+            dim=384, window_size=7
+            (conv0): Conv2d(384, 384, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn0): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv): Conv2d(384, 384, kernel_size=(7, 7), stride=(1, 1), padding=(3, 3), groups=384)
+            (bn): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (relu): ReLU(inplace=True)
+            (conv2): Conv2d(384, 384, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn2): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (drop_path): DropPath()
+          (mlp): Mlp(
+            (fc1): Linear(in_features=384, out_features=1536, bias=True)
+            (act): GELU()
+            (fc2): Linear(in_features=1536, out_features=384, bias=True)
+            (drop): Dropout(p=0.0, inplace=False)
+          )
+          (bn): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (1): SpatialBlock(
+          dim=384, input_resolution=(14, 14) window_size=7, mlp_ratio=4.0
+          (attn2conv): DWBlock(
+            dim=384, window_size=7
+            (conv0): Conv2d(384, 384, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn0): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv): Conv2d(384, 384, kernel_size=(7, 7), stride=(1, 1), padding=(3, 3), groups=384)
+            (bn): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (relu): ReLU(inplace=True)
+            (conv2): Conv2d(384, 384, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn2): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (drop_path): DropPath()
+          (mlp): Mlp(
+            (fc1): Linear(in_features=384, out_features=1536, bias=True)
+            (act): GELU()
+            (fc2): Linear(in_features=1536, out_features=384, bias=True)
+            (drop): Dropout(p=0.0, inplace=False)
+          )
+          (bn): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (2): SpatialBlock(
+          dim=384, input_resolution=(14, 14) window_size=7, mlp_ratio=4.0
+          (attn2conv): DWBlock(
+            dim=384, window_size=7
+            (conv0): Conv2d(384, 384, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn0): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv): Conv2d(384, 384, kernel_size=(7, 7), stride=(1, 1), padding=(3, 3), groups=384)
+            (bn): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (relu): ReLU(inplace=True)
+            (conv2): Conv2d(384, 384, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn2): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (drop_path): DropPath()
+          (mlp): Mlp(
+            (fc1): Linear(in_features=384, out_features=1536, bias=True)
+            (act): GELU()
+            (fc2): Linear(in_features=1536, out_features=384, bias=True)
+            (drop): Dropout(p=0.0, inplace=False)
+          )
+          (bn): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (3): SpatialBlock(
+          dim=384, input_resolution=(14, 14) window_size=7, mlp_ratio=4.0
+          (attn2conv): DWBlock(
+            dim=384, window_size=7
+            (conv0): Conv2d(384, 384, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn0): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv): Conv2d(384, 384, kernel_size=(7, 7), stride=(1, 1), padding=(3, 3), groups=384)
+            (bn): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (relu): ReLU(inplace=True)
+            (conv2): Conv2d(384, 384, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn2): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (drop_path): DropPath()
+          (mlp): Mlp(
+            (fc1): Linear(in_features=384, out_features=1536, bias=True)
+            (act): GELU()
+            (fc2): Linear(in_features=1536, out_features=384, bias=True)
+            (drop): Dropout(p=0.0, inplace=False)
+          )
+          (bn): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (4): SpatialBlock(
+          dim=384, input_resolution=(14, 14) window_size=7, mlp_ratio=4.0
+          (attn2conv): DWBlock(
+            dim=384, window_size=7
+            (conv0): Conv2d(384, 384, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn0): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv): Conv2d(384, 384, kernel_size=(7, 7), stride=(1, 1), padding=(3, 3), groups=384)
+            (bn): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (relu): ReLU(inplace=True)
+            (conv2): Conv2d(384, 384, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn2): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (drop_path): DropPath()
+          (mlp): Mlp(
+            (fc1): Linear(in_features=384, out_features=1536, bias=True)
+            (act): GELU()
+            (fc2): Linear(in_features=1536, out_features=384, bias=True)
+            (drop): Dropout(p=0.0, inplace=False)
+          )
+          (bn): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (5): SpatialBlock(
+          dim=384, input_resolution=(14, 14) window_size=7, mlp_ratio=4.0
+          (attn2conv): DWBlock(
+            dim=384, window_size=7
+            (conv0): Conv2d(384, 384, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn0): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv): Conv2d(384, 384, kernel_size=(7, 7), stride=(1, 1), padding=(3, 3), groups=384)
+            (bn): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (relu): ReLU(inplace=True)
+            (conv2): Conv2d(384, 384, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn2): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (drop_path): DropPath()
+          (mlp): Mlp(
+            (fc1): Linear(in_features=384, out_features=1536, bias=True)
+            (act): GELU()
+            (fc2): Linear(in_features=1536, out_features=384, bias=True)
+            (drop): Dropout(p=0.0, inplace=False)
+          )
+          (bn): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (downsample): PatchMerging(
+        input_resolution=(14, 14), dim=384
+        (reduction): Linear(in_features=1536, out_features=768, bias=False)
+        (norm): LayerNorm((1536,), eps=1e-05, elementwise_affine=True)
+      )
+    )
+    (3): BasicLayer(
+      dim=768, input_resolution=(7, 7), depth=2
+      (blocks): ModuleList(
+        (0): SpatialBlock(
+          dim=768, input_resolution=(7, 7) window_size=7, mlp_ratio=4.0
+          (attn2conv): DWBlock(
+            dim=768, window_size=7
+            (conv0): Conv2d(768, 768, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn0): BatchNorm2d(768, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv): Conv2d(768, 768, kernel_size=(7, 7), stride=(1, 1), padding=(3, 3), groups=768)
+            (bn): BatchNorm2d(768, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (relu): ReLU(inplace=True)
+            (conv2): Conv2d(768, 768, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn2): BatchNorm2d(768, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (drop_path): DropPath()
+          (mlp): Mlp(
+            (fc1): Linear(in_features=768, out_features=3072, bias=True)
+            (act): GELU()
+            (fc2): Linear(in_features=3072, out_features=768, bias=True)
+            (drop): Dropout(p=0.0, inplace=False)
+          )
+          (bn): BatchNorm2d(768, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (1): SpatialBlock(
+          dim=768, input_resolution=(7, 7) window_size=7, mlp_ratio=4.0
+          (attn2conv): DWBlock(
+            dim=768, window_size=7
+            (conv0): Conv2d(768, 768, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn0): BatchNorm2d(768, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv): Conv2d(768, 768, kernel_size=(7, 7), stride=(1, 1), padding=(3, 3), groups=768)
+            (bn): BatchNorm2d(768, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (relu): ReLU(inplace=True)
+            (conv2): Conv2d(768, 768, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn2): BatchNorm2d(768, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (drop_path): DropPath()
+          (mlp): Mlp(
+            (fc1): Linear(in_features=768, out_features=3072, bias=True)
+            (act): GELU()
+            (fc2): Linear(in_features=3072, out_features=768, bias=True)
+            (drop): Dropout(p=0.0, inplace=False)
+          )
+          (bn): BatchNorm2d(768, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+    )
+  )
+  (norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+  (avgpool): AdaptiveAvgPool1d(output_size=1)
+  (head): Linear(in_features=768, out_features=10, bias=True)
+)
+[2021-12-09 19:55:12 dwnet_tiny_patch4_window7_224] (main.py 87): INFO number of params: 23411434
+[2021-12-09 19:55:12 dwnet_tiny_patch4_window7_224] (main.py 90): INFO number of GFLOPs: 3.74138112
+[2021-12-09 19:55:12 dwnet_tiny_patch4_window7_224] (main.py 125): INFO Start training
+[2021-12-09 20:11:11 dwnet_tiny_patch4_window7_224] (main.py 370): INFO Full config saved to output/dwnet_tiny_patch4_window7_224/dwnet_tiny_patch4_window7_224/default/config.json
+[2021-12-09 20:11:11 dwnet_tiny_patch4_window7_224] (main.py 373): INFO AMP_OPT_LEVEL: O1
+AUG:
+  AUTO_AUGMENT: rand-m9-mstd0.5-inc1
+  COLOR_JITTER: 0.4
+  CUTMIX: 1.0
+  CUTMIX_MINMAX: null
+  MIXUP: 0.8
+  MIXUP_MODE: batch
+  MIXUP_PROB: 1.0
+  MIXUP_SWITCH_PROB: 0.5
+  RECOUNT: 1
+  REMODE: pixel
+  REPROB: 0.25
+BASE:
+- ''
+DATA:
+  BATCH_SIZE: 128
+  CACHE_MODE: part
+  DATASET: cifar
+  DATA_PATH: CIFAR10_data
+  IMG_SIZE: 224
+  INTERPOLATION: bicubic
+  NUM_WORKERS: 8
+  PIN_MEMORY: true
+  ZIP_MODE: false
+EVAL_MODE: false
+LOCAL_RANK: 0
+MODEL:
+  DROP_PATH_RATE: 0.2
+  DROP_RATE: 0.0
+  DWNET:
+    APE: false
+    CONV_TYPE: v1
+    DEPTHS:
+    - 2
+    - 2
+    - 6
+    - 2
+    DYNAMIC: false
+    EMBED_DIM: 96
+    IN_CHANS: 3
+    MLP_RATIO: 4.0
+    PATCH_NORM: true
+    PATCH_SIZE: 4
+    WINDOW_SIZE: 7
+  HALO:
+    APE: false
+    DEPTHS:
+    - 2
+    - 2
+    - 6
+    - 2
+    EMBED_DIM: 96
+    HALO_SIZE:
+    - 3
+    - 3
+    - 3
+    - 3
+    IN_CHANS: 3
+    MLP_RATIO: 4.0
+    NUM_HEADS:
+    - 3
+    - 6
+    - 12
+    - 24
+    PATCH_NORM: true
+    PATCH_SIZE: 4
+    QKV_BIAS: true
+    QK_SCALE: null
+    WINDOW_SIZE:
+    - 7
+    - 7
+    - 7
+    - 7
+  LABEL_SMOOTHING: 0.1
+  NAME: dwnet_tiny_patch4_window7_224
+  NUM_CLASSES: 1000
+  RESUME: ''
+  TYPE: dwnet
+OUTPUT: output/dwnet_tiny_patch4_window7_224/dwnet_tiny_patch4_window7_224/default
+PRINT_FREQ: 10
+SAVE_FREQ: 1
+SEED: 0
+TAG: default
+TEST:
+  CROP: true
+THROUGHPUT_MODE: false
+TRAIN:
+  ACCUMULATION_STEPS: 0
+  AUTO_RESUME: false
+  BASE_LR: 0.000125
+  CLIP_GRAD: 5.0
+  EPOCHS: 1
+  LR_SCHEDULER:
+    DECAY_EPOCHS: 30
+    DECAY_RATE: 0.1
+    NAME: cosine
+  MIN_LR: 1.25e-06
+  OPTIMIZER:
+    BETAS:
+    - 0.9
+    - 0.999
+    EPS: 1.0e-08
+    MOMENTUM: 0.9
+    NAME: adamw
+  START_EPOCH: 0
+  USE_CHECKPOINT: false
+  WARMUP_EPOCHS: 20
+  WARMUP_LR: 1.25e-07
+  WEIGHT_DECAY: 0.05
+
+[2021-12-09 20:11:14 dwnet_tiny_patch4_window7_224] (main.py 75): INFO Creating model:dwnet/dwnet_tiny_patch4_window7_224
+[2021-12-09 20:11:14 dwnet_tiny_patch4_window7_224] (main.py 78): INFO DWNet(
+  (patch_embed): PatchEmbed(
+    (proj): Conv2d(3, 96, kernel_size=(4, 4), stride=(4, 4))
+    (norm): LayerNorm((96,), eps=1e-05, elementwise_affine=True)
+  )
+  (pos_drop): Dropout(p=0.0, inplace=False)
+  (layers): ModuleList(
+    (0): BasicLayer(
+      dim=96, input_resolution=(56, 56), depth=2
+      (blocks): ModuleList(
+        (0): SpatialBlock(
+          dim=96, input_resolution=(56, 56) window_size=7, mlp_ratio=4.0
+          (attn2conv): DWBlock(
+            dim=96, window_size=7
+            (conv0): Conv2d(96, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn0): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv): Conv2d(96, 96, kernel_size=(7, 7), stride=(1, 1), padding=(3, 3), groups=96)
+            (bn): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (relu): ReLU(inplace=True)
+            (conv2): Conv2d(96, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn2): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (drop_path): Identity()
+          (mlp): Mlp(
+            (fc1): Linear(in_features=96, out_features=384, bias=True)
+            (act): GELU()
+            (fc2): Linear(in_features=384, out_features=96, bias=True)
+            (drop): Dropout(p=0.0, inplace=False)
+          )
+          (bn): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (1): SpatialBlock(
+          dim=96, input_resolution=(56, 56) window_size=7, mlp_ratio=4.0
+          (attn2conv): DWBlock(
+            dim=96, window_size=7
+            (conv0): Conv2d(96, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn0): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv): Conv2d(96, 96, kernel_size=(7, 7), stride=(1, 1), padding=(3, 3), groups=96)
+            (bn): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (relu): ReLU(inplace=True)
+            (conv2): Conv2d(96, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn2): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (drop_path): DropPath()
+          (mlp): Mlp(
+            (fc1): Linear(in_features=96, out_features=384, bias=True)
+            (act): GELU()
+            (fc2): Linear(in_features=384, out_features=96, bias=True)
+            (drop): Dropout(p=0.0, inplace=False)
+          )
+          (bn): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (downsample): PatchMerging(
+        input_resolution=(56, 56), dim=96
+        (reduction): Linear(in_features=384, out_features=192, bias=False)
+        (norm): LayerNorm((384,), eps=1e-05, elementwise_affine=True)
+      )
+    )
+    (1): BasicLayer(
+      dim=192, input_resolution=(28, 28), depth=2
+      (blocks): ModuleList(
+        (0): SpatialBlock(
+          dim=192, input_resolution=(28, 28) window_size=7, mlp_ratio=4.0
+          (attn2conv): DWBlock(
+            dim=192, window_size=7
+            (conv0): Conv2d(192, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn0): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv): Conv2d(192, 192, kernel_size=(7, 7), stride=(1, 1), padding=(3, 3), groups=192)
+            (bn): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (relu): ReLU(inplace=True)
+            (conv2): Conv2d(192, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn2): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (drop_path): DropPath()
+          (mlp): Mlp(
+            (fc1): Linear(in_features=192, out_features=768, bias=True)
+            (act): GELU()
+            (fc2): Linear(in_features=768, out_features=192, bias=True)
+            (drop): Dropout(p=0.0, inplace=False)
+          )
+          (bn): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (1): SpatialBlock(
+          dim=192, input_resolution=(28, 28) window_size=7, mlp_ratio=4.0
+          (attn2conv): DWBlock(
+            dim=192, window_size=7
+            (conv0): Conv2d(192, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn0): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv): Conv2d(192, 192, kernel_size=(7, 7), stride=(1, 1), padding=(3, 3), groups=192)
+            (bn): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (relu): ReLU(inplace=True)
+            (conv2): Conv2d(192, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn2): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (drop_path): DropPath()
+          (mlp): Mlp(
+            (fc1): Linear(in_features=192, out_features=768, bias=True)
+            (act): GELU()
+            (fc2): Linear(in_features=768, out_features=192, bias=True)
+            (drop): Dropout(p=0.0, inplace=False)
+          )
+          (bn): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (downsample): PatchMerging(
+        input_resolution=(28, 28), dim=192
+        (reduction): Linear(in_features=768, out_features=384, bias=False)
+        (norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+      )
+    )
+    (2): BasicLayer(
+      dim=384, input_resolution=(14, 14), depth=6
+      (blocks): ModuleList(
+        (0): SpatialBlock(
+          dim=384, input_resolution=(14, 14) window_size=7, mlp_ratio=4.0
+          (attn2conv): DWBlock(
+            dim=384, window_size=7
+            (conv0): Conv2d(384, 384, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn0): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv): Conv2d(384, 384, kernel_size=(7, 7), stride=(1, 1), padding=(3, 3), groups=384)
+            (bn): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (relu): ReLU(inplace=True)
+            (conv2): Conv2d(384, 384, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn2): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (drop_path): DropPath()
+          (mlp): Mlp(
+            (fc1): Linear(in_features=384, out_features=1536, bias=True)
+            (act): GELU()
+            (fc2): Linear(in_features=1536, out_features=384, bias=True)
+            (drop): Dropout(p=0.0, inplace=False)
+          )
+          (bn): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (1): SpatialBlock(
+          dim=384, input_resolution=(14, 14) window_size=7, mlp_ratio=4.0
+          (attn2conv): DWBlock(
+            dim=384, window_size=7
+            (conv0): Conv2d(384, 384, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn0): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv): Conv2d(384, 384, kernel_size=(7, 7), stride=(1, 1), padding=(3, 3), groups=384)
+            (bn): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (relu): ReLU(inplace=True)
+            (conv2): Conv2d(384, 384, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn2): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (drop_path): DropPath()
+          (mlp): Mlp(
+            (fc1): Linear(in_features=384, out_features=1536, bias=True)
+            (act): GELU()
+            (fc2): Linear(in_features=1536, out_features=384, bias=True)
+            (drop): Dropout(p=0.0, inplace=False)
+          )
+          (bn): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (2): SpatialBlock(
+          dim=384, input_resolution=(14, 14) window_size=7, mlp_ratio=4.0
+          (attn2conv): DWBlock(
+            dim=384, window_size=7
+            (conv0): Conv2d(384, 384, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn0): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv): Conv2d(384, 384, kernel_size=(7, 7), stride=(1, 1), padding=(3, 3), groups=384)
+            (bn): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (relu): ReLU(inplace=True)
+            (conv2): Conv2d(384, 384, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn2): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (drop_path): DropPath()
+          (mlp): Mlp(
+            (fc1): Linear(in_features=384, out_features=1536, bias=True)
+            (act): GELU()
+            (fc2): Linear(in_features=1536, out_features=384, bias=True)
+            (drop): Dropout(p=0.0, inplace=False)
+          )
+          (bn): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (3): SpatialBlock(
+          dim=384, input_resolution=(14, 14) window_size=7, mlp_ratio=4.0
+          (attn2conv): DWBlock(
+            dim=384, window_size=7
+            (conv0): Conv2d(384, 384, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn0): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv): Conv2d(384, 384, kernel_size=(7, 7), stride=(1, 1), padding=(3, 3), groups=384)
+            (bn): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (relu): ReLU(inplace=True)
+            (conv2): Conv2d(384, 384, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn2): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (drop_path): DropPath()
+          (mlp): Mlp(
+            (fc1): Linear(in_features=384, out_features=1536, bias=True)
+            (act): GELU()
+            (fc2): Linear(in_features=1536, out_features=384, bias=True)
+            (drop): Dropout(p=0.0, inplace=False)
+          )
+          (bn): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (4): SpatialBlock(
+          dim=384, input_resolution=(14, 14) window_size=7, mlp_ratio=4.0
+          (attn2conv): DWBlock(
+            dim=384, window_size=7
+            (conv0): Conv2d(384, 384, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn0): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv): Conv2d(384, 384, kernel_size=(7, 7), stride=(1, 1), padding=(3, 3), groups=384)
+            (bn): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (relu): ReLU(inplace=True)
+            (conv2): Conv2d(384, 384, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn2): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (drop_path): DropPath()
+          (mlp): Mlp(
+            (fc1): Linear(in_features=384, out_features=1536, bias=True)
+            (act): GELU()
+            (fc2): Linear(in_features=1536, out_features=384, bias=True)
+            (drop): Dropout(p=0.0, inplace=False)
+          )
+          (bn): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (5): SpatialBlock(
+          dim=384, input_resolution=(14, 14) window_size=7, mlp_ratio=4.0
+          (attn2conv): DWBlock(
+            dim=384, window_size=7
+            (conv0): Conv2d(384, 384, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn0): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv): Conv2d(384, 384, kernel_size=(7, 7), stride=(1, 1), padding=(3, 3), groups=384)
+            (bn): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (relu): ReLU(inplace=True)
+            (conv2): Conv2d(384, 384, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn2): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (drop_path): DropPath()
+          (mlp): Mlp(
+            (fc1): Linear(in_features=384, out_features=1536, bias=True)
+            (act): GELU()
+            (fc2): Linear(in_features=1536, out_features=384, bias=True)
+            (drop): Dropout(p=0.0, inplace=False)
+          )
+          (bn): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (downsample): PatchMerging(
+        input_resolution=(14, 14), dim=384
+        (reduction): Linear(in_features=1536, out_features=768, bias=False)
+        (norm): LayerNorm((1536,), eps=1e-05, elementwise_affine=True)
+      )
+    )
+    (3): BasicLayer(
+      dim=768, input_resolution=(7, 7), depth=2
+      (blocks): ModuleList(
+        (0): SpatialBlock(
+          dim=768, input_resolution=(7, 7) window_size=7, mlp_ratio=4.0
+          (attn2conv): DWBlock(
+            dim=768, window_size=7
+            (conv0): Conv2d(768, 768, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn0): BatchNorm2d(768, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv): Conv2d(768, 768, kernel_size=(7, 7), stride=(1, 1), padding=(3, 3), groups=768)
+            (bn): BatchNorm2d(768, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (relu): ReLU(inplace=True)
+            (conv2): Conv2d(768, 768, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn2): BatchNorm2d(768, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (drop_path): DropPath()
+          (mlp): Mlp(
+            (fc1): Linear(in_features=768, out_features=3072, bias=True)
+            (act): GELU()
+            (fc2): Linear(in_features=3072, out_features=768, bias=True)
+            (drop): Dropout(p=0.0, inplace=False)
+          )
+          (bn): BatchNorm2d(768, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (1): SpatialBlock(
+          dim=768, input_resolution=(7, 7) window_size=7, mlp_ratio=4.0
+          (attn2conv): DWBlock(
+            dim=768, window_size=7
+            (conv0): Conv2d(768, 768, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn0): BatchNorm2d(768, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv): Conv2d(768, 768, kernel_size=(7, 7), stride=(1, 1), padding=(3, 3), groups=768)
+            (bn): BatchNorm2d(768, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (relu): ReLU(inplace=True)
+            (conv2): Conv2d(768, 768, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn2): BatchNorm2d(768, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (drop_path): DropPath()
+          (mlp): Mlp(
+            (fc1): Linear(in_features=768, out_features=3072, bias=True)
+            (act): GELU()
+            (fc2): Linear(in_features=3072, out_features=768, bias=True)
+            (drop): Dropout(p=0.0, inplace=False)
+          )
+          (bn): BatchNorm2d(768, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+    )
+  )
+  (norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+  (avgpool): AdaptiveAvgPool1d(output_size=1)
+  (head): Linear(in_features=768, out_features=10, bias=True)
+)
+[2021-12-09 20:11:14 dwnet_tiny_patch4_window7_224] (main.py 87): INFO number of params: 23411434
+[2021-12-09 20:11:14 dwnet_tiny_patch4_window7_224] (main.py 90): INFO number of GFLOPs: 3.74138112
+[2021-12-09 20:11:14 dwnet_tiny_patch4_window7_224] (main.py 125): INFO Start training
+[2021-12-09 20:52:28 dwnet_tiny_patch4_window7_224] (main.py 370): INFO Full config saved to output/dwnet_tiny_patch4_window7_224/dwnet_tiny_patch4_window7_224/default/config.json
+[2021-12-09 20:52:28 dwnet_tiny_patch4_window7_224] (main.py 373): INFO AMP_OPT_LEVEL: O1
+AUG:
+  AUTO_AUGMENT: rand-m9-mstd0.5-inc1
+  COLOR_JITTER: 0.4
+  CUTMIX: 1.0
+  CUTMIX_MINMAX: null
+  MIXUP: 0.8
+  MIXUP_MODE: batch
+  MIXUP_PROB: 1.0
+  MIXUP_SWITCH_PROB: 0.5
+  RECOUNT: 1
+  REMODE: pixel
+  REPROB: 0.25
+BASE:
+- ''
+DATA:
+  BATCH_SIZE: 128
+  CACHE_MODE: part
+  DATASET: cifar
+  DATA_PATH: CIFAR10_data
+  IMG_SIZE: 224
+  INTERPOLATION: bicubic
+  NUM_WORKERS: 8
+  PIN_MEMORY: true
+  ZIP_MODE: false
+EVAL_MODE: false
+LOCAL_RANK: 0
+MODEL:
+  DROP_PATH_RATE: 0.2
+  DROP_RATE: 0.0
+  DWNET:
+    APE: false
+    CONV_TYPE: v1
+    DEPTHS:
+    - 2
+    - 2
+    - 6
+    - 2
+    DYNAMIC: false
+    EMBED_DIM: 96
+    IN_CHANS: 3
+    MLP_RATIO: 4.0
+    PATCH_NORM: true
+    PATCH_SIZE: 4
+    WINDOW_SIZE: 7
+  HALO:
+    APE: false
+    DEPTHS:
+    - 2
+    - 2
+    - 6
+    - 2
+    EMBED_DIM: 96
+    HALO_SIZE:
+    - 3
+    - 3
+    - 3
+    - 3
+    IN_CHANS: 3
+    MLP_RATIO: 4.0
+    NUM_HEADS:
+    - 3
+    - 6
+    - 12
+    - 24
+    PATCH_NORM: true
+    PATCH_SIZE: 4
+    QKV_BIAS: true
+    QK_SCALE: null
+    WINDOW_SIZE:
+    - 7
+    - 7
+    - 7
+    - 7
+  LABEL_SMOOTHING: 0.1
+  NAME: dwnet_tiny_patch4_window7_224
+  NUM_CLASSES: 1000
+  RESUME: ''
+  TYPE: dwnet
+OUTPUT: output/dwnet_tiny_patch4_window7_224/dwnet_tiny_patch4_window7_224/default
+PRINT_FREQ: 10
+SAVE_FREQ: 1
+SEED: 0
+TAG: default
+TEST:
+  CROP: true
+THROUGHPUT_MODE: false
+TRAIN:
+  ACCUMULATION_STEPS: 0
+  AUTO_RESUME: false
+  BASE_LR: 0.000125
+  CLIP_GRAD: 5.0
+  EPOCHS: 1
+  LR_SCHEDULER:
+    DECAY_EPOCHS: 30
+    DECAY_RATE: 0.1
+    NAME: cosine
+  MIN_LR: 1.25e-06
+  OPTIMIZER:
+    BETAS:
+    - 0.9
+    - 0.999
+    EPS: 1.0e-08
+    MOMENTUM: 0.9
+    NAME: adamw
+  START_EPOCH: 0
+  USE_CHECKPOINT: false
+  WARMUP_EPOCHS: 20
+  WARMUP_LR: 1.25e-07
+  WEIGHT_DECAY: 0.05
+
+[2021-12-09 20:52:31 dwnet_tiny_patch4_window7_224] (main.py 75): INFO Creating model:dwnet/dwnet_tiny_patch4_window7_224
+[2021-12-09 20:52:32 dwnet_tiny_patch4_window7_224] (main.py 78): INFO DWNet(
+  (patch_embed): PatchEmbed(
+    (proj): Conv2d(3, 96, kernel_size=(4, 4), stride=(4, 4))
+    (norm): LayerNorm((96,), eps=1e-05, elementwise_affine=True)
+  )
+  (pos_drop): Dropout(p=0.0, inplace=False)
+  (layers): ModuleList(
+    (0): BasicLayer(
+      dim=96, input_resolution=(56, 56), depth=2
+      (blocks): ModuleList(
+        (0): SpatialBlock(
+          dim=96, input_resolution=(56, 56) window_size=7, mlp_ratio=4.0
+          (attn2conv): DWBlock(
+            dim=96, window_size=7
+            (conv0): Conv2d(96, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn0): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv): Conv2d(96, 96, kernel_size=(7, 7), stride=(1, 1), padding=(3, 3), groups=96)
+            (bn): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (relu): ReLU(inplace=True)
+            (conv2): Conv2d(96, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn2): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (drop_path): Identity()
+          (mlp): Mlp(
+            (fc1): Linear(in_features=96, out_features=384, bias=True)
+            (act): GELU()
+            (fc2): Linear(in_features=384, out_features=96, bias=True)
+            (drop): Dropout(p=0.0, inplace=False)
+          )
+          (bn): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (1): SpatialBlock(
+          dim=96, input_resolution=(56, 56) window_size=7, mlp_ratio=4.0
+          (attn2conv): DWBlock(
+            dim=96, window_size=7
+            (conv0): Conv2d(96, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn0): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv): Conv2d(96, 96, kernel_size=(7, 7), stride=(1, 1), padding=(3, 3), groups=96)
+            (bn): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (relu): ReLU(inplace=True)
+            (conv2): Conv2d(96, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn2): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (drop_path): DropPath()
+          (mlp): Mlp(
+            (fc1): Linear(in_features=96, out_features=384, bias=True)
+            (act): GELU()
+            (fc2): Linear(in_features=384, out_features=96, bias=True)
+            (drop): Dropout(p=0.0, inplace=False)
+          )
+          (bn): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (downsample): PatchMerging(
+        input_resolution=(56, 56), dim=96
+        (reduction): Linear(in_features=384, out_features=192, bias=False)
+        (norm): LayerNorm((384,), eps=1e-05, elementwise_affine=True)
+      )
+    )
+    (1): BasicLayer(
+      dim=192, input_resolution=(28, 28), depth=2
+      (blocks): ModuleList(
+        (0): SpatialBlock(
+          dim=192, input_resolution=(28, 28) window_size=7, mlp_ratio=4.0
+          (attn2conv): DWBlock(
+            dim=192, window_size=7
+            (conv0): Conv2d(192, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn0): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv): Conv2d(192, 192, kernel_size=(7, 7), stride=(1, 1), padding=(3, 3), groups=192)
+            (bn): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (relu): ReLU(inplace=True)
+            (conv2): Conv2d(192, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn2): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (drop_path): DropPath()
+          (mlp): Mlp(
+            (fc1): Linear(in_features=192, out_features=768, bias=True)
+            (act): GELU()
+            (fc2): Linear(in_features=768, out_features=192, bias=True)
+            (drop): Dropout(p=0.0, inplace=False)
+          )
+          (bn): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (1): SpatialBlock(
+          dim=192, input_resolution=(28, 28) window_size=7, mlp_ratio=4.0
+          (attn2conv): DWBlock(
+            dim=192, window_size=7
+            (conv0): Conv2d(192, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn0): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv): Conv2d(192, 192, kernel_size=(7, 7), stride=(1, 1), padding=(3, 3), groups=192)
+            (bn): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (relu): ReLU(inplace=True)
+            (conv2): Conv2d(192, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn2): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (drop_path): DropPath()
+          (mlp): Mlp(
+            (fc1): Linear(in_features=192, out_features=768, bias=True)
+            (act): GELU()
+            (fc2): Linear(in_features=768, out_features=192, bias=True)
+            (drop): Dropout(p=0.0, inplace=False)
+          )
+          (bn): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (downsample): PatchMerging(
+        input_resolution=(28, 28), dim=192
+        (reduction): Linear(in_features=768, out_features=384, bias=False)
+        (norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+      )
+    )
+    (2): BasicLayer(
+      dim=384, input_resolution=(14, 14), depth=6
+      (blocks): ModuleList(
+        (0): SpatialBlock(
+          dim=384, input_resolution=(14, 14) window_size=7, mlp_ratio=4.0
+          (attn2conv): DWBlock(
+            dim=384, window_size=7
+            (conv0): Conv2d(384, 384, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn0): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv): Conv2d(384, 384, kernel_size=(7, 7), stride=(1, 1), padding=(3, 3), groups=384)
+            (bn): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (relu): ReLU(inplace=True)
+            (conv2): Conv2d(384, 384, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn2): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (drop_path): DropPath()
+          (mlp): Mlp(
+            (fc1): Linear(in_features=384, out_features=1536, bias=True)
+            (act): GELU()
+            (fc2): Linear(in_features=1536, out_features=384, bias=True)
+            (drop): Dropout(p=0.0, inplace=False)
+          )
+          (bn): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (1): SpatialBlock(
+          dim=384, input_resolution=(14, 14) window_size=7, mlp_ratio=4.0
+          (attn2conv): DWBlock(
+            dim=384, window_size=7
+            (conv0): Conv2d(384, 384, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn0): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv): Conv2d(384, 384, kernel_size=(7, 7), stride=(1, 1), padding=(3, 3), groups=384)
+            (bn): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (relu): ReLU(inplace=True)
+            (conv2): Conv2d(384, 384, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn2): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (drop_path): DropPath()
+          (mlp): Mlp(
+            (fc1): Linear(in_features=384, out_features=1536, bias=True)
+            (act): GELU()
+            (fc2): Linear(in_features=1536, out_features=384, bias=True)
+            (drop): Dropout(p=0.0, inplace=False)
+          )
+          (bn): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (2): SpatialBlock(
+          dim=384, input_resolution=(14, 14) window_size=7, mlp_ratio=4.0
+          (attn2conv): DWBlock(
+            dim=384, window_size=7
+            (conv0): Conv2d(384, 384, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn0): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv): Conv2d(384, 384, kernel_size=(7, 7), stride=(1, 1), padding=(3, 3), groups=384)
+            (bn): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (relu): ReLU(inplace=True)
+            (conv2): Conv2d(384, 384, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn2): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (drop_path): DropPath()
+          (mlp): Mlp(
+            (fc1): Linear(in_features=384, out_features=1536, bias=True)
+            (act): GELU()
+            (fc2): Linear(in_features=1536, out_features=384, bias=True)
+            (drop): Dropout(p=0.0, inplace=False)
+          )
+          (bn): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (3): SpatialBlock(
+          dim=384, input_resolution=(14, 14) window_size=7, mlp_ratio=4.0
+          (attn2conv): DWBlock(
+            dim=384, window_size=7
+            (conv0): Conv2d(384, 384, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn0): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv): Conv2d(384, 384, kernel_size=(7, 7), stride=(1, 1), padding=(3, 3), groups=384)
+            (bn): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (relu): ReLU(inplace=True)
+            (conv2): Conv2d(384, 384, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn2): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (drop_path): DropPath()
+          (mlp): Mlp(
+            (fc1): Linear(in_features=384, out_features=1536, bias=True)
+            (act): GELU()
+            (fc2): Linear(in_features=1536, out_features=384, bias=True)
+            (drop): Dropout(p=0.0, inplace=False)
+          )
+          (bn): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (4): SpatialBlock(
+          dim=384, input_resolution=(14, 14) window_size=7, mlp_ratio=4.0
+          (attn2conv): DWBlock(
+            dim=384, window_size=7
+            (conv0): Conv2d(384, 384, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn0): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv): Conv2d(384, 384, kernel_size=(7, 7), stride=(1, 1), padding=(3, 3), groups=384)
+            (bn): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (relu): ReLU(inplace=True)
+            (conv2): Conv2d(384, 384, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn2): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (drop_path): DropPath()
+          (mlp): Mlp(
+            (fc1): Linear(in_features=384, out_features=1536, bias=True)
+            (act): GELU()
+            (fc2): Linear(in_features=1536, out_features=384, bias=True)
+            (drop): Dropout(p=0.0, inplace=False)
+          )
+          (bn): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (5): SpatialBlock(
+          dim=384, input_resolution=(14, 14) window_size=7, mlp_ratio=4.0
+          (attn2conv): DWBlock(
+            dim=384, window_size=7
+            (conv0): Conv2d(384, 384, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn0): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv): Conv2d(384, 384, kernel_size=(7, 7), stride=(1, 1), padding=(3, 3), groups=384)
+            (bn): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (relu): ReLU(inplace=True)
+            (conv2): Conv2d(384, 384, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn2): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (drop_path): DropPath()
+          (mlp): Mlp(
+            (fc1): Linear(in_features=384, out_features=1536, bias=True)
+            (act): GELU()
+            (fc2): Linear(in_features=1536, out_features=384, bias=True)
+            (drop): Dropout(p=0.0, inplace=False)
+          )
+          (bn): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (downsample): PatchMerging(
+        input_resolution=(14, 14), dim=384
+        (reduction): Linear(in_features=1536, out_features=768, bias=False)
+        (norm): LayerNorm((1536,), eps=1e-05, elementwise_affine=True)
+      )
+    )
+    (3): BasicLayer(
+      dim=768, input_resolution=(7, 7), depth=2
+      (blocks): ModuleList(
+        (0): SpatialBlock(
+          dim=768, input_resolution=(7, 7) window_size=7, mlp_ratio=4.0
+          (attn2conv): DWBlock(
+            dim=768, window_size=7
+            (conv0): Conv2d(768, 768, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn0): BatchNorm2d(768, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv): Conv2d(768, 768, kernel_size=(7, 7), stride=(1, 1), padding=(3, 3), groups=768)
+            (bn): BatchNorm2d(768, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (relu): ReLU(inplace=True)
+            (conv2): Conv2d(768, 768, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn2): BatchNorm2d(768, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (drop_path): DropPath()
+          (mlp): Mlp(
+            (fc1): Linear(in_features=768, out_features=3072, bias=True)
+            (act): GELU()
+            (fc2): Linear(in_features=3072, out_features=768, bias=True)
+            (drop): Dropout(p=0.0, inplace=False)
+          )
+          (bn): BatchNorm2d(768, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (1): SpatialBlock(
+          dim=768, input_resolution=(7, 7) window_size=7, mlp_ratio=4.0
+          (attn2conv): DWBlock(
+            dim=768, window_size=7
+            (conv0): Conv2d(768, 768, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn0): BatchNorm2d(768, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (conv): Conv2d(768, 768, kernel_size=(7, 7), stride=(1, 1), padding=(3, 3), groups=768)
+            (bn): BatchNorm2d(768, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (relu): ReLU(inplace=True)
+            (conv2): Conv2d(768, 768, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn2): BatchNorm2d(768, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (drop_path): DropPath()
+          (mlp): Mlp(
+            (fc1): Linear(in_features=768, out_features=3072, bias=True)
+            (act): GELU()
+            (fc2): Linear(in_features=3072, out_features=768, bias=True)
+            (drop): Dropout(p=0.0, inplace=False)
+          )
+          (bn): BatchNorm2d(768, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+    )
+  )
+  (norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+  (avgpool): AdaptiveAvgPool1d(output_size=1)
+  (head): Linear(in_features=768, out_features=10, bias=True)
+)
+[2021-12-09 20:52:32 dwnet_tiny_patch4_window7_224] (main.py 87): INFO number of params: 23411434
+[2021-12-09 20:52:32 dwnet_tiny_patch4_window7_224] (main.py 90): INFO number of GFLOPs: 3.74138112
+[2021-12-09 20:52:32 dwnet_tiny_patch4_window7_224] (main.py 125): INFO Start training
