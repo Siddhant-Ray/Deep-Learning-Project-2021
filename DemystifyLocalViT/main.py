@@ -124,6 +124,15 @@ def main(config):
 
     logger.info("Start training")
     start_time = time.time()
+
+
+    # MOVE TO CONFIG
+    lr_scheduler = torch.optim.lr_scheduler.OneCycleLR(optimizer,
+            max_lr=1e-4,
+            steps_per_epoch = len(data_loader_train),
+            epochs = config.TRAIN.EPOCHS)
+
+
     for epoch in range(config.TRAIN.START_EPOCH, config.TRAIN.EPOCHS):
         data_loader_train.sampler.set_epoch(epoch)
 
@@ -197,7 +206,7 @@ def train_one_epoch(config, model, criterion, data_loader, optimizer, epoch, mix
             if (idx + 1) % config.TRAIN.ACCUMULATION_STEPS == 0:
                 optimizer.step()
                 optimizer.zero_grad()
-                lr_scheduler.step_update(epoch * num_steps + idx)
+                lr_scheduler.step()
         else:
             loss = criterion(outputs, targets)
 
@@ -232,7 +241,7 @@ def train_one_epoch(config, model, criterion, data_loader, optimizer, epoch, mix
                     torch.cuda.empty_cache()
                     continue
             optimizer.step()
-            lr_scheduler.step_update(epoch * num_steps + idx)
+            lr_scheduler.step()
 
         torch.cuda.synchronize()
 
