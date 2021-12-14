@@ -57,7 +57,7 @@ def parse_option():
     parser.add_argument('--throughput', action='store_true', help='Test throughput only')
     parser.add_argument('--data-set', default='IMNET', choices=['CIFAR', 'IMNET'],
                         type=str, help='Image Net dataset path')
-    parser.add_argument('--epoch', default=1, type=int, help='training epoch')
+    parser.add_argument('--epoch', default=400, type=int, help='training epoch')
 
     # distributed training
     parser.add_argument("--local_rank", type=int, required=True, help='local rank for DistributedDataParallel')

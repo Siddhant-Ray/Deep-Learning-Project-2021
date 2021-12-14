@@ -34,7 +34,7 @@ while [ ! -z "$1" ]; do
 done
 echo "here"
 
-bsub "${args[@]}" mpirun bash scripts/run_dwnet_tiny_patch4_window7_224.sh
+bsub "${args[@]}" mpirun bash scripts/run_dynamic_dwnet_base_patch4_window7_224.sh
 
 
 
