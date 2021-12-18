@@ -1,4 +1,4 @@
-import numpy as np, argparse, json
+import numpy as np, argparse, json, sys, os
 
 import matplotlib.pyplot as plt
 from PIL import Image
@@ -11,6 +11,7 @@ import torch.backends.cudnn as cudnn
 from torch.nn import functional as F
 import torch.optim as optim
 
+sys.path.insert(1, os.path.join(sys.path[0],'..'))
 from adv_dataset.combined_cifar import CombinedCifar
 
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
@@ -45,7 +46,7 @@ transforms = {
 
 image_datasets = {
     'validation': 
-    CombinedCifar("dataset/combined_cifar_eval", train=False, transform=transforms['validation'])
+    CombinedCifar("dataset/combined_cifar_eval/", transform=transforms['validation'])
 }
 
 dataloaders = { 
@@ -70,7 +71,7 @@ class ResNet(nn.Module):
             return self.model(*args, **kwargs)
       
 model = ResNet(pretrained=False, num_classes=10).to(device)
-model.load_state_dict(torch.load('saved_model/pytorch/weights.h5'))
+model.load_state_dict(torch.load('saved_model/pytorch/weights_scratch.h5'))
 
 if device == 'cuda':
     model = torch.nn.DataParallel(model)
@@ -112,7 +113,7 @@ def run_model(model, criterion):
 
     return model
 
-combined_images_model = run_model()
+combined_images_model = run_model(model, criterion)
 print("======> This is the classifier on combined images")
 
     
