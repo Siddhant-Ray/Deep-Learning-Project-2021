@@ -17,14 +17,15 @@ BATCH_SIZE = 64
 MODEL_FILE = "model_vit_scratch_e80_acc0.75_loss0.78.pth"
 DATASET_DIR = "../datasets/combined_cifar_eval/"
 
-def get_model():
+def get_model(device):
     vit_conf = ViTConfig()
     vit_conf.num_labels = 10
     model = ViTForImageClassification(config = vit_conf)
-    model.load_state_dict(torch.load(MODEL_FILE, map_location=torch.device('cpu')))
+    model.load_state_dict(torch.load(MODEL_FILE, map_location=device))
     model = torch.nn.DataParallel(model)
     cudnn.benchmark = True
     model.eval()
+    model.to(device)
     return model
 
 def main():
@@ -40,6 +41,10 @@ def main():
         "DATASET_DIR": DATASET_DIR
     }
 
+    print(f"GPU: {torch.cuda.is_available()}")
+    device_id = "cuda" if torch.cuda.is_available() else "cpu"
+    device = torch.device(device_id)
+
     transform = transforms.Compose([
         transforms.Resize(224),
         transforms.ToTensor(), 
@@ -49,10 +54,13 @@ def main():
 
     dataset = CombinedCifar(DATASET_DIR, transform=transform)
     dataloader = DataLoader(dataset, batch_size=BATCH_SIZE, shuffle=False)
-    model = get_model()
+    model = get_model(device)
 
     all_logits = np.zeros((len(dataset), 10))
     for batch, (images, labels) in enumerate(dataloader):
+        images = images.to(device)
+        labels = labels.to(device)
+
         outputs = model(images)
         logits = np.array(outputs.logits)
 
