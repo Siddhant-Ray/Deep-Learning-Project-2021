@@ -21,9 +21,10 @@ def get_model(device):
     vit_conf = ViTConfig()
     vit_conf.num_labels = 10
     model = ViTForImageClassification(config = vit_conf)
-    model.load_state_dict(torch.load(MODEL_FILE, map_location=device))
     model = torch.nn.DataParallel(model)
     cudnn.benchmark = True
+    model.classifier = torch.nn.Linear(in_features=768, out_features=10, bias=True)
+    model.load_state_dict(torch.load(MODEL_FILE, map_location=device))
     model.eval()
     model.to(device)
     return model
@@ -47,7 +48,8 @@ def main():
 
     transform = transforms.Compose([
         transforms.Resize(224),
-        transforms.ToTensor(), 
+        transforms.ConvertImageDtype(torch.float),
+        #transforms.ToTensor(), 
         transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
     ])
 
@@ -62,11 +64,12 @@ def main():
         labels = labels.to(device)
 
         outputs = model(images)
-        logits = np.array(outputs.logits)
+        logits = np.array(outputs.logits.cpu().detach())
 
         all_logits[batch * BATCH_SIZE : (batch + 1) * BATCH_SIZE] = logits
 
-    np.savetxt(OUT_DIR + "logits.csv", all_logits, fmt="%d")
+    np.savetxt(OUT_DIR + "logits.csv", all_logits)
+    np.savetxt(OUT_DIR + "logits_int.csv", all_logits, fmt="%d")
     with open(OUT_DIR + "params.json", "w") as f:
         json.dump(params, f)
 
