@@ -8,6 +8,7 @@ import torch
 import numpy as np
 import datetime
 import json
+import torch.backends.cudnn as cudnn
 
 sys.path.insert(1, os.path.join(sys.path[0], '..'))
 from adv_dataset.combined_cifar import CombinedCifar
@@ -20,13 +21,15 @@ def get_model():
     vit_conf = ViTConfig()
     vit_conf.num_labels = 10
     model = ViTForImageClassification(config = vit_conf)
-    model.load_state_dict(torch.load(MODEL_FILE))
+    model.load_state_dict(torch.load(MODEL_FILE, map_location=torch.device('cpu')))
+    model = torch.nn.DataParallel(model)
+    cudnn.benchmark = True
     model.eval()
     return model
 
 def main():
     # today = datetime.date.today()
-    now = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    now = datetime.datetime.now().strftime("%Y-%m-%d_%H:%M:%S")
     OUT_DIR = "classification_" + now + "/"
     os.mkdir(OUT_DIR)
 
@@ -36,8 +39,6 @@ def main():
         "MODEL_FILE": MODEL_FILE,
         "DATASET_DIR": DATASET_DIR
     }
-    with open(OUT_DIR + "params.json", "w") as f:
-        json.dump(params, f)
 
     transform = transforms.Compose([
         transforms.Resize(224),
@@ -58,6 +59,8 @@ def main():
         all_logits[batch * BATCH_SIZE : (batch + 1) * BATCH_SIZE] = logits
 
     np.savetxt(OUT_DIR + "logits.csv", all_logits, fmt="%d")
+    with open(OUT_DIR + "params.json", "w") as f:
+        json.dump(params, f)
 
 if __name__ == "__main__":
     main()

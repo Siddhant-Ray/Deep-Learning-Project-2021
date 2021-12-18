@@ -13,7 +13,7 @@ source ../venv/bin/activate
 
 args=(
     -G s_stud_infk
-    -n 1
+    -n 4
     -W 1:00
     -R "rusage[mem=4500]"
 )
@@ -24,7 +24,7 @@ while [ ! -z "$1" ]; do
         gpu)
             echo "GPU mode selected"
             args+=(-R "rusage[ngpus_excl_p=8]")
-	    args+=(-R "select[gpu_mtotal0>=10240]")
+        args+=(-R "select[gpu_mtotal0>=10240]")
             ;;
         intr)
             echo "Interactive mode selected"
