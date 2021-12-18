@@ -39,7 +39,8 @@ transforms = {
     'validation':
     transforms.Compose([
         transforms.Resize((224,224)),
-        transforms.ToTensor(),
+        transforms.ConvertImageDtype(torch.float),
+        #transforms.ToTensor(),
         normalize
     ]),
 }
@@ -81,7 +82,8 @@ criterion = nn.CrossEntropyLoss()
 
 def run_model(model, criterion):
     scaler = torch.cuda.amp.GradScaler(enabled=amp)
-    all_logits = []
+    all_logits = np.zeros((len(image_datasets['validation']), 10))
+    all_scaled_probs = np.zeros((len(image_datasets['validation']), 10))
 
     model.eval()
 
@@ -89,32 +91,31 @@ def run_model(model, criterion):
     running_corrects = 0
     total_accuracy = 0 
 
-    for inputs, labels in dataloaders['validation']:
+    for batch, (inputs, labels) in enumerate(dataloaders['validation']):
         inputs = inputs.to(device)
         labels = labels.to(device)
 
         with torch.cuda.amp.autocast(enabled=amp):
             outputs = model(inputs)
-            logit_vals = outputs.logits #### What we really want 
-            all_logits.append(np.array(logit_vals))
-            loss = criterion(outputs, labels).item()
+            logit_vals = np.array(outputs.cpu().detach()) #### What we really want 
+            probs = F.softmax(outputs.cpu().detach().float(), dim = 1)
+            #loss = criterion(outputs, labels).item()
+            all_logits[batch * batch_size : (batch + 1) * batch_size] = logit_vals
+            all_scaled_probs[batch * batch_size : (batch + 1) * batch_size] = probs
 
-            _, preds = torch.max(outputs, 1)
-            running_corrects += torch.sum(preds == labels.data)
+        
+    np.savetxt("resnet_results/logits_int.csv", all_logits, fmt="%d") #Maybe we don't do integer rounding but use softmax
+    np.savetxt("resnet_results/logits.csv", all_logits)
 
-            accuracy = (outputs.argmax(-1) == labels).float().sum()
-            total_accuracy += accuracy
-
-        testset_acc = total_accuracy/ len(image_datasets['validation'])
-
-        print("Accuracy on the combined is {}".format(testset_acc))
-
-    np.savetxt("logits.csv", all_logits, fmt="%d")
-
+    np.savetxt("resnet_results/softmax_probs.csv", all_scaled_probs, fmt = "%.2f")
+    
     return model
 
 combined_images_model = run_model(model, criterion)
 print("======> This is the classifier on combined images")
+
+print("======> This is the model")
+print(model)
 
     
 

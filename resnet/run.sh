@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "script to run srl tasks"
+echo "script to run resnet tasks"
 
 if ls lsf.* 1> /dev/null 2>&1
 then
