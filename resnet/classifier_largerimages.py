@@ -107,7 +107,7 @@ def run_model(model, criterion):
     np.savetxt("resnet_results/logits_int.csv", all_logits, fmt="%d") #Maybe we don't do integer rounding but use softmax
     np.savetxt("resnet_results/logits.csv", all_logits)
 
-    np.savetxt("resnet_results/softmax_probs.csv", all_scaled_probs, fmt = "%.2f")
+    np.savetxt("resnet_results/softmax_probs.csv", all_scaled_probs)
     
     return model
 

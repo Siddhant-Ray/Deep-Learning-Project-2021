@@ -9,6 +9,7 @@ import numpy as np
 import datetime
 import json
 import torch.backends.cudnn as cudnn
+from torch.nn import functional
 
 sys.path.insert(1, os.path.join(sys.path[0], '..'))
 from adv_dataset.combined_cifar import CombinedCifar
@@ -59,17 +60,22 @@ def main():
     model = get_model(device)
 
     all_logits = np.zeros((len(dataset), 10))
+    all_softmax = np.zeros((len(dataset), 10))
+
     for batch, (images, labels) in enumerate(dataloader):
         images = images.to(device)
         labels = labels.to(device)
 
         outputs = model(images)
         logits = np.array(outputs.logits.cpu().detach())
+        softmax = functional.softmax(outputs.logits.cpu().detach().float(), dim = 1)
 
         all_logits[batch * BATCH_SIZE : (batch + 1) * BATCH_SIZE] = logits
+        all_softmax[batch * BATCH_SIZE : (batch + 1) * BATCH_SIZE] = softmax
 
     np.savetxt(OUT_DIR + "logits.csv", all_logits)
     np.savetxt(OUT_DIR + "logits_int.csv", all_logits, fmt="%d")
+    np.savetxt(OUT_DIR + "softmax_probs.csv", all_softmax)
     with open(OUT_DIR + "params.json", "w") as f:
         json.dump(params, f)
 
