@@ -55,7 +55,8 @@ def main():
 	vit_softmax = np.loadtxt(VIT_SOFTMAX_FILE, dtype=float)
 
 	noise_labels = np.copy(truth_labels)
-	np.random.shuffle(noise_labels)
+	for row in noise_labels:
+		np.random.shuffle(row)
 
 	print("SUMMARY")
 	print("- RESNET COMPARED TO TRUE LABELS ---------------")
