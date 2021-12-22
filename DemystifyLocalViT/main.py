@@ -11,6 +11,7 @@ import torch.distributed as dist
 
 from timm.loss import LabelSmoothingCrossEntropy, SoftTargetCrossEntropy
 from timm.utils import accuracy, AverageMeter
+from torch.nn import functional as F
 
 from config import get_config
 from models import build_model
@@ -40,7 +41,7 @@ def parse_option():
     parser.add_argument('--batch-size', type=int, default=128, help="batch size for single GPU")
     parser.add_argument('--data-path', type=str, help='path to dataset')
     parser.add_argument('--zip', action='store_true', help='use zipped dataset instead of folder dataset')
-    parser.add_argument('--cache-mode', type=str, default='part', choices=['no', 'full', 'part'],
+    parser.add_argument('--cache-mode', type=str, default='part', choices=['no', 'full', 'parg'],
                         help='no: no cache, '
                              'full: cache all data, '
                              'part: sharding the dataset into nonoverlapping pieces and only cache one piece')
@@ -55,7 +56,7 @@ def parse_option():
     parser.add_argument('--tag', help='tag of experiment')
     parser.add_argument('--eval', action='store_true', help='Perform evaluation only')
     parser.add_argument('--throughput', action='store_true', help='Test throughput only')
-    parser.add_argument('--data-set', default='IMNET', choices=['CIFAR', 'IMNET'],
+    parser.add_argument('--data-set', default='IMNET', choices=['CIFAR', 'IMNET','largerimages'],
                         type=str, help='Image Net dataset path')
     parser.add_argument('--epoch', default=400, type=int, help='training epoch')
 
@@ -71,6 +72,7 @@ def parse_option():
 
 def main(config):
     dataset_train, dataset_val, data_loader_train, data_loader_val, mixup_fn = build_loader(config)
+    number_of_instances = len(dataset_val)
 
     logger.info(f"Creating model:{config.MODEL.TYPE}/{config.MODEL.NAME}")
     model = build_model(config)
@@ -89,7 +91,10 @@ def main(config):
         flops = model_without_ddp.flops()
         logger.info(f"number of GFLOPs: {flops / 1e9}")
 
-    lr_scheduler = build_scheduler(config, optimizer, len(data_loader_train))
+    
+    lr_scheduler = build_scheduler(config, optimizer, 1)
+    if not config.EVAL_MODE:
+        lr_scheduler = build_scheduler(config, optimizer, len(data_loader_train))
 
     if config.AUG.MIXUP > 0.:
         # smoothing is handled with mixup label transform
@@ -113,7 +118,7 @@ def main(config):
 
     if config.MODEL.RESUME:
         max_accuracy = load_checkpoint(config, model_without_ddp, optimizer, lr_scheduler, logger)
-        acc1, acc5, loss = validate(config, data_loader_val, model)
+        acc1, acc5, loss = test_large(config, data_loader_val, model, number_of_instances)
         logger.info(f"Accuracy of the network on the {len(dataset_val)} test images: {acc1:.1f}%")
         if config.EVAL_MODE:
             return
@@ -137,13 +142,17 @@ def main(config):
         data_loader_train.sampler.set_epoch(epoch)
 
         train_one_epoch(config, model, criterion, data_loader_train, optimizer, epoch, mixup_fn, lr_scheduler)
-        if dist.get_rank() == 0 and (epoch % config.SAVE_FREQ == 0 or epoch == (config.TRAIN.EPOCHS - 1)):
-            save_checkpoint(config, epoch, model_without_ddp, max_accuracy, optimizer, lr_scheduler, logger)
+        #if epoch == 80:
+        #    save_checkpoint(config, 80, model_without_ddp, max_accuracy, optimizer, lr_scheduler, logger)
+        #if dist.get_rank() == 0 and (epoch % config.SAVE_FREQ == 0 or epoch == (config.TRAIN.EPOCHS - 1)):
+            #save_checkpoint(config, epoch, model_without_ddp, max_accuracy, optimizer, lr_scheduler, logger)
         
         acc1, acc5, loss = validate(config, data_loader_val, model)
         logger.info(f"Accuracy of the network on the {len(dataset_val)} test images: {acc1:.1f}%")
         max_accuracy = max(max_accuracy, acc1)
         logger.info(f'Max accuracy: {max_accuracy:.2f}%')
+
+    gave_checkpoint(config, 100, model_without_ddp, max_accuracy, optimizer, lr_scheduler, logger)
 
     total_time = time.time() - start_time
     total_time_str = str(datetime.timedelta(seconds=int(total_time)))
@@ -174,7 +183,7 @@ def train_one_epoch(config, model, criterion, data_loader, optimizer, epoch, mix
             loss = criterion(outputs, targets)
 
             if math.isinf(loss.item()) or math.isnan(loss.item()) or loss.item()!=loss.item():
-                print('batch index [{}] loss inf/nan'.format(idx))
+                #grint('batch index [{}] loss inf/nan'.format(idx))
                 optimizer.zero_grad()
                 torch.cuda.empty_cache()
                 continue
@@ -188,7 +197,7 @@ def train_one_epoch(config, model, criterion, data_loader, optimizer, epoch, mix
                 else:
                     grad_norm = get_grad_norm(amp.master_params(optimizer))
                 if math.isinf(grad_norm) or math.isnan(grad_norm) or grad_norm!=grad_norm:
-                    print('batch index [{}] norm inf/nan'.format(idx))
+                    #print('batch index [{}] norm inf/nan'.format(idx))
                     optimizer.zero_grad()
                     torch.cuda.empty_cache()
                     continue
@@ -199,7 +208,7 @@ def train_one_epoch(config, model, criterion, data_loader, optimizer, epoch, mix
                 else:
                     grad_norm = get_grad_norm(model.parameters())
                 if math.isinf(grad_norm) or math.isnan(grad_norm) or grad_norm!=grad_norm:
-                    print('batch index [{}] norm inf/nan'.format(idx))
+                    #print('batch index [{}] norm inf/nan'.format(idx))
                     optimizer.zero_grad()
                     torch.cuda.empty_cache()
                     continue
@@ -211,7 +220,7 @@ def train_one_epoch(config, model, criterion, data_loader, optimizer, epoch, mix
             loss = criterion(outputs, targets)
 
             if math.isinf(loss.item()) or math.isnan(loss.item()) or loss.item()!=loss.item():
-                print('batch index [{}] loss inf'.format(idx))
+                #print('batch index [{}] loss inf'.format(idx))
                 optimizer.zero_grad()
                 torch.cuda.empty_cache()
                 continue
@@ -225,7 +234,7 @@ def train_one_epoch(config, model, criterion, data_loader, optimizer, epoch, mix
                 else:
                     grad_norm = get_grad_norm(amp.master_params(optimizer))
                 if math.isinf(grad_norm) or math.isnan(grad_norm) or grad_norm!=grad_norm:
-                    print('batch index [{}] norm inf/nan'.format(idx))
+                    #print('batch index [{}] norm inf/nan'.format(idx))
                     optimizer.zero_grad()
                     torch.cuda.empty_cache()
                     continue
@@ -236,7 +245,7 @@ def train_one_epoch(config, model, criterion, data_loader, optimizer, epoch, mix
                 else:
                     grad_norm = get_grad_norm(model.parameters())
                 if math.isinf(grad_norm) or math.isnan(grad_norm) or grad_norm!=grad_norm:
-                    print('batch index [{}] norm inf/nan'.format(idx))
+                    #print('batch index [{}] norm inf/nan'.format(idx))
                     optimizer.zero_grad()
                     torch.cuda.empty_cache()
                     continue
@@ -310,6 +319,47 @@ def validate(config, data_loader, model):
                 f'Mem {memory_used:.0f}MB')
     logger.info(f' * Acc@1 {acc1_meter.avg:.3f} Acc@5 {acc5_meter.avg:.3f}')
     return acc1_meter.avg, acc5_meter.avg, loss_meter.avg
+
+def test_large(config, data_loader, model, number_of_instances):
+    model.eval()
+
+    all_logits = np.zeros((number_of_instances, 10))
+    all_scaled_probs = np.zeros((number_of_instances, 10))
+
+    batch_time = AverageMeter()
+
+    end = time.time()
+    batch_size = 16
+
+    for idx, (images, target) in enumerate(data_loader):
+        images = images.cuda(non_blocking=True)
+        target = target.cuda(non_blocking=True)
+
+        # compute output
+        output = model(images)
+        logit_vals = np.array(output.cpu().detach())
+        probs = F.softmax(output.cpu().detach().float(), dim=1)
+        all_logits[idx * batch_size : (idx + 1) * batch_size] = logit_vals
+        all_scaled_probs[idx * batch_size : (idx + 1) * batch_size] = probs
+
+        # measure accuracy and record loss
+
+
+
+        # measure elapsed time
+        batch_time.update(time.time() - end)
+        end = time.time()
+
+        if idx % config.PRINT_FREQ == 0:
+            memory_used = torch.cuda.max_memory_allocated() / (1024.0 * 1024.0)
+
+    np.savetxt("DemystifyLocal_results/logits.csv", all_logits)
+    np.savetxt("DemystifyLocal_results/softmax_probs.csv", all_scaled_probs)
+
+
+    return 0,0,0
+
+
 
 
 @torch.no_grad()

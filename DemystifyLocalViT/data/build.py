@@ -18,6 +18,11 @@ from timm.data import create_transform
 from timm.data.transforms import _pil_interp
 from .cached_image_folder import CachedImageFolder
 from .samplers import SubsetRandomSampler
+import sys
+import os
+
+sys.path.insert(1, os.path.join(sys.path[0], '../'))
+from adv_dataset.combined_cifar import CombinedCifar
 
 
 
@@ -121,6 +126,9 @@ def build_dataset(is_train, config):
     elif config.DATA.DATASET == 'cifar':
         dataset = datasets.CIFAR10(config.DATA.DATA_PATH, train=is_train, transform=transform, download=True)
         nb_classes = 10
+    elif config.DATA.DATASET == 'largerimages':
+        dataset = CombinedCifar(config.DATA.DATA_PATH, transform=transform)
+        nb_classes = 10
     else:
         raise NotImplementedError("We only support ImageNet Now.")
 
@@ -129,6 +137,8 @@ def build_dataset(is_train, config):
 
 def build_transform(is_train, config):
     resize_im = config.DATA.IMG_SIZE > 32
+
+    t = []
     if is_train:
         # this should always dispatch to transforms_imagenet_train
         transform = create_transform(
@@ -147,7 +157,9 @@ def build_transform(is_train, config):
             transform.transforms[0] = transforms.RandomCrop(config.DATA.IMG_SIZE, padding=4)
         return transform
 
-    t = []
+    if config.DATA.DATASET == 'largerimages':
+        t.append(transforms.ConvertImageDtype(torch.float))
+
     if resize_im:
         if config.TEST.CROP:
             size = int((256 / 224) * config.DATA.IMG_SIZE)
@@ -162,6 +174,10 @@ def build_transform(is_train, config):
                                   interpolation=_pil_interp(config.DATA.INTERPOLATION))
             )
 
-    t.append(transforms.ToTensor())
+    if config.DATA.DATASET != 'largerimages':
+       gt.append(transforms.ToTensor())
     t.append(transforms.Normalize(IMAGENET_DEFAULT_MEAN, IMAGENET_DEFAULT_STD))
+
     return transforms.Compose(t)
+
+

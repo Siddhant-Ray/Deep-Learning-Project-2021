@@ -14,9 +14,10 @@ source ../venv/bin/activate
 args=(
     -G s_stud_infk
     -n 1
-    -W 4:00
+    -W 120:00
     -R "rusage[mem=4500, ngpus_excl_p=8]"
 )
+
 
 if [ -z "$1" ]; then echo "CPU mode selected"; fi
 while [ ! -z "$1" ]; do
@@ -34,7 +35,10 @@ while [ ! -z "$1" ]; do
 done
 echo "here"
 
-bsub "${args[@]}" mpirun bash scripts/run_dynamic_dwnet_base_patch4_window7_224.sh
+#bsub "${args[@]}" mpirun bash scripts/run_dynamic_dwnet_base_patch4_window7_224.sh
+
+bsub "${args[@]}" mpirun bash scripts/eval.sh
+
 
 
 

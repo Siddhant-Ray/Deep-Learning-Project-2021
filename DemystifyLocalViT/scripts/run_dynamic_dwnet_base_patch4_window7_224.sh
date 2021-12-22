@@ -18,7 +18,7 @@ MKL_THREADING_LAYER=GNU python -m torch.distributed.launch \
     --cfg ./configs/dynamic_dwnet_base_patch4_window7_224.yaml \
     --data-path "CIFAR10_data" \
     --output "output/dynamic_dwnet_base_patch4_window7_224" \
-    --epoch 80 \
+    --epoch 85 \
     --data-set CIFAR \
     --batch-size 16 \
     --amp-opt-level O0

@@ -228,6 +228,8 @@ def update_config(config, args):
         config.DATA.DATASET='cifar'
     elif args.data_set == 'IMNET':
         config.DATA.DATASET='imagenet'
+    elif args.data_set == 'largerimages':
+        config.DATA.DATASET='largerimages'
     if args.epoch!=300:
         config.TRAIN.EPOCHS=args.epoch
         
