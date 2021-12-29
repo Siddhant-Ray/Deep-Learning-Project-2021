@@ -42,7 +42,6 @@ def output(name, truth, predictions, save_files = True):
 	euc_avg, euc = euclidian_metrics(truth, predictions)
 	# ws_avg, ws = wasserstein_metrics(truth, predictions)
 	t4_avg, t4 = top_4_metrics(truth, predictions)
-
 	t4_histogram, bins = np.histogram(t4, bins=[0, 1, 2, 3, 4, 5])
 
 	print("average euclidian norm: ", euc_avg)
@@ -54,6 +53,10 @@ def output(name, truth, predictions, save_files = True):
 		np.savetxt(METRICS_DIR + name + "_euclidian.csv", euc)
 		# np.savetxt(METRICS_DIR + name + "_wasserstein.csv", ws)
 		np.savetxt(METRICS_DIR + name + "_top4.csv", t4)
+		_ = plt.hist(t4, [b - .5 for b in bins], edgecolor='black',)
+		plt.title(name + " - top 4 matching histogram")
+		plt.savefig(METRICS_DIR + name + "_top4_histogram.png", transparent=False)
+		plt.clf()
 
 def main():
 	truth_labels = np.loadtxt(TRUTH_LABELS_FILE, dtype=float)
