@@ -97,7 +97,7 @@ def build_loader(config):
     )
 
     data_loader_val = torch.utils.data.DataLoader(
-        dataset_val, sampler=sampler_val,
+        dataset_val,
         batch_size=config.DATA.BATCH_SIZE,
         shuffle=False,
         num_workers=config.DATA.NUM_WORKERS,
