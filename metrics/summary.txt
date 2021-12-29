@@ -1,0 +1,19 @@
+SUMMARY
+- RESNET COMPARED TO TRUE LABELS ---------------
+average euclidian norm:  1.821749155665053
+average top 4 matching:  2.09
+- RESNET COMPARED TO RANDOM NOISE ------------------
+average euclidian norm:  1.9100855285739504
+average top 4 matching:  1.55
+- VIT COMPARED TO TRUE LABELS ------------------
+average euclidian norm:  1.8387020153529001
+average top 4 matching:  1.93
+- VIT COMPARED TO RANDOM NOISE ------------------
+average euclidian norm:  1.9040296427610102
+average top 4 matching:  1.71
+- LOCAL VIT COMPARED TO TRUE LABELS ------------------
+average euclidian norm:  1.8542004280301279
+average top 4 matching:  1.54
+- LOCAL VIT COMPARED TO RANDOM NOISE ------------------
+average euclidian norm:  1.834220127350421
+average top 4 matching:  1.7
