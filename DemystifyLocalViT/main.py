@@ -41,7 +41,7 @@ def parse_option():
     parser.add_argument('--batch-size', type=int, default=128, help="batch size for single GPU")
     parser.add_argument('--data-path', type=str, help='path to dataset')
     parser.add_argument('--zip', action='store_true', help='use zipped dataset instead of folder dataset')
-    parser.add_argument('--cache-mode', type=str, default='part', choices=['no', 'full', 'parg'],
+    parser.add_argument('--cache-mode', type=str, default='part', choices=['no', 'full', 'part'],
                         help='no: no cache, '
                              'full: cache all data, '
                              'part: sharding the dataset into nonoverlapping pieces and only cache one piece')
@@ -152,7 +152,7 @@ def main(config):
         max_accuracy = max(max_accuracy, acc1)
         logger.info(f'Max accuracy: {max_accuracy:.2f}%')
 
-    gave_checkpoint(config, 100, model_without_ddp, max_accuracy, optimizer, lr_scheduler, logger)
+    save_checkpoint(config, 100, model_without_ddp, max_accuracy, optimizer, lr_scheduler, logger)
 
     total_time = time.time() - start_time
     total_time_str = str(datetime.timedelta(seconds=int(total_time)))
@@ -183,7 +183,7 @@ def train_one_epoch(config, model, criterion, data_loader, optimizer, epoch, mix
             loss = criterion(outputs, targets)
 
             if math.isinf(loss.item()) or math.isnan(loss.item()) or loss.item()!=loss.item():
-                #grint('batch index [{}] loss inf/nan'.format(idx))
+                #print('batch index [{}] loss inf/nan'.format(idx))
                 optimizer.zero_grad()
                 torch.cuda.empty_cache()
                 continue
