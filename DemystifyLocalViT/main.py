@@ -152,7 +152,7 @@ def main(config):
         max_accuracy = max(max_accuracy, acc1)
         logger.info(f'Max accuracy: {max_accuracy:.2f}%')
 
-    gave_checkpoint(config, 100, model_without_ddp, max_accuracy, optimizer, lr_scheduler, logger)
+    save_checkpoint(config, 100, model_without_ddp, max_accuracy, optimizer, lr_scheduler, logger)
 
     total_time = time.time() - start_time
     total_time_str = str(datetime.timedelta(seconds=int(total_time)))

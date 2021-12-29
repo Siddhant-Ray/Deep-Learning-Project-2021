@@ -175,7 +175,7 @@ def build_transform(is_train, config):
             )
 
     if config.DATA.DATASET != 'largerimages':
-       gt.append(transforms.ToTensor())
+       t.append(transforms.ToTensor())
     t.append(transforms.Normalize(IMAGENET_DEFAULT_MEAN, IMAGENET_DEFAULT_STD))
 
     return transforms.Compose(t)
