@@ -1,6 +1,8 @@
 
 import numpy as np
 from scipy import stats
+import matplotlib.pyplot as plt
+
 
 TRUTH_LABELS_FILE = "./datasets/combined_cifar_eval/labels.csv"
 RESNET_SOFTMAX_FILE = "./resnet/resnet_results/softmax_probs.csv"
@@ -41,9 +43,12 @@ def output(name, truth, predictions, save_files = True):
 	# ws_avg, ws = wasserstein_metrics(truth, predictions)
 	t4_avg, t4 = top_4_metrics(truth, predictions)
 
+	t4_histogram, bins = np.histogram(t4, bins=[0, 1, 2, 3, 4, 5])
+
 	print("average euclidian norm: ", euc_avg)
 	# print("average wasserstein norm: ", ws_avg)
 	print("average top 4 matching: ", t4_avg)
+	print("top 4 matching histogram: ", t4_histogram)
 
 	if save_files:
 		np.savetxt(METRICS_DIR + name + "_euclidian.csv", euc)
