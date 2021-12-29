@@ -13,13 +13,13 @@ def load_curve(input_file):
     return curve
 
 
-def plot_loss_curves(curves, labels, colors, no_of_epochs, output_path, name='loss_curve'):
+def plot_loss_curves(curves, labels, colors, output_path, name='loss_curve'):
     fig, ax = plt.subplots(1, 1, figsize=(8, 4))
     
     for curve, label, color in zip(curves, labels, colors):
-        ax.plot(range(no_of_epochs), curve, color=color, label=label)
+        ax.plot(range(len(curve)), curve, color=color, label=label)
 
-    ax.set_xlim(0, no_of_epochs-1)
+    ax.set_xlim(0, len(curve)-1)
     ax.set_xlabel('Epoch', fontsize='large')
     ax.set_ylabel('Loss', fontsize='large')
     ax.legend(fontsize='large')
@@ -31,5 +31,5 @@ if __name__ == '__main__':
     for objective in objectives:
         for target in TARGETS:
             curve = load_curve(objective['output_folder']+'/'+target+'.csv')[:NO_OF_EPOCHS]
-            plot_loss_curves([curve], [objective['name']], ['red'], NO_OF_EPOCHS, \
+            plot_loss_curves([curve], [objective['name']], ['red'], \
                 objective['output_folder'], name=target)
