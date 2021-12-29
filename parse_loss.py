@@ -9,7 +9,7 @@ with open(RESNET50_INPUT, 'r') as resnet50_input, \
     open(RESNET50_OUTPUT + '/train_loss.csv', 'w') as train_loss_file, \
     open(RESNET50_OUTPUT + '/train_acc.csv', 'w') as train_acc_file, \
     open(RESNET50_OUTPUT + '/validation_loss.csv', 'w') as validation_loss_file, \
-    open(RESNET50_OUTPUT + '/validation.acc.csv', 'w') as validation_acc_file:
+    open(RESNET50_OUTPUT + '/validation_acc.csv', 'w') as validation_acc_file:
     for line in resnet50_input:
         if 'train loss' in line:
             train_loss = line[12:18]
