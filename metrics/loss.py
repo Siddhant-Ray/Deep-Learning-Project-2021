@@ -25,7 +25,7 @@ objectives = [{
                 'input_file': '../DemystifyLocalViT/output_for_190_epochs.txt',
                 'output_folder': 'local_vit',
                 'train_loss_key': '[3120/3125]', # hacky, skipping last 5 images
-                'train_loss_idx': 15,
+                'train_loss_idx': 16,
                 'validation_loss_key': '[620/625]', # hacky, skipping last 5 images
                 'validation_loss_idx': 12,
                 'validation_acc_idx': 15
