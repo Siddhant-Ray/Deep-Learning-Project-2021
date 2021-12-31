@@ -33,5 +33,8 @@ while [ ! -z "$1" ]; do
     shift
 done
 
-bsub "${args[@]}" python classifier_pretrained.py 
-bsub "${args[@]}" python classifier_scratch.py 
+#bsub "${args[@]}" python classifier_pretrained.py 
+#bsub "${args[@]}" python classifier_scratch.py 
+bsub "${args[@]}" python classifier_customimages.py combined 
+bsub "${args[@]}" python classifier_customimages.py background 
+
