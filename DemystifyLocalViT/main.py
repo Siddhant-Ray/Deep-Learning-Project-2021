@@ -322,6 +322,7 @@ def validate(config, data_loader, model):
 
 def test_large(config, data_loader, model, number_of_instances):
     model.eval()
+    print(data_loader)
 
     all_logits = np.zeros((number_of_instances, 10))
     all_scaled_probs = np.zeros((number_of_instances, 10))
@@ -330,6 +331,8 @@ def test_large(config, data_loader, model, number_of_instances):
 
     end = time.time()
     batch_size = 16
+
+    n_correct = 0
 
     for idx, (images, target) in enumerate(data_loader):
         images = images.cuda(non_blocking=True)
@@ -343,6 +346,9 @@ def test_large(config, data_loader, model, number_of_instances):
         all_scaled_probs[idx * batch_size : (idx + 1) * batch_size] = probs
 
         # measure accuracy and record loss
+        print("Target : ", target.argmax(1).cpu().numpy())
+        print("Guess : ", logit_vals.argmax(1))
+        n_correct += (logit_vals.argmax(1) == target.argmax(1).cpu().numpy()).sum()
 
 
 
@@ -352,9 +358,11 @@ def test_large(config, data_loader, model, number_of_instances):
 
         if idx % config.PRINT_FREQ == 0:
             memory_used = torch.cuda.max_memory_allocated() / (1024.0 * 1024.0)
+    accuracy = n_correct / number_of_instances
 
     np.savetxt("DemystifyLocal_results/logits.csv", all_logits)
     np.savetxt("DemystifyLocal_results/softmax_probs.csv", all_scaled_probs)
+    print("Demistify accuracy is : {:.4f}".format(accuracy))
 
 
     return 0,0,0
@@ -364,7 +372,7 @@ def test_large(config, data_loader, model, number_of_instances):
 
 @torch.no_grad()
 def throughput(data_loader, model, logger):
-    model.eval()
+    godel.eval()
 
     for idx, (images, _) in enumerate(data_loader):
         images = images.cuda(non_blocking=True)
