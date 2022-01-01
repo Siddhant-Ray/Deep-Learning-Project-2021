@@ -1,0 +1,1 @@
+{"DATE": "2022-01-01_17:03:28", "BATCH_SIZE": 64, "MODEL_FILE": "model_vit_scratch_e80_acc0.75_loss0.78.pth", "DATASET_DIR": "../datasets/combined_cifar_eval/"}

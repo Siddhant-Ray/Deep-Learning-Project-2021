@@ -75,12 +75,12 @@ def classify_background_images(OUT_DIR, DATASET_DIR, transform, device):
         softmax = functional.softmax(outputs.logits.cpu().detach().float(), dim = 1)
         all_softmax[batch * BATCH_SIZE : (batch + 1) * BATCH_SIZE] = softmax
 
-        n_correct += (outputs.logits.argmax(1) == labels.argmax(1)).sum()
+        n_correct += (outputs.logits.argmax(1) == labels.argmax(1)).sum().item()
 
     accuracy = n_correct / len(dataset)
 
     np.savetxt(OUT_DIR + "softmax_probs.csv", all_softmax)
-    np.savetxt(OUT_DIR + "accuracy.txt", np.array(accuracy))
+    np.savetxt(OUT_DIR + "accuracy.txt", np.array([accuracy]))
     print("ViT accuracy on background images is : {:.4f}".format(accuracy))
 
 
@@ -103,9 +103,9 @@ def main():
 
     if args.dataset == "combined":
         DATASET_DIR = "../datasets/combined_cifar_eval/"
-        classify_combined_images(OUT_DIR, transform, device)
+        classify_combined_images(OUT_DIR, DATASET_DIR, transform, device)
     elif args.dataset == "background":
-        DATASET_DIR = ""
+        DATASET_DIR = "../DemystifyLocalViT/CIFAR10_data/background_cifar_eval/"
         classify_background_images(OUT_DIR, DATASET_DIR, transform, device)
     else:
         print(f"unknown dataset: {args.dataset}")
