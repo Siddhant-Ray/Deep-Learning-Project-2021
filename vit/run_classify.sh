@@ -34,4 +34,5 @@ while [ ! -z "$1" ]; do
     shift
 done
 
-bsub "${args[@]}" "python classify.py" 
+bsub "${args[@]}" "python classify.py combined" 
+bsub "${args[@]}" "python classify.py background" 

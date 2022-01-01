@@ -5,7 +5,7 @@ from torchvision.io import read_image
 from torch.utils.data import Dataset
 
 
-class CombinedCifar(Dataset):
+class BackgroundCifar(Dataset):
     def __init__(self, dir, transform=None):
         self.labels = np.genfromtxt(dir + "labels.csv")
         self.dir = dir
@@ -24,7 +24,7 @@ class CombinedCifar(Dataset):
 
 
 def main():
-    dataset = CombinedCifar("../datasets/background_cifar_eval/")
+    dataset = BackgroundCifar("../datasets/background_cifar_eval/")
     print(dataset[10][0].shape, dataset[10][1])
 
 if __name__ == "__main__":

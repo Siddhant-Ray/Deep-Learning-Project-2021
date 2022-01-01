@@ -13,6 +13,7 @@ import torch.optim as optim
 
 sys.path.insert(1, os.path.join(sys.path[0],'..'))
 from adv_dataset.combined_cifar import CombinedCifar
+from background_dataset.background_cifar import BackgroundCifar
 
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 best_acc = 0  # best test accuracy
@@ -46,16 +47,23 @@ transforms = {
 }
 
 image_datasets = {
-    'validation': 
-    CombinedCifar("dataset/combined_cifar_eval/", transform=transforms['validation'])
+    'validation_combined': 
+    CombinedCifar("dataset/combined_cifar_eval/", transform=transforms['validation']),
+    'validation_background':
+    BackgroundCifar("dataset/background_cifar_eval/", transform=transforms['validation'])
 }
 
 dataloaders = { 
-    'validation':
-    torch.utils.data.DataLoader(image_datasets['validation'],
+    'validation_combined':
+    torch.utils.data.DataLoader(image_datasets['validation_combined'],
                                 batch_size=batch_size,
                                 shuffle=False,
-                                num_workers=0)  
+                                num_workers=0),
+    'validation_background':
+    torch.utils.data.DataLoader(image_datasets['validation_background'],
+                                batch_size=batch_size,
+                                shuffle=False,
+                                num_workers=0)                               
 }
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -80,18 +88,14 @@ if device == 'cuda':
 
 criterion = nn.CrossEntropyLoss()
 
-def run_model(model, criterion):
+def run_model_combined(model, criterion):
     scaler = torch.cuda.amp.GradScaler(enabled=amp)
-    all_logits = np.zeros((len(image_datasets['validation']), 10))
-    all_scaled_probs = np.zeros((len(image_datasets['validation']), 10))
+    all_logits = np.zeros((len(image_datasets['validation_combined']), 10))
+    all_scaled_probs = np.zeros((len(image_datasets['validation_combined']), 10))
 
     model.eval()
 
-    running_loss = 0.0
-    running_corrects = 0
-    total_accuracy = 0 
-
-    for batch, (inputs, labels) in enumerate(dataloaders['validation']):
+    for batch, (inputs, labels) in enumerate(dataloaders['validation_combined']):
         inputs = inputs.to(device)
         labels = labels.to(device)
 
@@ -111,11 +115,58 @@ def run_model(model, criterion):
     
     return model
 
-combined_images_model = run_model(model, criterion)
-print("======> This is the classifier on combined images")
 
-print("======> This is the model")
-print(model)
+def run_model_background(model, criterion):
+    scaler = torch.cuda.amp.GradScaler(enabled=amp)
+    model.eval()
+
+    all_scaled_probs = np.zeros((len(image_datasets['validation_background']), 10))
+    total_accuracy = 0 
+
+    for batch, (inputs, labels) in enumerate(dataloaders['validation_background']):
+        inputs = inputs.to(device)
+        labels = labels.to(device)
+
+        with torch.cuda.amp.autocast(enabled=amp):
+            outputs = model(inputs)
+            probs = F.softmax(outputs.cpu().detach().float(), dim = 1)
+            all_scaled_probs[batch * batch_size : (batch + 1) * batch_size] = probs
+            loss = criterion(outputs, labels)
+
+        #print("Outputs_size", outputs.cpu().detach().shape)
+        #print("Label_size", labels.cpu().detach().shape)
+        #print(outputs.cpu().detach())
+        #print(labels.cpu().detach())
+        accuracy = (outputs.argmax(-1) == labels.argmax(-1)).float().mean()
+        #print(accuracy)
+        total_accuracy += accuracy
+
+    acc_final = total_accuracy / len(dataloaders['validation_background'])
+    print('Resnet accuracy on background images is : {:.4f}'.format(acc_final))
+    np.savetxt("resnet_results/softmax_probs_background.csv", all_scaled_probs)
+
+    return model 
+
+def main():
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument("dataset", help="argument for large background or combined images")
+    args = parser.parse_args()
+    print(args)
+
+    if args.dataset == "background":
+        background_images_model = run_model_background(model, criterion)
+        print("======> This is the classifier on images with BACKGROUND")
+    
+    elif args.dataset == "combined":
+        combined_images_model = run_model_combined(model, criterion)
+        print("======> This is the classifier on COMBINED images")
+
+    print("======> This is the model")
+    print(model)
+
+if __name__ == "__main__":
+    main()
 
     
 
