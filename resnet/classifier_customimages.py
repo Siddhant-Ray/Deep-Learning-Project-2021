@@ -135,10 +135,10 @@ def run_model_background(model, criterion):
             all_scaled_probs[batch * batch_size : (batch + 1) * batch_size] = probs
             loss = criterion(outputs, labels)
 
-        accuracy = (outputs.argmax(-1) == labels.argmax(-1)).float().mean()
+        accuracy = (outputs.argmax(-1) == labels.argmax(-1)).float().sum()
         total_accuracy += accuracy
 
-    acc_final = total_accuracy / len(dataloaders['validation_background'])
+    acc_final = total_accuracy / len(image_datasets['validation_background'])
     print('Resnet accuracy on background images is : {:.4f}'.format(acc_final))
     np.savetxt("resnet_results/softmax_probs_background.csv", all_scaled_probs)
 

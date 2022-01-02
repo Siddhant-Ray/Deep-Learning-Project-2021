@@ -1,13 +1,13 @@
-Sender: LSF System <lsfadmin@eu-g3-047>
-Subject: Job 198901967: <python classifier_customimages.py background> in cluster <euler> Done
+Sender: LSF System <lsfadmin@eu-g2-13>
+Subject: Job 198999204: <python classifier_customimages.py background> in cluster <euler> Done
 
-Job <python classifier_customimages.py background> was submitted from host <eu-login-08> by user <sidray> in cluster <euler> at Fri Dec 31 15:51:21 2021
-Job was executed on host(s) <2*eu-g3-047>, in queue <gpu.4h>, as user <sidray> in cluster <euler> at Fri Dec 31 15:51:37 2021
+Job <python classifier_customimages.py background> was submitted from host <eu-login-02> by user <sidray> in cluster <euler> at Sun Jan  2 16:42:41 2022
+Job was executed on host(s) <2*eu-g2-13>, in queue <gpu.4h>, as user <sidray> in cluster <euler> at Sun Jan  2 16:42:45 2022
 </cluster/home/sidray> was used as the home directory.
 </cluster/home/sidray/Deep-Learning-Project-2021/resnet> was used as the working directory.
-Started at Fri Dec 31 15:51:37 2021
-Terminated at Fri Dec 31 15:51:46 2021
-Results reported at Fri Dec 31 15:51:46 2021
+Started at Sun Jan  2 16:42:45 2022
+Terminated at Sun Jan  2 16:42:56 2022
+Results reported at Sun Jan  2 16:42:56 2022
 
 Your job looked like:
 
@@ -20,22 +20,22 @@ Successfully completed.
 
 Resource usage summary:
 
-    CPU time :                                   6.30 sec.
-    Max Memory :                                 2610 MB
-    Average Memory :                             250.00 MB
+    CPU time :                                   7.21 sec.
+    Max Memory :                                 2634 MB
+    Average Memory :                             118.00 MB
     Total Requested Memory :                     9000.00 MB
-    Delta Memory :                               6390.00 MB
+    Delta Memory :                               6366.00 MB
     Max Swap :                                   -
     Max Processes :                              3
-    Max Threads :                                7
-    Run time :                                   9 sec.
-    Turnaround time :                            25 sec.
+    Max Threads :                                4
+    Run time :                                   10 sec.
+    Turnaround time :                            15 sec.
 
 The output (if any) follows:
 
 cuda
 Namespace(dataset='background')
-Resnet accuracy on background images is : 0.1992
+Resnet accuracy on background images is : 0.1500
 ======> This is the classifier on images with BACKGROUND
 ======> This is the model
 ResNet(
