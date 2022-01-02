@@ -4,12 +4,13 @@ from scipy import stats
 import matplotlib.pyplot as plt
 
 
-TRUTH_LABELS_FILE = "./datasets/combined_cifar_eval/labels.csv"
-RESNET_SOFTMAX_FILE = "./resnet/resnet_results/softmax_probs.csv"
-VIT_SOFTMAX_FILE = "./vit/classification_combined_2021-12-22_12:27:11/softmax_probs.csv"
-LOCAL_VIT_SOFTMAX_FILE = "./DemystifyLocalViT/DemystifyLocal_results/softmax_probs.csv"
-METRICS_DIR = "./metrics/"
+TRUTH_LABELS_FILE = "../datasets/combined_cifar_eval/labels.csv"
+RESNET_SOFTMAX_FILE = "../resnet/resnet_results/softmax_probs.csv"
+VIT_SOFTMAX_FILE = "../vit/classification_combined_2021-12-22_12:27:11/softmax_probs.csv"
+LOCAL_VIT_SOFTMAX_FILE = "../DemystifyLocalViT/DemystifyLocal_results/softmax_probs.csv"
+METRICS_DIR = "./combined_image_performance/"
 
+np.random.seed(1234)
 
 def euclidian_metrics(truth, outputs):
 	diff = truth - outputs
