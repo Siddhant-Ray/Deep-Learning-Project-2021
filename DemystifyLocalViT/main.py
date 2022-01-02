@@ -142,10 +142,6 @@ def main(config):
         data_loader_train.sampler.set_epoch(epoch)
 
         train_one_epoch(config, model, criterion, data_loader_train, optimizer, epoch, mixup_fn, lr_scheduler)
-        #if epoch == 80:
-        #    save_checkpoint(config, 80, model_without_ddp, max_accuracy, optimizer, lr_scheduler, logger)
-        #if dist.get_rank() == 0 and (epoch % config.SAVE_FREQ == 0 or epoch == (config.TRAIN.EPOCHS - 1)):
-            #save_checkpoint(config, epoch, model_without_ddp, max_accuracy, optimizer, lr_scheduler, logger)
         
         acc1, acc5, loss = validate(config, data_loader_val, model)
         logger.info(f"Accuracy of the network on the {len(dataset_val)} test images: {acc1:.1f}%")
@@ -183,7 +179,6 @@ def train_one_epoch(config, model, criterion, data_loader, optimizer, epoch, mix
             loss = criterion(outputs, targets)
 
             if math.isinf(loss.item()) or math.isnan(loss.item()) or loss.item()!=loss.item():
-                #grint('batch index [{}] loss inf/nan'.format(idx))
                 optimizer.zero_grad()
                 torch.cuda.empty_cache()
                 continue
@@ -197,7 +192,6 @@ def train_one_epoch(config, model, criterion, data_loader, optimizer, epoch, mix
                 else:
                     grad_norm = get_grad_norm(amp.master_params(optimizer))
                 if math.isinf(grad_norm) or math.isnan(grad_norm) or grad_norm!=grad_norm:
-                    #print('batch index [{}] norm inf/nan'.format(idx))
                     optimizer.zero_grad()
                     torch.cuda.empty_cache()
                     continue
@@ -208,7 +202,6 @@ def train_one_epoch(config, model, criterion, data_loader, optimizer, epoch, mix
                 else:
                     grad_norm = get_grad_norm(model.parameters())
                 if math.isinf(grad_norm) or math.isnan(grad_norm) or grad_norm!=grad_norm:
-                    #print('batch index [{}] norm inf/nan'.format(idx))
                     optimizer.zero_grad()
                     torch.cuda.empty_cache()
                     continue
@@ -220,7 +213,6 @@ def train_one_epoch(config, model, criterion, data_loader, optimizer, epoch, mix
             loss = criterion(outputs, targets)
 
             if math.isinf(loss.item()) or math.isnan(loss.item()) or loss.item()!=loss.item():
-                #print('batch index [{}] loss inf'.format(idx))
                 optimizer.zero_grad()
                 torch.cuda.empty_cache()
                 continue
@@ -234,7 +226,6 @@ def train_one_epoch(config, model, criterion, data_loader, optimizer, epoch, mix
                 else:
                     grad_norm = get_grad_norm(amp.master_params(optimizer))
                 if math.isinf(grad_norm) or math.isnan(grad_norm) or grad_norm!=grad_norm:
-                    #print('batch index [{}] norm inf/nan'.format(idx))
                     optimizer.zero_grad()
                     torch.cuda.empty_cache()
                     continue
@@ -245,7 +236,6 @@ def train_one_epoch(config, model, criterion, data_loader, optimizer, epoch, mix
                 else:
                     grad_norm = get_grad_norm(model.parameters())
                 if math.isinf(grad_norm) or math.isnan(grad_norm) or grad_norm!=grad_norm:
-                    #print('batch index [{}] norm inf/nan'.format(idx))
                     optimizer.zero_grad()
                     torch.cuda.empty_cache()
                     continue
@@ -350,8 +340,6 @@ def test_large(config, data_loader, model, number_of_instances):
         print("Guess : ", logit_vals.argmax(1))
         n_correct += (logit_vals.argmax(1) == target.argmax(1).cpu().numpy()).sum()
 
-
-
         # measure elapsed time
         batch_time.update(time.time() - end)
         end = time.time()
@@ -364,15 +352,13 @@ def test_large(config, data_loader, model, number_of_instances):
     np.savetxt("DemystifyLocal_results/softmax_probs.csv", all_scaled_probs)
     print("Demistify accuracy is : {:.4f}".format(accuracy))
 
-
     return 0,0,0
-
 
 
 
 @torch.no_grad()
 def throughput(data_loader, model, logger):
-    godel.eval()
+    model.eval()
 
     for idx, (images, _) in enumerate(data_loader):
         images = images.cuda(non_blocking=True)
