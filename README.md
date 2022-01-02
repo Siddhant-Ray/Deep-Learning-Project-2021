@@ -28,19 +28,25 @@ pip install -r requirements.txt
 
 Nvidia Apex is not published in PyPI and has to be installed by following the instructions [here](https://github.com/NVIDIA/apex).
 
-## Run models
+## Train models
 
 ```
 resnet/run_train.sh gpu
-resnet/run_eval.sh gpu
-```
-
-```
 vit/run_train.sh gpu
-vit/run_eval.sh gpu
+DemystifyLocalViT/run_train.sh gpu
 ```
 
+## Generate combined and background datasets
+
 ```
-DemystifyLocalViT/run_train.sh gpu
+combined_dataset/run.sh
+background_dataset/run.sh
+```
+
+## Test models
+
+```
+resnet/run_eval.sh gpu
+vit/run_eval.sh gpu
 DemystifyLocalViT/run_eval.sh gpu
 ```
