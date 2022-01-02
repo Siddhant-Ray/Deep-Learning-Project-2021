@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "script to run srl tasks"
+echo "Running Local ViT (eval)"
 
 if ls lsf.* 1> /dev/null 2>&1
 then

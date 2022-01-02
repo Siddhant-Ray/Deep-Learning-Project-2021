@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "script to run srl tasks"
+echo "Running Local ViT (training)"
 
 if ls lsf.* 1> /dev/null 2>&1
 then
@@ -36,11 +36,3 @@ done
 echo "here"
 
 bsub "${args[@]}" mpirun bash scripts/run_dynamic_dwnet_base_patch4_window7_224.sh
-
-# bsub "${args[@]}" mpirun bash scripts/eval.sh
-# bsub "${args[@]}" mpirun bash scripts/eval_background.sh
-
-
-
-
-
