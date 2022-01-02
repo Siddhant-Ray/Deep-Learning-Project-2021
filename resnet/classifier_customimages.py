@@ -113,7 +113,7 @@ def run_model_combined(model, criterion):
     np.savetxt("resnet_results/logits_int.csv", all_logits, fmt="%d") # Logis rounded to integers
     np.savetxt("resnet_results/logits.csv", all_logits) # Raw logits
 
-    np.savetxt("resnet_results/softmax_probs.csv", all_scaled_probs) # Softmax probalbilities
+    np.savetxt("resnet_results/softmax_probs_combined.csv", all_scaled_probs) # Softmax probalbilities
     
     return model
 
