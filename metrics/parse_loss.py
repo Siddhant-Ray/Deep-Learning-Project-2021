@@ -13,15 +13,19 @@ if __name__ == '__main__':
             for line in input_file:
                 if objective['train_loss_key'] in line:
                     if 'train_loss_idx' in objective:
-                        train_loss = get_val_at_idx(line, objective['train_loss_idx'])
-                        train_loss_file.write(str(float(train_loss)) + '\n')
+                        train_loss = float(get_val_at_idx(line, objective['train_loss_idx']))
+                        train_loss_file.write(str(train_loss) + '\n')
                     if 'train_acc_idx' in objective:
-                        train_acc = get_val_at_idx(line, objective['train_acc_idx'])
-                        train_acc_file.write(str(float(train_acc)) + '\n')
+                        train_acc = float(get_val_at_idx(line, objective['train_acc_idx']))
+                        if objective['acc_in_percentage']:
+                            train_acc = train_acc * 0.01
+                        train_acc_file.write(str(train_acc) + '\n')
                 if objective['validation_loss_key'] in line:
                     if 'validation_loss_idx' in objective:
-                        validation_loss = get_val_at_idx(line, objective['validation_loss_idx'])
-                        validation_loss_file.write(str(float(validation_loss)) + '\n')
+                        validation_loss = float(get_val_at_idx(line, objective['validation_loss_idx']))
+                        validation_loss_file.write(str(validation_loss) + '\n')
                     if 'validation_acc_idx' in objective:
-                        validation_acc = get_val_at_idx(line, objective['validation_acc_idx'])
-                        validation_acc_file.write(str(float(validation_acc)) + '\n')
+                        validation_acc = float(get_val_at_idx(line, objective['validation_acc_idx']))
+                        if objective['acc_in_percentage']:
+                            validation_acc = validation_acc * 0.01
+                        validation_acc_file.write(str(validation_acc) + '\n')

@@ -7,6 +7,7 @@ from loss import objectives
 TARGETS = ['train_loss', 'train_acc', 'validation_loss', 'validation_acc']
 TARGET_TITLES = ['Loss', 'Accuracy', 'Loss', 'Accuracy']
 NO_OF_EPOCHS = 80
+COLOURS = ['red', 'green', 'blue']
 
 
 def load_curve(input_file):
@@ -28,9 +29,15 @@ def plot_loss_curves(curves, labels, colors, output_path, name='loss_curve', tit
     plt.savefig(output_path+'/'+name+'.pdf', dpi=1000, bbox_inches='tight')
 
 
-if __name__ == '__main__':
+if __name__ == '__main__':    
     for objective in objectives:
         for target, target_title in zip(TARGETS, TARGET_TITLES):
             curve = load_curve(objective['output_folder']+'/'+target+'.csv')[:NO_OF_EPOCHS]
             plot_loss_curves([curve], [objective['name']], ['red'], \
                 objective['output_folder'], name=target, title=target_title)
+    
+    for target, target_title in zip(TARGETS, TARGET_TITLES):
+        curves = [load_curve(objective['output_folder']+'/'+target+'.csv')[:NO_OF_EPOCHS] for objective in objectives]
+        names = [objective['name'] for objective in objectives]
+        plot_loss_curves(curves, names, COLOURS[:len(curves)], \
+            '.', name=target+'_combined', title=target_title)
