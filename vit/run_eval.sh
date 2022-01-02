@@ -15,7 +15,7 @@ args=(
     -G s_stud_infk
     -n 1
     -W 1:00
-    -R "rusage[mem=4500]"
+    -R "rusage[mem=12000]"
 )
 
 if [ -z "$1" ]; then echo "CPU mode selected"; fi
