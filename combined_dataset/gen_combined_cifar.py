@@ -1,3 +1,7 @@
+"""
+gen_combined_cifar.py
+This script generates a dataset that combines 4 CIFAR-10 images into one
+"""
 from torchvision.datasets import CIFAR10
 from torch.utils.data import DataLoader
 import torchvision.transforms as transforms
@@ -16,8 +20,6 @@ source_sets = {
     "train": CIFAR10("../datasets/", train=True, transform=transform, download=True),
     "eval": CIFAR10("../datasets/", train=False, transform=transform, download=True)
 }
-
-# cifar10_loader = DataLoader(cifar10_set, shuffle=False, batch_size=len(), num_workers=2)
 
 for mode in ("train", "eval"):
     dset = source_sets[mode]

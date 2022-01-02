@@ -1,4 +1,6 @@
-
+"""
+This class defines the Dataset class for the combined CIFAR-10 images
+"""
 import torch
 import numpy as np
 from torchvision.io import read_image
