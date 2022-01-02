@@ -39,7 +39,7 @@ def top_4_metrics(truth, outputs):
 	average_matching = np.average(top_4_matching)
 	return average_matching, top_4_matching
 
-def output(name, truth, predictions, save_files = True):
+def output(name, displayname, truth, predictions, save_files = True):
 	euc_avg, euc = euclidian_metrics(truth, predictions)
 	# ws_avg, ws = wasserstein_metrics(truth, predictions)
 	t4_avg, t4 = top_4_metrics(truth, predictions)
@@ -54,8 +54,13 @@ def output(name, truth, predictions, save_files = True):
 		np.savetxt(METRICS_DIR + name + "_euclidian.csv", euc)
 		# np.savetxt(METRICS_DIR + name + "_wasserstein.csv", ws)
 		np.savetxt(METRICS_DIR + name + "_top4.csv", t4)
-		_ = plt.hist(t4, [b - .5 for b in bins], edgecolor='black',)
-		plt.title(name + " - top 4 matching histogram")
+		histo_x, histo_y, bars = plt.hist(t4, [b - .5 for b in bins], edgecolor='black')
+
+		for l, rect in zip(t4_histogram, bars):
+			pct = (l / sum(t4_histogram))
+			plt.text(rect.get_x() + rect.get_width()/2, rect.get_height()+0.01, f"{pct:.2%}", ha='center', va='bottom')
+
+		plt.title(displayname + " - Top 4 Matching Histogram")
 		plt.savefig(METRICS_DIR + name + "_top4_histogram.pdf", transparent=False)
 		plt.clf()
 
@@ -71,22 +76,22 @@ def main():
 
 	print("SUMMARY")
 	print("- RESNET COMPARED TO TRUE LABELS ---------------")
-	output("resnet", truth_labels, resnet_softmax)
+	output("resnet", "ResNet", truth_labels, resnet_softmax)
 
 	print("- RESNET COMPARED TO RANDOM NOISE ------------------")
-	output("resnet_noise", noise_labels, resnet_softmax, save_files=False)
+	output("resnet_noise", "ResNet (Noise)", noise_labels, resnet_softmax, save_files=False)
 
 	print("- VIT COMPARED TO TRUE LABELS ------------------")
-	output("vit", truth_labels, vit_softmax)
+	output("vit", "Vision Transformer", truth_labels, vit_softmax)
 
 	print("- VIT COMPARED TO RANDOM NOISE ------------------")
-	output("vit_noise", noise_labels, vit_softmax, save_files=False)
+	output("vit_noise", "Vision Transformer (Noise)", noise_labels, vit_softmax, save_files=False)
 
 	print("- LOCAL VIT COMPARED TO TRUE LABELS ------------------")
-	output("local_vit", truth_labels, local_vit_softmax)
+	output("local_vit", "Local Vision Transformer", truth_labels, local_vit_softmax)
 
 	print("- LOCAL VIT COMPARED TO RANDOM NOISE ------------------")
-	output("local_vit_noise", noise_labels, local_vit_softmax, save_files=False)
+	output("local_vit_noise", "Local Vision Transformer (Noise)", noise_labels, local_vit_softmax, save_files=False)
 
 if __name__ == "__main__":
 	main()
