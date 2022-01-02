@@ -1,15 +1,43 @@
 # Deep-Learning-Project-2021
 
-## Project Overview
+## Prepare dependencies
 
-* Currently only has papers for reference. 
+### Load modules in Euler
 
-https://docs.google.com/document/d/1iXee0cTGwwWjPI3tSz72Jb6VcQRZR5t8i6fcHl-UXvM/edit?usp=sharing
+```
+env2lmod
+module load gcc/8.2.0
+module load python_gpu/3.8.5
+module load cuda/11.3.1
+```
 
-* Dataset links 
+### Set up a Python virtual environment (venv)
 
-* https://storage.googleapis.com/openimages/web/download.html
-* https://www.quantitative-plant.org/dataset
-* https://imerit.net/blog/22-free-image-datasets-for-computer-vision-all-pbm/
+```
+python -m venv venv
+source venv/bin/activate
+```
 
+### Install modules
 
+Install the dependencies given in `requirements.txt`. 
+
+```
+pip install -r requirements.txt
+```
+
+Nvidia Apex is not published in PyPI and has to be installed by following the instructions [here](https://github.com/NVIDIA/apex).
+
+## Run models
+
+```
+resnet/run.sh
+```
+
+```
+vit/run.sh
+```
+
+```
+DemystifyLocalViT/run.sh
+```
