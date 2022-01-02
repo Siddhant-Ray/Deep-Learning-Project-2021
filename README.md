@@ -40,12 +40,12 @@ Change directory to either of {resnet, vit, DemystifyLocalViT} and execute:
 
 ```
 cd combined_dataset
-combined_dataset/run.sh
+./run.sh
 ```
 
 ```
 cd background_dataset
-background_dataset/run.sh
+./run.sh
 ```
 
 ## Test models
