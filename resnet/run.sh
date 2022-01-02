@@ -8,7 +8,7 @@ then
     rm lsf.*
 fi
 
-module load gcc/8.2.0 python_gpu/3.8.5 eth_proxy
+module load gcc/8.2.0 python_gpu/3.8.5 cuda/11.3.1 eth_proxy
 source ../venv/bin/activate
 
 args=(

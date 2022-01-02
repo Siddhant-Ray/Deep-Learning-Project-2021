@@ -15,6 +15,7 @@ args=(
     -G s_stud_infk
     -n 1
     -W 120:00
+    -R "rusage[mem=4500]"
 )
 
 
