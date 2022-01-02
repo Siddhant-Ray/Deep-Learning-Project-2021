@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "script to run resnet tasks"
+echo "script to run srl tasks"
 
 if ls lsf.* 1> /dev/null 2>&1
 then
@@ -8,22 +8,23 @@ then
     rm lsf.*
 fi
 
-module load gcc/8.2.0 python_gpu/3.8.5 cuda/11.3.1 eth_proxy
+module load gcc/8.2.0 python_gpu/3.8.5 cuda 11.3.1 eth_proxy openmpi/4.0.2
 source ../venv/bin/activate
 
 args=(
     -G s_stud_infk
-    -n 2
+    -n 1
     -W 4:00
     -R "rusage[mem=4500]"
 )
+
 
 if [ -z "$1" ]; then echo "CPU mode selected"; fi
 while [ ! -z "$1" ]; do
     case "$1" in
         gpu)
             echo "GPU mode selected"
-            args+=(-R "rusage[ngpus_excl_p=4]")
+            args+=(-R "rusage[mem=4500, ngpus_excl_p=8]")
             ;;
         intr)
             echo "Interactive mode selected"
@@ -33,8 +34,5 @@ while [ ! -z "$1" ]; do
     shift
 done
 
-#bsub "${args[@]}" python classifier_pretrained.py 
-#bsub "${args[@]}" python classifier_scratch.py 
-bsub "${args[@]}" python classifier_customimages.py combined 
-bsub "${args[@]}" python classifier_customimages.py background 
-
+bsub "${args[@]}" mpirun bash scripts/eval.sh
+bsub "${args[@]}" mpirun bash scripts/eval_background.sh
