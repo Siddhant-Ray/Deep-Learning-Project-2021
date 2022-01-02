@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 
 TRUTH_LABELS_FILE = "./datasets/combined_cifar_eval/labels.csv"
 RESNET_SOFTMAX_FILE = "./resnet/resnet_results/softmax_probs.csv"
-VIT_SOFTMAX_FILE = "./vit/classification_2021-12-22_12:27:11/softmax_probs.csv"
+VIT_SOFTMAX_FILE = "./vit/classification_combined_2021-12-22_12:27:11/softmax_probs.csv"
 LOCAL_VIT_SOFTMAX_FILE = "./DemystifyLocalViT/DemystifyLocal_results/softmax_probs.csv"
 METRICS_DIR = "./metrics/"
 
@@ -55,7 +55,7 @@ def output(name, truth, predictions, save_files = True):
 		np.savetxt(METRICS_DIR + name + "_top4.csv", t4)
 		_ = plt.hist(t4, [b - .5 for b in bins], edgecolor='black',)
 		plt.title(name + " - top 4 matching histogram")
-		plt.savefig(METRICS_DIR + name + "_top4_histogram.png", transparent=False)
+		plt.savefig(METRICS_DIR + name + "_top4_histogram.pdf", transparent=False)
 		plt.clf()
 
 def main():
