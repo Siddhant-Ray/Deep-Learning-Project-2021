@@ -30,23 +30,28 @@ Nvidia Apex is not published in PyPI and has to be installed by following the in
 
 ## Train models
 
+Change directory to either of {resnet, vit, DemystifyLocalViT} and execute:
+
 ```
-resnet/run_train.sh gpu
-vit/run_train.sh gpu
-DemystifyLocalViT/run_train.sh gpu
+./run_train.sh gpu
 ```
 
 ## Generate combined and background datasets
 
 ```
+cd combined_dataset
 combined_dataset/run.sh
+```
+
+```
+cd background_dataset
 background_dataset/run.sh
 ```
 
 ## Test models
 
+Change directory to either of {resnet, vit, DemystifyLocalViT} and execute:
+
 ```
-resnet/run_eval.sh gpu
-vit/run_eval.sh gpu
-DemystifyLocalViT/run_eval.sh gpu
+./run_eval.sh gpu
 ```
