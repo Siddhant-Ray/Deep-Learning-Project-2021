@@ -1,17 +1,20 @@
-from transformers import ViTForImageClassification, ViTConfig
+"""
+classify.py
+This file loads a ViT model that has already been trained.
+I then performs classification on the desired dataset {combined, background} and outputs the classification results in a new folder.
+"""
 import sys
 import os
 import argparse
-
-import torchvision.transforms as transforms
-from torch.utils.data import DataLoader
-import torch
-import numpy as np
 import datetime
 import json
-import torch.backends.cudnn as cudnn
+import numpy as np
+import torch
 from torch.nn import functional
-
+from torch.utils.data import DataLoader
+import torchvision.transforms as transforms
+import torch.backends.cudnn as cudnn
+from transformers import ViTForImageClassification, ViTConfig
 sys.path.insert(1, os.path.join(sys.path[0], '..'))
 from adv_dataset.combined_cifar import CombinedCifar
 from background_dataset.background_cifar import BackgroundCifar
@@ -36,6 +39,10 @@ def get_model(device):
     model.to(device)
     return model
 
+"""
+perform classification for combined image dataset
+output softmax and logits
+"""
 def classify_combined_images(OUT_DIR, DATASET_DIR, transform, device):
     dataset = CombinedCifar(DATASET_DIR, transform=transform)
     dataloader = DataLoader(dataset, batch_size=BATCH_SIZE, shuffle=False)
@@ -59,6 +66,11 @@ def classify_combined_images(OUT_DIR, DATASET_DIR, transform, device):
     np.savetxt(OUT_DIR + "logits_int.csv", all_logits, fmt="%d")
     np.savetxt(OUT_DIR + "softmax_probs.csv", all_softmax)
 
+
+"""
+perform classification for background image dataset
+output softmax and accuracy
+"""
 def classify_background_images(OUT_DIR, DATASET_DIR, transform, device):
     dataset = BackgroundCifar(DATASET_DIR, transform=transform)
     dataloader = DataLoader(dataset, batch_size=BATCH_SIZE, shuffle=False)
@@ -97,7 +109,6 @@ def main():
     transform = transforms.Compose([
         transforms.Resize(224),
         transforms.ConvertImageDtype(torch.float),
-        #transforms.ToTensor(), 
         transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
     ])
 
