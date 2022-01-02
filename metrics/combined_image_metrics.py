@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 
 
 TRUTH_LABELS_FILE = "../datasets/combined_cifar_eval/labels.csv"
-RESNET_SOFTMAX_FILE = "../resnet/resnet_results/softmax_probs.csv"
+RESNET_SOFTMAX_FILE = "../resnet/resnet_results/softmax_probs_combined.csv"
 VIT_SOFTMAX_FILE = "../vit/classification_combined_2021-12-22_12:27:11/softmax_probs.csv"
 LOCAL_VIT_SOFTMAX_FILE = "../DemystifyLocalViT/DemystifyLocal_results/softmax_probs.csv"
 METRICS_DIR = "./combined_image_performance/"
@@ -58,9 +58,9 @@ def output(name, displayname, truth, predictions, save_files = True):
 
         for l, rect in zip(t4_histogram, bars):
             pct = (l / sum(t4_histogram))
-            plt.text(rect.get_x() + rect.get_width()/2, rect.get_height()+0.01, f"{pct:.2%}", ha='center', va='bottom')
+            plt.text(rect.get_x() + rect.get_width()/2, rect.get_height()+0.01, f"{pct:.2%}", ha='center', va='bottom', fontdict={"fontsize": "large"})
 
-        plt.title(displayname + " - Top 4 Matching Histogram")
+        plt.title(displayname + " - Top 4 Matching Histogram", fontdict={"fontsize": "xx-large"})
         plt.savefig(METRICS_DIR + name + "_top4_histogram.pdf", transparent=False)
         plt.clf()
 
@@ -88,7 +88,7 @@ def main():
     output("vit_noise", "Vision Transformer (Noise)", noise_labels, vit_softmax, save_files=False)
 
     print("- LOCAL VIT COMPARED TO TRUE LABELS ------------------")
-    output("local_vit", "Local Vision Transformer", truth_labels, local_vit_softmax)
+    output("local_vit", "Local ViT", truth_labels, local_vit_softmax)
 
     print("- LOCAL VIT COMPARED TO RANDOM NOISE ------------------")
     output("local_vit_noise", "Local Vision Transformer (Noise)", noise_labels, local_vit_softmax, save_files=False)
