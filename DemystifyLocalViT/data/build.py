@@ -22,7 +22,7 @@ import sys
 import os
 
 sys.path.insert(1, os.path.join(sys.path[0], '../'))
-from adv_dataset.combined_cifar import CombinedCifar
+from combined_dataset.combined_cifar import CombinedCifar
 
 
 

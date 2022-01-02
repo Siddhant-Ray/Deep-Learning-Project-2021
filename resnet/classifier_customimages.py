@@ -12,7 +12,7 @@ from torch.nn import functional as F
 import torch.optim as optim
 
 sys.path.insert(1, os.path.join(sys.path[0],'..'))
-from adv_dataset.combined_cifar import CombinedCifar
+from combined_dataset.combined_cifar import CombinedCifar
 from background_dataset.background_cifar import BackgroundCifar
 
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
