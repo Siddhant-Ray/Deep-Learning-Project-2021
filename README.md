@@ -31,13 +31,13 @@ Nvidia Apex is not published in PyPI and has to be installed by following the in
 ## Run models
 
 ```
-resnet/run.sh
+resnet/run.sh gpu
 ```
 
 ```
-vit/run.sh
+vit/run.sh gpu
 ```
 
 ```
-DemystifyLocalViT/run.sh
+DemystifyLocalViT/run.sh gpu
 ```
