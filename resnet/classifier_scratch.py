@@ -1,3 +1,6 @@
+"""This file is used to train the ResNet50 from scratch. Initally the model is 
+initialized with random weights, instead of pretrained."""
+
 import numpy as np, argparse, json
 
 import matplotlib.pyplot as plt
@@ -11,11 +14,16 @@ import torch.backends.cudnn as cudnn
 from torch.nn import functional as F
 import torch.optim as optim
 
+# Check for GPU availibility
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
-best_acc = 0  # best test accuracy
-start_epoch = 0  # start from epoch 0 or last checkpoint epoch
+# Flag to decide if to use mixed precision loss or not
 amp = True  # mixed precision
 
+'''
+Load the hyperparamter config, either
+config_scratch_big.json : with batch size 64 (can be done with multiple GPUs only)
+config_scratch.json : with batch size 16 (if only single GPU)
+'''
 with open('configs/config_scratch_big.json', 'r') as f:
     config = json.load(f)
 
@@ -31,12 +39,12 @@ max_lr = config['max_lr']
 ## Transform function
 normalize = transforms.Normalize(mean=[0.485, 0.456, 0.406],
                                  std=[0.229, 0.224, 0.225])
+
+## Using auto augment for CIFAR-10                                 
 transforms = {
     'train':
     transforms.Compose([
         transforms.Resize((224,224)),
-        #transforms.RandomAffine(0, shear=10, scale=(0.8,1.2)),
-        #transforms.RandomHorizontalFlip(),
         transforms.AutoAugment(transforms.AutoAugmentPolicy.CIFAR10),
         transforms.ToTensor(),
         normalize
@@ -49,6 +57,7 @@ transforms = {
     ]),
 }
 
+# Load the dataset
 image_datasets = {
     'train': 
     torchvision.datasets.CIFAR10(
@@ -74,7 +83,7 @@ dataloaders = {
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 print(device)
 
-# model = models.resnet50(pretrained=False).to(device)
+# Use autocast decorator in the forward method for mixed precision loss
 class ResNet(nn.Module):
     def __init__(self, *args, **kwargs):
         super().__init__()
@@ -84,28 +93,19 @@ class ResNet(nn.Module):
         with torch.cuda.amp.autocast(enabled=amp):
             return self.model(*args, **kwargs)
 
-# FC layer is only with 10 hidden units, unlike earlier
-# where I had a full two layer classifier
-# this is because the model is becoming too complex
-# to train        
+# FC layer is only with 10 hidden units
 model = ResNet(pretrained=False, num_classes=10).to(device)
 if device == 'cuda':
     model = torch.nn.DataParallel(model)
     cudnn.benchmark = True
-    
+
+# Not needed, as we want to update the gradients    
 '''for param in model.parameters():
     param.requires_grad = False'''   
-
-# Classifier head    
-# model.fc = nn.Sequential(
-#                nn.Linear(2048, 128),
-#                nn.ReLU(inplace=True),
-#                nn.Linear(128, 10)).to(device)
 
 ## Model specifiers
 optimizer = optim.Adam(model.parameters(), lr=learning_rate, weight_decay = weight_decay)
 scheduler = torch.optim.lr_scheduler.OneCycleLR(optimizer, max_lr=max_lr, steps_per_epoch=len(dataloaders['train']), epochs=epochs)
-# scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=200)
 criterion = nn.CrossEntropyLoss()
 
 def run_model(model, criterion, optimizer, num_epochs=epochs):
@@ -134,7 +134,7 @@ def run_model(model, criterion, optimizer, num_epochs=epochs):
                     outputs = model(inputs)
                     loss = criterion(outputs, labels)
 
-                # Added mixed precision support 
+                # Added mixed precision support and one cycle LR scheduler
                 if phase == 'train':
                     optimizer.zero_grad()
                     scaler.scale(loss).backward()
@@ -154,10 +154,7 @@ def run_model(model, criterion, optimizer, num_epochs=epochs):
 
             print('{} loss: {:.4f}, acc: {:.4f}'.format(phase,
                                                         epoch_loss,
-                                                        epoch_acc))
-
-        #scheduler.step()                                                
-            
+                                                        epoch_acc))          
     return model
 
 model_trained = run_model(model, criterion, optimizer, num_epochs=epochs)
@@ -170,18 +167,9 @@ print("Parameters used for this model")
 for key, value in config.items():  
     print(key, value)
 
+# Save the wights of the trained model
 torch.save(model_trained.state_dict(), 'saved_model/pytorch/weights_scratch.h5')
 
-# Next time 
-"""
-model = models.resnet50(pretrained=False).to(device)
-model.fc = nn.Sequential(
-               nn.Linear(2048, 128),
-               nn.ReLU(inplace=True),
-               nn.Linear(128, 2)).to(device)
-model.load_state_dict(torch.load('saved_model/pytorch/weights.h5'))
-
-"""
 
 
 

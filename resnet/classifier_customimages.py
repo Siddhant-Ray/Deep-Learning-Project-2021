@@ -1,3 +1,7 @@
+"""This file is used to use the trained ResNet50 model to evaluate on 
+the background and combined images. Initally the model is 
+initialized with the saved weights on which we trained."""
+
 import numpy as np, argparse, json, sys, os
 
 import matplotlib.pyplot as plt
@@ -16,8 +20,6 @@ from combined_dataset.combined_cifar import CombinedCifar
 from background_dataset.background_cifar import BackgroundCifar
 
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
-best_acc = 0  # best test accuracy
-start_epoch = 0  # start from epoch 0 or last checkpoint epoch
 amp = True  # mixed precision
 
 with open('configs/config_scratch_big.json', 'r') as f:
@@ -41,7 +43,6 @@ transforms = {
     transforms.Compose([
         transforms.Resize((224,224)),
         transforms.ConvertImageDtype(torch.float),
-        #transforms.ToTensor(),
         normalize
     ]),
 }
@@ -78,7 +79,8 @@ class ResNet(nn.Module):
     def forward(self, *args, **kwargs):
         with torch.cuda.amp.autocast(enabled=amp):
             return self.model(*args, **kwargs)
-      
+
+# Load saved model      
 model = ResNet(pretrained=False, num_classes=10).to(device)
 model.load_state_dict(torch.load('saved_model/pytorch/weights_scratch.h5'))
 
@@ -88,6 +90,7 @@ if device == 'cuda':
 
 criterion = nn.CrossEntropyLoss()
 
+# Run and evaluate on combined images
 def run_model_combined(model, criterion):
     scaler = torch.cuda.amp.GradScaler(enabled=amp)
     all_logits = np.zeros((len(image_datasets['validation_combined']), 10))
@@ -101,21 +104,20 @@ def run_model_combined(model, criterion):
 
         with torch.cuda.amp.autocast(enabled=amp):
             outputs = model(inputs)
-            logit_vals = np.array(outputs.cpu().detach()) #### What we really want 
-            probs = F.softmax(outputs.cpu().detach().float(), dim = 1)
-            #loss = criterion(outputs, labels).item()
+            logit_vals = np.array(outputs.cpu().detach()) 
+            probs = F.softmax(outputs.cpu().detach().float(), dim = 1) #### What we really want 
             all_logits[batch * batch_size : (batch + 1) * batch_size] = logit_vals
             all_scaled_probs[batch * batch_size : (batch + 1) * batch_size] = probs
 
         
-    np.savetxt("resnet_results/logits_int.csv", all_logits, fmt="%d") #Maybe we don't do integer rounding but use softmax
-    np.savetxt("resnet_results/logits.csv", all_logits)
+    np.savetxt("resnet_results/logits_int.csv", all_logits, fmt="%d") # Logis rounded to integers
+    np.savetxt("resnet_results/logits.csv", all_logits) # Raw logits
 
-    np.savetxt("resnet_results/softmax_probs.csv", all_scaled_probs)
+    np.savetxt("resnet_results/softmax_probs.csv", all_scaled_probs) # Softmax probalbilities
     
     return model
 
-
+# Run and evaluate on large background images
 def run_model_background(model, criterion):
     scaler = torch.cuda.amp.GradScaler(enabled=amp)
     model.eval()
@@ -133,12 +135,7 @@ def run_model_background(model, criterion):
             all_scaled_probs[batch * batch_size : (batch + 1) * batch_size] = probs
             loss = criterion(outputs, labels)
 
-        #print("Outputs_size", outputs.cpu().detach().shape)
-        #print("Label_size", labels.cpu().detach().shape)
-        #print(outputs.cpu().detach())
-        #print(labels.cpu().detach())
         accuracy = (outputs.argmax(-1) == labels.argmax(-1)).float().mean()
-        #print(accuracy)
         total_accuracy += accuracy
 
     acc_final = total_accuracy / len(dataloaders['validation_background'])
