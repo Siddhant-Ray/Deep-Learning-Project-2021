@@ -1,4 +1,4 @@
-# Deep-Learning-Project-2021
+# Investigating Possible Inductive Biases in Local Sparse Attention ViT Architectures Against Traditional CNNs
 
 ## Prepare dependencies
 
